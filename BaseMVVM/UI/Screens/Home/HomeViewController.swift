@@ -11,8 +11,10 @@ import SnapKit
 
 class HomeViewController: ViewController {
     @IBOutlet weak private var containerView: UIView!
+    @IBOutlet weak var dailyBoardView: UIView!
     @IBOutlet weak var tab1Button: UIButton!
     @IBOutlet weak var tab2Button: UIButton!
+    @IBOutlet weak var dailyboardArea: UIView!
     
     private lazy var tab1VC: ViewController = {
         let viewController = ListViewController(nibName: ListViewController.className, bundle: nil)
@@ -30,11 +32,23 @@ class HomeViewController: ViewController {
         return viewController
     }()
     
+    private lazy var dailyBoardVC: ViewController = {
+        let viewController = DailyBoardViewController(nibName: DailyBoardViewController.className, bundle: nil)
+        let navigator = DailyBoardNavigator(with: viewController)
+        let viewModel = DailyBoardViewModel(navigator: navigator)
+        viewController.viewModel = viewModel
+        return viewController
+    }()
+    
+    
+    
     var currentViewController: ViewController?
+    var currentDailyBoardViewController: ViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showTab1()
+        showDailyBoard()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,5 +103,12 @@ class HomeViewController: ViewController {
         tab1Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
         tab2Button.backgroundColor = UIColor.App.tabSelected
         tab2Button.setTitleColor(UIColor.App.tabUnselected, for: .normal)
+    }
+    
+    // Show list data
+    private func showDailyBoard() {
+        currentDailyBoardViewController?.removeViewAndControllerFromParentViewController()
+        addChildViewController(dailyBoardVC, toContainerView: dailyboardArea)
+        currentDailyBoardViewController = dailyBoardVC
     }
 }

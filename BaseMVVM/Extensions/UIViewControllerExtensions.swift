@@ -85,6 +85,8 @@ public extension UIViewController {
     func addChildViewController(_ child: UIViewController, toContainerView containerView: UIView) {
         addChild(child)
         containerView.addSubview(child.view)
+        // cho view fit screen
+        child.view.frame = containerView.bounds
         child.didMove(toParent: self)
     }
     

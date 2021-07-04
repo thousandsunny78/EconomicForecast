@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DailyBoardView" customModule="BaseMVVM" customModuleProvider="target">
+            <connections>
+                <outlet property="area1" destination="LHf-vx-CtT" id="SQG-pW-brU"/>
+                <outlet property="area2" destination="ivz-2M-VQi" id="82C-e5-pSd"/>
+                <outlet property="area3" destination="DKL-YY-5FK" id="Hlk-Je-ol1"/>
+                <outlet property="area4" destination="RUM-3u-vBZ" id="408-1X-cD0"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="MvV-d4-ISK"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="659" height="377"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LHf-vx-CtT" userLabel="Area1">
+                    <rect key="frame" x="0.0" y="44" width="329.5" height="149.5"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DKL-YY-5FK" userLabel="Area3">
+                    <rect key="frame" x="0.0" y="193.5" width="329.5" height="149.5"/>
+                    <color key="backgroundColor" systemColor="systemRedColor"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RUM-3u-vBZ" userLabel="Area4">
+                    <rect key="frame" x="329.5" y="193.5" width="329.5" height="149.5"/>
+                    <color key="backgroundColor" systemColor="systemYellowColor"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ivz-2M-VQi" userLabel="Area2">
+                    <rect key="frame" x="329.5" y="44" width="329.5" height="149.5"/>
+                    <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="ivz-2M-VQi" firstAttribute="height" secondItem="vUN-kp-3ea" secondAttribute="height" multiplier="0.5" id="3Kg-wa-Kw2"/>
+                <constraint firstItem="RUM-3u-vBZ" firstAttribute="width" secondItem="vUN-kp-3ea" secondAttribute="width" multiplier="0.5" id="4py-Nc-Zy2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ivz-2M-VQi" secondAttribute="trailing" id="7sa-Kc-rh2"/>
+                <constraint firstItem="RUM-3u-vBZ" firstAttribute="leading" secondItem="DKL-YY-5FK" secondAttribute="trailing" id="I3o-vD-I4O"/>
+                <constraint firstItem="LHf-vx-CtT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="J5v-ae-4TR"/>
+                <constraint firstItem="DKL-YY-5FK" firstAttribute="height" secondItem="vUN-kp-3ea" secondAttribute="height" multiplier="0.5" id="KiK-bc-V5W"/>
+                <constraint firstItem="RUM-3u-vBZ" firstAttribute="top" secondItem="ivz-2M-VQi" secondAttribute="bottom" id="LFw-ru-Gym"/>
+                <constraint firstItem="DKL-YY-5FK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="RH2-KX-iw4"/>
+                <constraint firstItem="DKL-YY-5FK" firstAttribute="top" secondItem="LHf-vx-CtT" secondAttribute="bottom" id="ae1-bm-q7J"/>
+                <constraint firstItem="LHf-vx-CtT" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="e7q-jL-AvG"/>
+                <constraint firstItem="LHf-vx-CtT" firstAttribute="height" secondItem="vUN-kp-3ea" secondAttribute="height" multiplier="0.5" id="fye-A2-rcu"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="DKL-YY-5FK" secondAttribute="bottom" id="gLh-8O-DqW"/>
+                <constraint firstItem="ivz-2M-VQi" firstAttribute="width" secondItem="vUN-kp-3ea" secondAttribute="width" multiplier="0.5" id="hFp-wE-vJ7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="RUM-3u-vBZ" secondAttribute="bottom" id="i05-wf-VCz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="RUM-3u-vBZ" secondAttribute="trailing" id="jnY-yk-E3H"/>
+                <constraint firstItem="LHf-vx-CtT" firstAttribute="width" secondItem="vUN-kp-3ea" secondAttribute="width" multiplier="0.5" id="mdm-q3-Qxo"/>
+                <constraint firstItem="DKL-YY-5FK" firstAttribute="width" secondItem="vUN-kp-3ea" secondAttribute="width" multiplier="0.5" id="nrt-SF-51j"/>
+                <constraint firstItem="ivz-2M-VQi" firstAttribute="leading" secondItem="LHf-vx-CtT" secondAttribute="trailing" id="qGQ-3l-s1b"/>
+                <constraint firstItem="RUM-3u-vBZ" firstAttribute="height" secondItem="vUN-kp-3ea" secondAttribute="height" multiplier="0.5" id="qyN-0c-JRo"/>
+                <constraint firstItem="ivz-2M-VQi" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="uih-ib-uRQ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="12"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="78.985507246376812" y="-26.450892857142858"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
