@@ -22,11 +22,13 @@ def shared_pods
   # Auto Layout
   pod 'SnapKit', '~> 5.0.0'
   # Dialog
-  pod 'MBProgressHUD', '~> 1.1.0'
+  pod 'MBProgressHUD', '~> 0.8'
   # Logger
   pod 'SwiftyBeaver', '~> 1.9.5'
   # Keychain
   pod 'KeychainAccess', '~> 4.2.2'
+  # Chart
+  pod 'Charts', '~> 3.6.0'
 end
 
 target 'BaseMVVM' do

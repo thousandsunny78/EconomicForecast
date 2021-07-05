@@ -40,14 +40,14 @@ class ViewController: UIViewController {
     func makeUI() {
         isLoading.subscribe(onNext: {[weak self] (loading) in
             guard let self = self else { return }
-            if loading {
+//            if loading {
 //                let Indicator = MBProgressHUD.showAdded(to: self.view, animated: true)
 //                Indicator.label.text = "Loading..."
 //                Indicator.isUserInteractionEnabled = false
 //                Indicator.show(animated: true)
-            } else {
+//            } else {
 //                MBProgressHUD.hide(for: self.view, animated: true)
-            }
+//            }
         }).disposed(by: disposeBag)
     }
     

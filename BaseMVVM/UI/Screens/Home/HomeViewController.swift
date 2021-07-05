@@ -15,11 +15,12 @@ class HomeViewController: ViewController {
     @IBOutlet weak var tab1Button: UIButton!
     @IBOutlet weak var tab2Button: UIButton!
     @IBOutlet weak var dailyboardArea: UIView!
+    @IBOutlet weak var borderBackgroundArea: UIView!
     
     private lazy var tab1VC: ViewController = {
-        let viewController = ListViewController(nibName: ListViewController.className, bundle: nil)
-        let navigator = ListNavigator(with: viewController)
-        let viewModel = ListViewModel(navigator: navigator)
+        let viewController = ListChartViewController(nibName: ListChartViewController.className, bundle: nil)
+        let navigator = ListChartNavigator(with: viewController)
+        let viewModel = ListChartViewModel(navigator: navigator)
         viewController.viewModel = viewModel
         return viewController
     }()
@@ -49,6 +50,13 @@ class HomeViewController: ViewController {
         super.viewDidLoad()
         showTab1()
         showDailyBoard()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        // Call the roundCorners() func right there.
+        borderBackgroundArea.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 20)
     }
     
     override func viewWillAppear(_ animated: Bool) {
