@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import Moya
+import Alamofire
 
 private func JSONResponseDataFormatter(_ data: Data) -> String {
     do {
@@ -33,6 +34,7 @@ struct ApiProvider {
             )
         } else {
             provider = MoyaProvider<ApiService>(
+                session: CustomAlamofireSession.shared,
                 plugins: [logger]
             )
         }
@@ -62,5 +64,24 @@ struct ApiProvider {
     
     func downloadAvatar(_ userId: String) -> Observable<Moya.ProgressResponse> {
         return provider.rx.requestWithProgress(.downloadAvatar(contentPath: ""))
+    }
+    
+    func getCharts(page: Int, pageSize: Int) -> Single<ArrayResponse<Chart>> {
+        return provider.rx.request(.getCharts(page: page, pageSize: pageSize))
+            .filterSuccessfulStatusCodes()
+            .mapObject(ArrayResponse<Chart>.self)
+    }
+    
+    // quanth: thiết lập thời gian timeout cho request api là 3s
+    // https://stackoverflow.com/questions/40116000/how-can-i-set-timeout-for-requests-using-moya-pod
+    class CustomAlamofireSession: Alamofire.Session {
+        static let shared: CustomAlamofireSession = {
+            let configuration = URLSessionConfiguration.default
+            configuration.headers = .default
+            configuration.timeoutIntervalForRequest = 3 // as seconds, you can set your request timeout
+            configuration.timeoutIntervalForResource = 3 // as seconds, you can set your resource timeout
+            configuration.requestCachePolicy = .useProtocolCachePolicy
+            return CustomAlamofireSession(configuration: configuration)
+        }()
     }
 }

@@ -3,7 +3,7 @@
 //  BaseMVVM
 //
 //  Created by Quan on 05/07/2021.
-//  Copyright (c) 2021 thoson.it. All rights reserved.
+//  Copyright (c) 2021 quanth.it. All rights reserved.
 //
 //  Template by: Quan
 //
@@ -26,7 +26,8 @@ class ListChartViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // quanth: thay đổi background của refresh control
+        refreshControl.backgroundColor = UIColor.App.tabUnselected
     }
     
     override func makeUI() {
@@ -54,6 +55,10 @@ class ListChartViewController: ViewController {
                                          footerRefresh: footerRefreshTrigger,
                                          selection: itemSelected)
         let output = viewModel.transform(input: input)
+        
+        viewModel.loading.asObservable().bind(to: isLoading).disposed(by: disposeBag)
+        viewModel.headerLoading.asObservable().bind(to: isHeaderLoading).disposed(by: disposeBag)
+        viewModel.footerLoading.asObservable().bind(to: isFooterLoading).disposed(by: disposeBag)
         
         output.items.asDriver(onErrorJustReturn: [])
             .drive(self.listChart.rx.items(cellIdentifier: ItemChartTableViewCell.className, cellType: ItemChartTableViewCell.self)) { tableView, viewModel, cell in

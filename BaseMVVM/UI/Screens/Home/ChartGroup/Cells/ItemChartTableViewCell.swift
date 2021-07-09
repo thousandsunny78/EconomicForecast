@@ -50,7 +50,7 @@ class ItemChartTableViewCell: TableViewCell {
       }
       
       // 2. Set ChartDataSet
-        let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: nil)
+      let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: nil)
       pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
       
       // 3. Set ChartData
@@ -61,17 +61,40 @@ class ItemChartTableViewCell: TableViewCell {
       pieChartData.setValueFormatter(formatter)
       
       // 4. Assign it to the chart's data
-        pieChartView.data = pieChartData
+      pieChartView.data = pieChartData
     }
     
     private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
       var colors: [UIColor] = []
-      for _ in 0..<numbersOfColor {
-        let red = Double(arc4random_uniform(256))
-        let green = Double(arc4random_uniform(256))
-        let blue = Double(arc4random_uniform(256))
-        let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
-        colors.append(color)
+      for i in 0..<numbersOfColor {
+        switch i {
+        case 0:
+            let color = UIColor.App.xhakar
+            colors.append(color)
+
+        case 1:
+            let color = UIColor.App.toreira
+            colors.append(color)
+            
+        case 2:
+            let color = UIColor.App.ozil
+            colors.append(color)
+
+        case 3:
+            let color = UIColor.App.ramsey
+            colors.append(color)
+            
+        case 4:
+            let color = UIColor.App.laca
+            colors.append(color)
+            
+        case 5:
+            let color = UIColor.App.auba
+            colors.append(color)
+
+        default:
+            print("Have you done something new?")
+        }
       }
       return colors
     }

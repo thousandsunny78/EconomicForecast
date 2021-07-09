@@ -58,36 +58,27 @@ class ListChartViewModel: ViewModel, ViewModelType {
     
     private func fetchItems(at page: Int) {
         
-        self.page = page
-        if page == 1 {
-            let chart1 = Chart(id: "1", name: "hello")
-            let chart2 = Chart(id: "2", name: "hello 1")
-            let chart3 = Chart(id: "3", name: "hello 3")
-            self.charts.accept([chart1, chart2, chart3])
-        } else {
-            let chart1 = Chart(id: "1", name: "hello")
-            let chart2 = Chart(id: "2", name: "hello 1")
-            let chart3 = Chart(id: "3", name: "hello 3")
-            self.charts.accept(self.charts.value + [chart1, chart2, chart3])
-        }
-        
-//        Application.shared.apiProvider.getItems(page: page, pageSize: 20)
-//            .trackActivity(page == 1 ? headerLoading : footerLoading)
-//            .subscribe(
-//                onNext: { [weak self] response in
-//                    guard let self = self else { return }
-//                    if response.results.isEmpty && page != 1 {
-//                        return
-//                    }
-//                    self.page = page
-//                    if page == 1 {
-//                        self.movies.accept(response.results)
-//                    } else {
-//                        self.movies.accept(self.movies.value + response.results)
-//                    }
-//                }, onError: { [weak self] error in
-//                    self?.navigator.showAlert(title: "Error",
-//                                              message: error.localizedDescription)
-//            }).disposed(by: disposeBag)
+        Application.shared.apiProvider.getCharts(page: page, pageSize: 20)
+            .trackActivity(page == 1 ? headerLoading : footerLoading)
+            .subscribe(
+                onNext: { [weak self] response in
+                    // not
+                },
+                onError: { [weak self] error in
+                    self?.page = page
+                    if page == 1 {
+                        let chart1 = Chart(id: "1", name: "hello")
+                        let chart2 = Chart(id: "2", name: "hello 1")
+                        let chart3 = Chart(id: "3", name: "hello 3")
+                        self?.charts.accept([chart1, chart2, chart3])
+                    } else {
+                        let chart1 = Chart(id: "1", name: "hello")
+                        let chart2 = Chart(id: "2", name: "hello 1")
+                        let chart3 = Chart(id: "3", name: "hello 3")
+                        self?.charts.accept(self?.charts.value ?? [] + [chart1, chart2, chart3])
+                    }
+                    
+                })
+            .disposed(by: disposeBag)
     }
 }

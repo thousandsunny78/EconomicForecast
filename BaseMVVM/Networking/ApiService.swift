@@ -24,6 +24,8 @@ enum ApiService {
     // MARK: Upload/Download
     case uploadAvatar(data: Data)
     case downloadAvatar(contentPath: String)
+    // MARK: - 1. khai báo function
+    case getCharts(page: Int, pageSize: Int)
 }
 
 extension ApiService: TargetType {
@@ -35,6 +37,9 @@ extension ApiService: TargetType {
             return URL(string: "https://upload.wikimedia.org")!
         case .uploadAvatar:
             return URL(string: Configs.Network.apiBaseUrl)!
+        // 2. khai báo api url nếu ko dùng base url
+        case .getCharts:
+            return URL(string: "https://quanth.getCharts")!
         default:
             return URL(string: Configs.Network.apiBaseUrl)!
         }
@@ -54,10 +59,14 @@ extension ApiService: TargetType {
             return "/api/user/avatar"
         case .downloadAvatar:
             return "/wikipedia/commons/4/4e/Pleiades_large.jpg"
+        // 3. khai báo subfix của api link
+        case .getCharts( _, _):
+            return "/api/charts"
         }
     }
     
     var method: Moya.Method {
+        // 4. khai báo method của api link, mặc định là get
         switch self {
         case .login:
             return .post
@@ -76,6 +85,7 @@ extension ApiService: TargetType {
     }
     
     var parameters: [String: Any] {
+        // 5. khai báo parameter nếu có
         var params: [String: Any] = [:]
         switch self {
         case .login(let username, let password):
@@ -86,6 +96,9 @@ extension ApiService: TargetType {
             params["password"] = password
         case .getItems(let page, let pageSize):
             params["api_key"] = Configs.Network.apiKey
+            params["page"] = page
+            params["pageSize"] = pageSize
+        case .getCharts(let page, let pageSize): //page: Int, pageSize: Int
             params["page"] = page
             params["pageSize"] = pageSize
         default: break

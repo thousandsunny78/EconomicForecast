@@ -86,6 +86,13 @@ public extension UIColor {
         
         public static let tabUnselected = UIColor(red: 229, green: 240, blue: 246)!
         public static let tabSelected = UIColor(red: 0, green: 68, blue: 129)!
+        
+        public static let xhakar = UIColor(red: 248, green: 0, blue: 26)!
+        public static let toreira = UIColor(red: 18, green: 119, blue: 22)!
+        public static let ozil = UIColor(red: 76, green: 171, blue: 206)!
+        public static let ramsey = UIColor(red: 247, green: 137, blue: 58)!
+        public static let laca = UIColor(red: 24, green: 115, blue: 185)!
+        public static let auba = UIColor(red: 222, green: 219, blue: 219)!
     }
     
 }
