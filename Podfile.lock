@@ -1,4 +1,5 @@
 PODS:
+  - ActionSheetPicker-3.0 (2.2.0)
   - Alamofire (5.4.3)
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
@@ -13,6 +14,20 @@ PODS:
     - Moya/Core
     - RxSwift (~> 5.0)
   - ObjectMapper (3.5.3)
+  - PromiseKit (6.15.3):
+    - PromiseKit/CorePromise (= 6.15.3)
+    - PromiseKit/Foundation (= 6.15.3)
+    - PromiseKit/UIKit (= 6.15.3)
+  - PromiseKit/CorePromise (6.15.3)
+  - PromiseKit/Foundation (6.15.3):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.15.3):
+    - PromiseKit/CorePromise
+  - Realm (10.9.0):
+    - Realm/Headers (= 10.9.0)
+  - Realm/Headers (10.9.0)
+  - RealmSwift (10.9.0):
+    - Realm (= 10.9.0)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -23,17 +38,19 @@ PODS:
   - SwiftyBeaver (1.9.5)
 
 DEPENDENCIES:
+  - ActionSheetPicker-3.0 (from `https://github.com/linhtinh11/ActionSheetPicker-3.0.git`)
   - Charts (~> 3.6.0)
-  - IQKeyboardManagerSwift (~> 6.5.6)
-  - KeychainAccess (~> 4.2.2)
-  - Kingfisher (~> 6.2.1)
-  - MBProgressHUD (~> 0.8)
-  - Moya/RxSwift (~> 14.0.0)
-  - ObjectMapper (~> 3.1)
-  - RxCocoa (~> 5.0)
-  - RxSwift (~> 5.0)
-  - SnapKit (~> 5.0.0)
-  - SwiftyBeaver (~> 1.9.5)
+  - IQKeyboardManagerSwift
+  - KeychainAccess
+  - Kingfisher
+  - MBProgressHUD
+  - Moya/RxSwift
+  - ObjectMapper
+  - PromiseKit (~> 6.0)
+  - RealmSwift
+  - RxCocoa
+  - SnapKit
+  - SwiftyBeaver
 
 SPEC REPOS:
   trunk:
@@ -45,13 +62,26 @@ SPEC REPOS:
     - MBProgressHUD
     - Moya
     - ObjectMapper
+    - PromiseKit
+    - Realm
+    - RealmSwift
     - RxCocoa
     - RxRelay
     - RxSwift
     - SnapKit
     - SwiftyBeaver
 
+EXTERNAL SOURCES:
+  ActionSheetPicker-3.0:
+    :git: https://github.com/linhtinh11/ActionSheetPicker-3.0.git
+
+CHECKOUT OPTIONS:
+  ActionSheetPicker-3.0:
+    :commit: 67110bf158e59ffff1c7d8f8a2f9c2b605f16ccc
+    :git: https://github.com/linhtinh11/ActionSheetPicker-3.0.git
+
 SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
@@ -60,12 +90,15 @@ SPEC CHECKSUMS:
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
+  Realm: 9feef41ab8230ed706c4dc503fc292594915bf9a
+  RealmSwift: 91246183b772e0ea1bf777116c4b8d9939f983b3
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
 
-PODFILE CHECKSUM: 3b0784a116dab5bc99f9ae30bea6bdf348debe29
+PODFILE CHECKSUM: c8f0ba4e5e34a46fefc39447c07a8cfcd2ea66fc
 
 COCOAPODS: 1.10.1

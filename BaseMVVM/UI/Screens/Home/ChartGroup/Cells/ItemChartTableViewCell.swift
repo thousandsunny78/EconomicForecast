@@ -40,7 +40,7 @@ class ItemChartTableViewCell: TableViewCell {
         customizeChart(dataPoints: players, values: goals.map{ Double($0) })
     }
     
-    func customizeChart(dataPoints: [String], values: [Double]) {
+    private func customizeChart(dataPoints: [String], values: [Double]) {
       
       // 1. Set ChartDataEntry
       var dataEntries: [ChartDataEntry] = []

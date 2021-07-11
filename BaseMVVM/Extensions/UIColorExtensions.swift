@@ -92,7 +92,7 @@ public extension UIColor {
         public static let ozil = UIColor(red: 76, green: 171, blue: 206)!
         public static let ramsey = UIColor(red: 247, green: 137, blue: 58)!
         public static let laca = UIColor(red: 24, green: 115, blue: 185)!
-        public static let auba = UIColor(red: 222, green: 219, blue: 219)!
+        public static let auba = UIColor(red: 33, green: 33, blue: 33)!
     }
     
 }

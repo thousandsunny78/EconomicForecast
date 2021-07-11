@@ -3,31 +3,36 @@ platform :ios, '10.0'
 
 def shared_pods
   # Comment the next line if you don't want to use dynamic frameworks
-  #use_frameworks!
+  use_frameworks!
   
   # Pods for BaseMVVM
   #Load image
-  pod 'Kingfisher', '~> 6.2.1'
+  pod 'Kingfisher'
   #Keyboard
-  pod 'IQKeyboardManagerSwift', '~> 6.5.6'
+  pod 'IQKeyboardManagerSwift'
   # Network
-  pod 'Moya/RxSwift', '~> 14.0.0'
+  pod 'Moya/RxSwift'
   #pod 'RxAlamofire'
   #Parser
-  pod 'ObjectMapper', '~> 3.1'
+  pod 'ObjectMapper'
   # Reactive
   #pod 'RxSwift'
-  pod 'RxSwift', '~> 5.0'
-  pod 'RxCocoa', '~> 5.0'
+  pod 'RxCocoa'
   # Auto Layout
-  pod 'SnapKit', '~> 5.0.0'
+  pod 'SnapKit'
   # Dialog
-  pod 'MBProgressHUD', '~> 0.8'
+  pod 'MBProgressHUD'
   # Logger
-  pod 'SwiftyBeaver', '~> 1.9.5'
+  pod 'SwiftyBeaver'
   # Keychain
-  pod 'KeychainAccess', '~> 4.2.2'
-  # Chart
+  pod 'KeychainAccess'
+  # Database
+  pod 'RealmSwift'
+  # ActionSheetPicker
+  pod 'ActionSheetPicker-3.0', :git => 'https://github.com/linhtinh11/ActionSheetPicker-3.0.git'
+  # Promise kit
+  pod 'PromiseKit', '~> 6.0'
+  # Charts
   pod 'Charts', '~> 3.6.0'
 end
 

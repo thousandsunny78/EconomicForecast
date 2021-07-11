@@ -32,6 +32,11 @@ class ListChartViewController: ViewController {
     
     override func makeUI() {
         super.makeUI()
+        // quanth set bound của table view 
+        let bgView = UIView()
+        bgView.backgroundColor = UIColor.App.tabUnselected
+        listChart.backgroundView = bgView
+        listChart.register(nibWithCellClass: LineChartTableViewCell.self)
         listChart.register(nibWithCellClass: ItemChartTableViewCell.self)
         listChart.tableFooterView = UIView()
         listChart.refreshControl = refreshControl
@@ -60,10 +65,28 @@ class ListChartViewController: ViewController {
         viewModel.headerLoading.asObservable().bind(to: isHeaderLoading).disposed(by: disposeBag)
         viewModel.footerLoading.asObservable().bind(to: isFooterLoading).disposed(by: disposeBag)
         
-        output.items.asDriver(onErrorJustReturn: [])
-            .drive(self.listChart.rx.items(cellIdentifier: ItemChartTableViewCell.className, cellType: ItemChartTableViewCell.self)) { tableView, viewModel, cell in
-                cell.bind(viewModel: viewModel)
-        }.disposed(by: self.disposeBag)
+        // quanth: sử dụng 2 loại cell trong tableview
+        output.items.asObservable()
+            .bindTo(listChart.rx.items) { (tableView, index, element) in
+                let indexPath = IndexPath(row: index, section: 0)
+
+                if index % 2 == 0 {
+                    // or some other logic to determine which cell type to create
+
+                    let cell = tableView.dequeueReusableCell(withIdentifier: LineChartTableViewCell.className, for: indexPath) as! LineChartTableViewCell
+                    // Configure the cell
+                    cell.bind(viewModel: element)
+                    return cell
+                }
+                else {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: ItemChartTableViewCell.className, for: indexPath) as! ItemChartTableViewCell
+                    // Configure the cell
+                    cell.bind(viewModel: element)
+                    return cell
+                }
+
+            }
+            .disposed(by: disposeBag)
         
         refreshControl.rx.controlEvent(.valueChanged).bind { [weak self] _ in
             guard let self = self else { return }

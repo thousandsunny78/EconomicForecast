@@ -7,5 +7,5 @@
 //
 
 import Foundation
-let players = ["Ozil", "Ramsey", "Laca", "Auba", "Xhaka", "Torreira"]
+let players = ["Rashford", "Pogba", "Bruno", "Shaw", "Greenwood", "de Gea"]
 let goals = [6, 8, 26, 30, 8, 10]

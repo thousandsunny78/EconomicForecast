@@ -33,20 +33,4 @@ class SignInNavigator: Navigator {
         navigationController?.pushViewController(viewController, animated: true)
         CATransaction.commit()
     }
-    
-    func pushEconamicFocast() {
-        let viewController = EconamicFocastViewController(nibName: EconamicFocastViewController.className, bundle: nil)
-        let navigator = EconamicFocastNavigator(with: viewController)
-        let viewModel = EconamicFocastViewModel(navigator: navigator)
-        viewController.viewModel = viewModel
-        CATransaction.begin()
-        CATransaction.setCompletionBlock { [weak self] () in
-            guard let self = self else { return }
-            if let count = self.navigationController?.viewControllers.count, count >= 2 {
-                self.navigationController?.viewControllers.removeSubrange(0..<count - 1 )
-            }
-        }
-        navigationController?.pushViewController(viewController, animated: true)
-        CATransaction.commit()
-    }
 }

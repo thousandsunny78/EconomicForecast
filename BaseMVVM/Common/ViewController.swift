@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-//import MBProgressHUD
+import MBProgressHUD
 
 class ViewController: UIViewController {
     var viewModel: ViewModel?
@@ -40,14 +40,14 @@ class ViewController: UIViewController {
     func makeUI() {
         isLoading.subscribe(onNext: {[weak self] (loading) in
             guard let self = self else { return }
-//            if loading {
-//                let Indicator = MBProgressHUD.showAdded(to: self.view, animated: true)
-//                Indicator.label.text = "Loading..."
-//                Indicator.isUserInteractionEnabled = false
-//                Indicator.show(animated: true)
-//            } else {
-//                MBProgressHUD.hide(for: self.view, animated: true)
-//            }
+            if loading {
+                let Indicator = MBProgressHUD.showAdded(to: self.view, animated: true)
+                Indicator?.labelText = "Đang tải..."
+                Indicator?.isUserInteractionEnabled = false
+                Indicator?.show(true)
+            } else {
+                MBProgressHUD.hide(for: self.view, animated: true)
+            }
         }).disposed(by: disposeBag)
     }
     
