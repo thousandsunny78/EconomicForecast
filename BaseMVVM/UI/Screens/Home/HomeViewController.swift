@@ -14,8 +14,14 @@ class HomeViewController: ViewController {
     @IBOutlet weak var dailyBoardView: UIView!
     @IBOutlet weak var tab1Button: UIButton!
     @IBOutlet weak var tab2Button: UIButton!
-    @IBOutlet weak var dailyboardArea: UIView!
     @IBOutlet weak var borderBackgroundArea: UIView!
+    @IBOutlet weak var dailyboardArea: UIView!
+    @IBOutlet weak var dailyboardContentView: UIView!
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var stackContentView: UIView!
+    
+    private var currentViewController: ViewController?
+    private var currentDailyBoardViewController: ViewController?
     
     private lazy var tab1VC: ViewController = {
         let viewController = ListChartViewController(nibName: ListChartViewController.className, bundle: nil)
@@ -41,15 +47,12 @@ class HomeViewController: ViewController {
         return viewController
     }()
     
-    
-    
-    var currentViewController: ViewController?
-    var currentDailyBoardViewController: ViewController?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         showTab1()
         showDailyBoard()
+        addTabbarShadow(cornerRadius: 12.0, shadowRadius: 5.0)
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -115,8 +118,49 @@ class HomeViewController: ViewController {
     
     // Show list data
     private func showDailyBoard() {
+        addShadow(cornerRadius: 12.0, shadowRadius: 5.0)
         currentDailyBoardViewController?.removeViewAndControllerFromParentViewController()
         addChildViewController(dailyBoardVC, toContainerView: dailyboardArea)
         currentDailyBoardViewController = dailyBoardVC
+    }
+    
+    // quanth: round and shadow uiview
+    private func addShadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
+        dailyboardArea.layer.cornerRadius = cornerRadius
+        dailyboardArea.layer.masksToBounds = true
+
+        dailyboardContentView.layer.cornerRadius = cornerRadius
+        dailyboardContentView.layer.masksToBounds = false
+
+        dailyboardContentView.layer.shadowColor = UIColor.black.cgColor
+        dailyboardContentView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        dailyboardContentView.layer.shadowOpacity = 0.2
+        dailyboardContentView.layer.shadowRadius = shadowRadius
+
+        dailyboardArea.frame = dailyboardContentView.bounds
+        dailyboardArea.autoresizingMask = [
+            .flexibleWidth, .flexibleHeight
+        ]
+        
+    }
+    
+    // quanth: round and shadow uiview
+    private func addTabbarShadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
+        stackView.layer.cornerRadius = cornerRadius
+        stackView.layer.masksToBounds = true
+
+        stackContentView.layer.cornerRadius = cornerRadius
+        stackContentView.layer.masksToBounds = false
+
+        stackContentView.layer.shadowColor = UIColor.black.cgColor
+        stackContentView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        stackContentView.layer.shadowOpacity = 0.2
+        stackContentView.layer.shadowRadius = shadowRadius
+
+        stackView.frame = stackContentView.bounds
+        stackView.autoresizingMask = [
+            .flexibleWidth, .flexibleHeight
+        ]
+        
     }
 }

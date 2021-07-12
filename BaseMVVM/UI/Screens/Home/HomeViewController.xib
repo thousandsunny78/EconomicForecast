@@ -15,7 +15,10 @@
                 <outlet property="borderBackgroundArea" destination="ztS-NV-ZuN" id="a5R-4v-oqk"/>
                 <outlet property="containerView" destination="qP2-U8-H7e" id="vsE-Es-TKT"/>
                 <outlet property="dailyBoardView" destination="XF4-cu-ImQ" id="GbT-eP-H4C"/>
-                <outlet property="dailyboardArea" destination="nrF-9O-RhY" id="KW9-eK-b26"/>
+                <outlet property="dailyboardArea" destination="erK-8C-TDC" id="7FU-eY-9oA"/>
+                <outlet property="dailyboardContentView" destination="nrF-9O-RhY" id="RGp-Oe-2qp"/>
+                <outlet property="stackContentView" destination="TZa-gp-1Tu" id="kN2-G3-W4T"/>
+                <outlet property="stackView" destination="Eiw-JV-zqX" id="JDL-ke-itz"/>
                 <outlet property="tab1Button" destination="bsp-D0-zfl" id="7Cx-oc-MRB"/>
                 <outlet property="tab2Button" destination="hNc-qG-QJb" id="stM-xD-kJi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -27,10 +30,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XF4-cu-ImQ" userLabel="DailyBoardGroup">
-                    <rect key="frame" x="0.0" y="44" width="414" height="240.5"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="250.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ztS-NV-ZuN" userLabel="BorderArea">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="160.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="170.5"/>
                             <color key="backgroundColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rkk-ho-saN" userLabel="LocationArea">
@@ -91,11 +94,26 @@
                                 <constraint firstItem="YgQ-1Q-hwx" firstAttribute="leading" secondItem="Rkk-ho-saN" secondAttribute="leading" constant="20" id="zO7-zd-PQM"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrF-9O-RhY" userLabel="DailyBoardArea">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrF-9O-RhY" userLabel="DailyBoardContentView">
                             <rect key="frame" x="20" y="80.5" width="374" height="160"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="erK-8C-TDC" userLabel="DailyBoardArea">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="160"/>
+                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="12"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="erK-8C-TDC" secondAttribute="trailing" id="8m5-JL-2pn"/>
+                                <constraint firstAttribute="bottom" secondItem="erK-8C-TDC" secondAttribute="bottom" id="PHQ-he-G2p"/>
+                                <constraint firstItem="erK-8C-TDC" firstAttribute="top" secondItem="nrF-9O-RhY" secondAttribute="top" id="Xw1-my-E92"/>
                                 <constraint firstAttribute="height" constant="160" id="fUh-jd-HZY"/>
+                                <constraint firstItem="erK-8C-TDC" firstAttribute="leading" secondItem="nrF-9O-RhY" secondAttribute="leading" id="p7n-S7-7hk"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -110,7 +128,7 @@
                         <constraint firstAttribute="trailing" secondItem="nrF-9O-RhY" secondAttribute="trailing" constant="20" id="64x-a8-Fqu"/>
                         <constraint firstAttribute="bottom" secondItem="ztS-NV-ZuN" secondAttribute="bottom" constant="80" id="CxQ-Ex-ris"/>
                         <constraint firstItem="Rkk-ho-saN" firstAttribute="leading" secondItem="XF4-cu-ImQ" secondAttribute="leading" id="DEB-6M-lcb"/>
-                        <constraint firstAttribute="bottom" secondItem="nrF-9O-RhY" secondAttribute="bottom" id="Og3-rZ-yYH"/>
+                        <constraint firstAttribute="bottom" secondItem="nrF-9O-RhY" secondAttribute="bottom" constant="10" id="Og3-rZ-yYH"/>
                         <constraint firstItem="ztS-NV-ZuN" firstAttribute="top" secondItem="XF4-cu-ImQ" secondAttribute="top" id="QgO-bj-ZGN"/>
                         <constraint firstAttribute="trailing" secondItem="Rkk-ho-saN" secondAttribute="trailing" id="aDD-2z-rSN"/>
                         <constraint firstItem="nrF-9O-RhY" firstAttribute="top" secondItem="Rkk-ho-saN" secondAttribute="bottom" id="rr0-5H-RCW"/>
@@ -125,47 +143,60 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qP2-U8-H7e" userLabel="Content">
-                    <rect key="frame" x="0.0" y="370.5" width="414" height="491.5"/>
+                    <rect key="frame" x="0.0" y="360.5" width="414" height="501.5"/>
                     <color key="backgroundColor" red="0.89803921568627454" green="0.94117647058823528" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47d-1x-Pb3" userLabel="StackViewArea">
-                    <rect key="frame" x="0.0" y="284.5" width="414" height="86"/>
+                    <rect key="frame" x="0.0" y="294.5" width="414" height="66"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Eiw-JV-zqX">
-                            <rect key="frame" x="20" y="20" width="374" height="46"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TZa-gp-1Tu" userLabel="StackContentView">
+                            <rect key="frame" x="20" y="10" width="374" height="46"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsp-D0-zfl">
-                                    <rect key="frame" x="0.0" y="0.0" width="187" height="46"/>
-                                    <color key="backgroundColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    <state key="normal" title="KINH TẾ">
-                                        <color key="titleColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
-                                    </state>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNc-qG-QJb">
-                                    <rect key="frame" x="187" y="0.0" width="187" height="46"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <state key="normal" title="DÂN SỐ">
-                                        <color key="titleColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </state>
-                                </button>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Eiw-JV-zqX">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="46"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsp-D0-zfl">
+                                            <rect key="frame" x="0.0" y="0.0" width="187" height="46"/>
+                                            <color key="backgroundColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <state key="normal" title="KINH TẾ">
+                                                <color key="titleColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNc-qG-QJb">
+                                            <rect key="frame" x="187" y="0.0" width="187" height="46"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" title="DÂN SỐ">
+                                                <color key="titleColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" name="navigationColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="46" id="CF9-UF-GSV"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="12"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </stackView>
                             </subviews>
-                            <color key="backgroundColor" name="navigationColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="46" id="CF9-UF-GSV"/>
+                                <constraint firstItem="Eiw-JV-zqX" firstAttribute="leading" secondItem="TZa-gp-1Tu" secondAttribute="leading" id="01J-Sr-Q1c"/>
+                                <constraint firstAttribute="trailing" secondItem="Eiw-JV-zqX" secondAttribute="trailing" id="5sa-8A-5lx"/>
+                                <constraint firstAttribute="bottom" secondItem="Eiw-JV-zqX" secondAttribute="bottom" id="hxN-eA-nws"/>
+                                <constraint firstItem="Eiw-JV-zqX" firstAttribute="top" secondItem="TZa-gp-1Tu" secondAttribute="top" id="lSj-ea-U4E"/>
+                                <constraint firstAttribute="height" constant="46" id="zsF-XA-y65"/>
                             </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="12"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </stackView>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.89803921568627454" green="0.94117647058823528" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="Eiw-JV-zqX" firstAttribute="leading" secondItem="47d-1x-Pb3" secondAttribute="leading" constant="20" id="CZe-M0-4nE"/>
-                        <constraint firstAttribute="trailing" secondItem="Eiw-JV-zqX" secondAttribute="trailing" constant="20" id="W0R-k7-ayb"/>
-                        <constraint firstItem="Eiw-JV-zqX" firstAttribute="top" secondItem="47d-1x-Pb3" secondAttribute="top" constant="20" id="ZAI-sU-15k"/>
-                        <constraint firstAttribute="bottom" secondItem="Eiw-JV-zqX" secondAttribute="bottom" constant="20" id="zwr-OM-BA1"/>
+                        <constraint firstAttribute="bottom" secondItem="TZa-gp-1Tu" secondAttribute="bottom" constant="10" id="4BO-tu-JL0"/>
+                        <constraint firstItem="TZa-gp-1Tu" firstAttribute="leading" secondItem="47d-1x-Pb3" secondAttribute="leading" constant="20" id="ELG-pl-0qx"/>
+                        <constraint firstAttribute="trailing" secondItem="TZa-gp-1Tu" secondAttribute="trailing" constant="20" id="KdB-lt-LXV"/>
+                        <constraint firstItem="TZa-gp-1Tu" firstAttribute="top" secondItem="47d-1x-Pb3" secondAttribute="top" constant="10" id="RfM-wC-BGP"/>
                     </constraints>
                 </view>
             </subviews>
@@ -194,6 +225,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

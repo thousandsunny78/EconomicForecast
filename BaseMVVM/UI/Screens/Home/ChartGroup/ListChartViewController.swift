@@ -37,7 +37,8 @@ class ListChartViewController: ViewController {
         bgView.backgroundColor = UIColor.App.tabUnselected
         listChart.backgroundView = bgView
         listChart.register(nibWithCellClass: LineChartTableViewCell.self)
-        listChart.register(nibWithCellClass: ItemChartTableViewCell.self)
+        listChart.register(nibWithCellClass: PieChartTableViewCell.self)
+        listChart.register(nibWithCellClass: BarChartTableViewCell.self)
         listChart.tableFooterView = UIView()
         listChart.refreshControl = refreshControl
         isHeaderLoading.subscribe(onNext: { [weak self] (isLoading) in
@@ -70,7 +71,7 @@ class ListChartViewController: ViewController {
             .bindTo(listChart.rx.items) { (tableView, index, element) in
                 let indexPath = IndexPath(row: index, section: 0)
 
-                if index % 2 == 0 {
+                if index % 3 == 0 {
                     // or some other logic to determine which cell type to create
 
                     let cell = tableView.dequeueReusableCell(withIdentifier: LineChartTableViewCell.className, for: indexPath) as! LineChartTableViewCell
@@ -78,8 +79,15 @@ class ListChartViewController: ViewController {
                     cell.bind(viewModel: element)
                     return cell
                 }
-                else {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: ItemChartTableViewCell.className, for: indexPath) as! ItemChartTableViewCell
+                else if index % 3 == 1 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: PieChartTableViewCell.className, for: indexPath) as!
+                        PieChartTableViewCell
+                    // Configure the cell
+                    cell.bind(viewModel: element)
+                    return cell
+                } else {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: BarChartTableViewCell.className, for: indexPath) as!
+                        BarChartTableViewCell
                     // Configure the cell
                     cell.bind(viewModel: element)
                     return cell

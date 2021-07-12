@@ -15,6 +15,7 @@ import Charts
 
 class LineChartTableViewCell: TableViewCell {
     
+    @IBOutlet weak var lineChartContentView: UIView!
     @IBOutlet weak var lineChartView: LineChartView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +37,7 @@ class LineChartTableViewCell: TableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        addShadow(cornerRadius: 12.0, shadowRadius: 5.0)
         customizeChart(dataPoints: players, values: goals.map{ Double($0) })
     }
     
@@ -54,5 +56,24 @@ class LineChartTableViewCell: TableViewCell {
       let lineChartData = LineChartData(dataSet: lineChartDataSet)
         // 4. Assign it to the chart's data
       lineChartView.data = lineChartData
+    }
+    
+    // quanth: round and shadow uiview
+    private func addShadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
+        lineChartView.layer.cornerRadius = cornerRadius
+        lineChartView.layer.masksToBounds = true
+
+        lineChartContentView.layer.cornerRadius = cornerRadius
+        lineChartContentView.layer.masksToBounds = false
+
+        lineChartContentView.layer.shadowColor = UIColor.black.cgColor
+        lineChartContentView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        lineChartContentView.layer.shadowOpacity = 0.2
+        lineChartContentView.layer.shadowRadius = shadowRadius
+
+        lineChartView.frame = lineChartContentView.bounds
+        lineChartView.autoresizingMask = [
+            .flexibleWidth, .flexibleHeight
+        ]
     }
 }
