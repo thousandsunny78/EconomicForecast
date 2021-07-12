@@ -13,5 +13,11 @@ import RxSwift
 import RxCocoa
 
 class BarChartCellViewModel: CellViewModel {
+    let item: Chart
     
+    init(item: Chart) {
+        self.item = item
+        super.init()
+        self.title.accept(item.name)
+    }
 }

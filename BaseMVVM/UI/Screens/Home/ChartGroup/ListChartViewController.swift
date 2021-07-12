@@ -55,7 +55,7 @@ class ListChartViewController: ViewController {
         super.bindViewModel()
         guard let viewModel = self.viewModel as? ListChartViewModel else { return }
         
-        let itemSelected = listChart.rx.modelSelected(ItemChartCellViewModel.self).asDriver()
+        let itemSelected = listChart.rx.modelSelected(BarChartCellViewModel.self).asDriver()
         let refresh = Observable.of(Observable.just(()), headerRefreshTrigger).merge()
         let input = ListChartViewModel.Input(headerRefresh: refresh,
                                          footerRefresh: footerRefreshTrigger,

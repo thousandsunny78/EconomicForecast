@@ -16,11 +16,11 @@ class ListChartViewModel: ViewModel, ViewModelType {
     struct Input {
         let headerRefresh: Observable<Void>
         let footerRefresh: Observable<Void>
-        let selection: Driver<ItemChartCellViewModel>
+        let selection: Driver<BarChartCellViewModel>
     }
     
     struct Output {
-        let items: BehaviorRelay<[ItemChartCellViewModel]>
+        let items: BehaviorRelay<[BarChartCellViewModel]>
     }
     
     private let navigator: ListChartNavigator
@@ -47,10 +47,10 @@ class ListChartViewModel: ViewModel, ViewModelType {
             self.fetchItems(at: self.page + 1)
         }).disposed(by: disposeBag)
         //Output
-        let elements = BehaviorRelay<[ItemChartCellViewModel]>(value: [])
-        charts.map { charts -> [ItemChartCellViewModel] in
-            return charts.map { chart -> ItemChartCellViewModel in
-                return ItemChartCellViewModel(item: chart)
+        let elements = BehaviorRelay<[BarChartCellViewModel]>(value: [])
+        charts.map { charts -> [BarChartCellViewModel] in
+            return charts.map { chart -> BarChartCellViewModel in
+                return BarChartCellViewModel(item: chart)
             }
         }.bind(to: elements).disposed(by: disposeBag)
         return Output(items: elements)
