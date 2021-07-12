@@ -19,9 +19,9 @@ class SignInNavigator: Navigator {
     }
     
     func pushHome() {
-        let viewController = HomeViewController(nibName: HomeViewController.className, bundle: nil)
-        let navigator = HomeNavigator(with: viewController)
-        let viewModel = HomeViewModel(navigator: navigator)
+        let viewController = HomeChartViewController(nibName: HomeChartViewController.className, bundle: nil)
+        let navigator = HomeChartNavigator(with: viewController)
+        let viewModel = HomeChartViewModel(navigator: navigator)
         viewController.viewModel = viewModel
         CATransaction.begin()
         CATransaction.setCompletionBlock { [weak self] () in

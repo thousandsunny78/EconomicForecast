@@ -24,9 +24,9 @@ class HomeViewController: ViewController {
     private var currentDailyBoardViewController: ViewController?
     
     private lazy var tab1VC: ViewController = {
-        let viewController = ListChartViewController(nibName: ListChartViewController.className, bundle: nil)
-        let navigator = ListChartNavigator(with: viewController)
-        let viewModel = ListChartViewModel(navigator: navigator)
+        let viewController = CPIViewController(nibName: CPIViewController.className, bundle: nil)
+        let navigator = CPINavigator(with: viewController)
+        let viewModel = CPIViewModel(navigator: navigator)
         viewController.viewModel = viewModel
         return viewController
     }()

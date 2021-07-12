@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeChartViewController" customModule="BaseMVVM" customModuleProvider="target">
+            <connections>
+                <outlet property="areaVC" destination="omD-RK-f03" id="jzQ-HO-LTw"/>
+                <outlet property="contentVC" destination="zhg-nJ-BfF" id="zRu-qN-NMD"/>
+                <outlet property="stackContentView" destination="KfA-lx-uyq" id="jfJ-vR-UaC"/>
+                <outlet property="stackView" destination="mGn-Fs-5lb" id="F9w-Gx-LFK"/>
+                <outlet property="tab1VCButton" destination="aQ9-Qh-b1B" id="Oh7-uy-m40"/>
+                <outlet property="tab2VCButton" destination="Jop-Rr-SWB" id="Qq9-NK-Yuc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgg-pS-lOp" userLabel="Header">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                    <color key="backgroundColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WWi-Rk-VBk" userLabel="Tab">
+                    <rect key="frame" x="0.0" y="98" width="414" height="46"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KfA-lx-uyq" userLabel="StackContentView">
+                            <rect key="frame" x="20" y="0.0" width="374" height="46"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="mGn-Fs-5lb">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="46"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQ9-Qh-b1B">
+                                            <rect key="frame" x="0.0" y="0.0" width="187" height="46"/>
+                                            <color key="backgroundColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <state key="normal" title="Chỉ số CPI">
+                                                <color key="titleColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jop-Rr-SWB">
+                                            <rect key="frame" x="187" y="0.0" width="187" height="46"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" title="Chỉ số IIP">
+                                                <color key="titleColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" name="navigationColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="46" id="itB-Oc-Ceu"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="0.0"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="mGn-Fs-5lb" secondAttribute="bottom" id="HyY-OU-xQg"/>
+                                <constraint firstAttribute="trailing" secondItem="mGn-Fs-5lb" secondAttribute="trailing" id="Xj7-wr-W54"/>
+                                <constraint firstItem="mGn-Fs-5lb" firstAttribute="top" secondItem="KfA-lx-uyq" secondAttribute="top" id="uUJ-B7-exI"/>
+                                <constraint firstItem="mGn-Fs-5lb" firstAttribute="leading" secondItem="KfA-lx-uyq" secondAttribute="leading" id="vTu-9b-v0d"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.8980392157" green="0.94117647059999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="KfA-lx-uyq" firstAttribute="top" secondItem="WWi-Rk-VBk" secondAttribute="top" id="9OC-En-6UP"/>
+                        <constraint firstAttribute="trailing" secondItem="KfA-lx-uyq" secondAttribute="trailing" constant="20" id="Awa-St-qU1"/>
+                        <constraint firstAttribute="bottom" secondItem="KfA-lx-uyq" secondAttribute="bottom" id="Y87-Ev-QiP"/>
+                        <constraint firstItem="KfA-lx-uyq" firstAttribute="leading" secondItem="WWi-Rk-VBk" secondAttribute="leading" constant="20" id="ecd-XL-6Dh"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhg-nJ-BfF" userLabel="Content">
+                    <rect key="frame" x="0.0" y="154" width="414" height="698"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="omD-RK-f03" userLabel="Area">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="698"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="omD-RK-f03" secondAttribute="trailing" id="TxT-Nf-ouv"/>
+                        <constraint firstItem="omD-RK-f03" firstAttribute="leading" secondItem="zhg-nJ-BfF" secondAttribute="leading" id="eIV-Os-B83"/>
+                        <constraint firstAttribute="bottom" secondItem="omD-RK-f03" secondAttribute="bottom" id="plH-6e-c4K"/>
+                        <constraint firstItem="omD-RK-f03" firstAttribute="top" secondItem="zhg-nJ-BfF" secondAttribute="top" id="pnG-iV-e2g"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.8980392157" green="0.94117647059999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="hgg-pS-lOp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0dp-1d-1r3"/>
+                <constraint firstItem="WWi-Rk-VBk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Azw-gd-Da4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="zhg-nJ-BfF" secondAttribute="bottom" constant="10" id="Ghi-VR-Q3G"/>
+                <constraint firstItem="WWi-Rk-VBk" firstAttribute="top" secondItem="hgg-pS-lOp" secondAttribute="bottom" constant="10" id="Kjv-yw-al5"/>
+                <constraint firstItem="WWi-Rk-VBk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="98" id="L9P-gD-L4H"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hgg-pS-lOp" secondAttribute="trailing" id="WIH-BI-asD"/>
+                <constraint firstItem="zhg-nJ-BfF" firstAttribute="top" secondItem="WWi-Rk-VBk" secondAttribute="bottom" constant="10" id="Xy8-cO-hFk"/>
+                <constraint firstItem="hgg-pS-lOp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dAG-3X-eam"/>
+                <constraint firstItem="WWi-Rk-VBk" firstAttribute="top" secondItem="hgg-pS-lOp" secondAttribute="bottom" constant="10" id="gJG-Vb-JJK"/>
+                <constraint firstItem="zhg-nJ-BfF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="iWa-Ss-pxo"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zhg-nJ-BfF" secondAttribute="trailing" id="imA-WQ-XVf"/>
+                <constraint firstItem="hgg-pS-lOp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="oY9-NC-Dwa"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="WWi-Rk-VBk" secondAttribute="trailing" id="uTS-Lg-eS6"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="140"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="navigationColor">
+            <color red="0.88999998569488525" green="0.31400001049041748" blue="0.28600001335144043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
