@@ -46,9 +46,9 @@ class HomeChartViewController: ViewController {
     }()
     
     private lazy var tab2VC: ViewController = {
-        let viewController = ListViewController(nibName: ListViewController.className, bundle: nil)
-        let navigator = ListNavigator(with: viewController)
-        let viewModel = ListViewModel(navigator: navigator)
+        let viewController = IIPViewController(nibName: IIPViewController.className, bundle: nil)
+        let navigator = IIPNavigator(with: viewController)
+        let viewModel = IIPViewModel(navigator: navigator)
         viewController.viewModel = viewModel
         return viewController
     }()

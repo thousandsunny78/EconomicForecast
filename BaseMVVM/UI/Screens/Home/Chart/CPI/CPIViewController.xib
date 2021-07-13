@@ -638,6 +638,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="g3e-4c-ucp" firstAttribute="height" secondItem="fkd-gw-uiV" secondAttribute="height" id="DxH-hF-5Od"/>
                         <constraint firstItem="g3e-4c-ucp" firstAttribute="leading" secondItem="fkd-gw-uiV" secondAttribute="leading" id="hIF-9w-jtW"/>
                         <constraint firstItem="g3e-4c-ucp" firstAttribute="top" secondItem="fkd-gw-uiV" secondAttribute="top" id="iqX-hg-W7O"/>
                         <constraint firstAttribute="trailing" secondItem="g3e-4c-ucp" secondAttribute="trailing" id="jJf-vz-mYu"/>

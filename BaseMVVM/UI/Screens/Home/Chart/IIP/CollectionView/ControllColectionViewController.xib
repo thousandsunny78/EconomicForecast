@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ControllColectionViewController" customModule="BaseMVVM" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="COr-KX-RBo" id="YmU-Ns-Pes"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVo-kb-hTN">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="COr-KX-RBo">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4sJ-kQ-pXg">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                    <constraints>
+                        <constraint firstItem="COr-KX-RBo" firstAttribute="leading" secondItem="IVo-kb-hTN" secondAttribute="leading" id="8e4-dx-t99"/>
+                        <constraint firstAttribute="bottom" secondItem="COr-KX-RBo" secondAttribute="bottom" id="IFd-YY-Tsj"/>
+                        <constraint firstItem="COr-KX-RBo" firstAttribute="top" secondItem="IVo-kb-hTN" secondAttribute="top" id="pGg-us-4IP"/>
+                        <constraint firstAttribute="trailing" secondItem="COr-KX-RBo" secondAttribute="trailing" id="vzL-eZ-51G"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="IVo-kb-hTN" secondAttribute="trailing" id="AkD-d6-5su"/>
+                <constraint firstAttribute="bottom" secondItem="IVo-kb-hTN" secondAttribute="bottom" id="GEF-JQ-74G"/>
+                <constraint firstItem="IVo-kb-hTN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="MWm-rY-As8"/>
+                <constraint firstItem="IVo-kb-hTN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lXO-D8-YHK"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="140"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
