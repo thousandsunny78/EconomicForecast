@@ -46,7 +46,7 @@ class CPIViewController: ViewController {
         setChart()
         resizeSwitch()
         setupSwitch()
-        addCtrlShadow(cornerRadius: 12.0, shadowRadius: 5.0)
+        //addCtrlShadow(cornerRadius: 12.0, shadowRadius: 5.0)
         addChartShadow(cornerRadius: 12.0, shadowRadius: 5.0)
     }
     
