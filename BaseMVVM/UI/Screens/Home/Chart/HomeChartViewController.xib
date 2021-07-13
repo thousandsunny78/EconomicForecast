@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,10 +13,21 @@
             <connections>
                 <outlet property="areaVC" destination="omD-RK-f03" id="jzQ-HO-LTw"/>
                 <outlet property="contentVC" destination="zhg-nJ-BfF" id="zRu-qN-NMD"/>
+                <outlet property="scrollView" destination="HmZ-Yk-qbJ" id="mDA-oF-jVh"/>
                 <outlet property="stackContentView" destination="KfA-lx-uyq" id="jfJ-vR-UaC"/>
                 <outlet property="stackView" destination="mGn-Fs-5lb" id="F9w-Gx-LFK"/>
                 <outlet property="tab1VCButton" destination="aQ9-Qh-b1B" id="Oh7-uy-m40"/>
+                <outlet property="tab1VCContentView" destination="I3T-I3-Lmv" id="Abm-LX-fMa"/>
                 <outlet property="tab2VCButton" destination="Jop-Rr-SWB" id="Qq9-NK-Yuc"/>
+                <outlet property="tab2VCContentView" destination="kKF-0Z-ZEe" id="A2s-yR-20v"/>
+                <outlet property="tab3VCButton" destination="sVT-oo-A32" id="knH-cz-5lP"/>
+                <outlet property="tab3VCContentView" destination="oLU-76-bRl" id="hN3-wG-d5r"/>
+                <outlet property="tab4VCButton" destination="2Bn-E6-Xxb" id="A8x-7m-tb0"/>
+                <outlet property="tab4VCContentView" destination="8qz-VY-5pf" id="R94-0s-dS5"/>
+                <outlet property="tab5VCButton" destination="Db4-KL-nYd" id="1Fm-Tj-EWC"/>
+                <outlet property="tab5VCContentView" destination="lyD-s7-bM8" id="5Ha-pa-zHP"/>
+                <outlet property="tab6VCButton" destination="gNx-Vo-Baw" id="iov-LJ-pPs"/>
+                <outlet property="tab6VCContentView" destination="Bc9-dG-rOw" id="Lk1-Kv-uvx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -36,46 +46,161 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KfA-lx-uyq" userLabel="StackContentView">
                             <rect key="frame" x="20" y="0.0" width="374" height="46"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="mGn-Fs-5lb">
+                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmZ-Yk-qbJ">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="46"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQ9-Qh-b1B">
-                                            <rect key="frame" x="0.0" y="0.0" width="187" height="46"/>
-                                            <color key="backgroundColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <state key="normal" title="Chỉ số CPI">
-                                                <color key="titleColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
-                                            </state>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mGn-Fs-5lb">
+                                            <rect key="frame" x="0.0" y="0.0" width="1260" height="46"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I3T-I3-Lmv" userLabel="ContentView1">
+                                                    <rect key="frame" x="5" y="5" width="200" height="36"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQ9-Qh-b1B">
+                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="36"/>
+                                                            <color key="backgroundColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <state key="normal" title="Chỉ số CPI">
+                                                                <color key="titleColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="aQ9-Qh-b1B" firstAttribute="top" secondItem="I3T-I3-Lmv" secondAttribute="top" id="0s7-gV-xVB"/>
+                                                        <constraint firstItem="aQ9-Qh-b1B" firstAttribute="leading" secondItem="I3T-I3-Lmv" secondAttribute="leading" id="RVR-a9-Hrd"/>
+                                                        <constraint firstAttribute="trailing" secondItem="aQ9-Qh-b1B" secondAttribute="trailing" id="Zoc-eD-gDy"/>
+                                                        <constraint firstAttribute="bottom" secondItem="aQ9-Qh-b1B" secondAttribute="bottom" id="tVq-1S-KcT"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKF-0Z-ZEe" userLabel="ContentView2">
+                                                    <rect key="frame" x="215" y="5" width="200" height="36"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jop-Rr-SWB">
+                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="36"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal" title="Chỉ số IIP">
+                                                                <color key="titleColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </state>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="Jop-Rr-SWB" secondAttribute="bottom" id="5OC-q3-Dtw"/>
+                                                        <constraint firstItem="Jop-Rr-SWB" firstAttribute="top" secondItem="kKF-0Z-ZEe" secondAttribute="top" id="9To-JO-JQt"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Jop-Rr-SWB" secondAttribute="trailing" id="ET8-Kz-mEI"/>
+                                                        <constraint firstItem="Jop-Rr-SWB" firstAttribute="leading" secondItem="kKF-0Z-ZEe" secondAttribute="leading" id="GIM-zd-JW3"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oLU-76-bRl" userLabel="ContentView3">
+                                                    <rect key="frame" x="425" y="5" width="200" height="36"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-oo-A32">
+                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="36"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal" title="Chỉ số GDP">
+                                                                <color key="titleColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </state>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="sVT-oo-A32" firstAttribute="leading" secondItem="oLU-76-bRl" secondAttribute="leading" id="b4d-Al-fec"/>
+                                                        <constraint firstAttribute="trailing" secondItem="sVT-oo-A32" secondAttribute="trailing" id="ozZ-Kv-TVi"/>
+                                                        <constraint firstItem="sVT-oo-A32" firstAttribute="top" secondItem="oLU-76-bRl" secondAttribute="top" id="qU6-Fa-3X9"/>
+                                                        <constraint firstAttribute="bottom" secondItem="sVT-oo-A32" secondAttribute="bottom" id="tRY-UN-gQC"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8qz-VY-5pf" userLabel="ContentView4">
+                                                    <rect key="frame" x="635" y="5" width="200" height="36"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bn-E6-Xxb">
+                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="36"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal" title="Chỉ số XNK">
+                                                                <color key="titleColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </state>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="2Bn-E6-Xxb" secondAttribute="bottom" id="Eck-EB-BYy"/>
+                                                        <constraint firstItem="2Bn-E6-Xxb" firstAttribute="leading" secondItem="8qz-VY-5pf" secondAttribute="leading" id="Ket-lp-sI0"/>
+                                                        <constraint firstItem="2Bn-E6-Xxb" firstAttribute="top" secondItem="8qz-VY-5pf" secondAttribute="top" id="O3J-GE-riB"/>
+                                                        <constraint firstAttribute="trailing" secondItem="2Bn-E6-Xxb" secondAttribute="trailing" id="f1g-kw-unw"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyD-s7-bM8" userLabel="ContentView5">
+                                                    <rect key="frame" x="845" y="5" width="200" height="36"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Db4-KL-nYd">
+                                                            <rect key="frame" x="10" y="0.0" width="180" height="36"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal" title="Thất nghiệp">
+                                                                <color key="titleColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </state>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="Db4-KL-nYd" firstAttribute="leading" secondItem="lyD-s7-bM8" secondAttribute="leading" constant="10" id="9mY-iO-fSI"/>
+                                                        <constraint firstItem="Db4-KL-nYd" firstAttribute="top" secondItem="lyD-s7-bM8" secondAttribute="top" id="AON-yj-j1g"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Db4-KL-nYd" secondAttribute="trailing" constant="10" id="iuT-ev-v41"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Db4-KL-nYd" secondAttribute="bottom" id="lG9-a6-t4q"/>
+                                                        <constraint firstItem="Db4-KL-nYd" firstAttribute="top" secondItem="lyD-s7-bM8" secondAttribute="top" id="xpj-Cy-ge5"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bc9-dG-rOw" userLabel="ContentView6">
+                                                    <rect key="frame" x="1055" y="5" width="200" height="36"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNx-Vo-Baw">
+                                                            <rect key="frame" x="10" y="0.0" width="180" height="36"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal" title="Thu chi ngân sách">
+                                                                <color key="titleColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </state>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="gNx-Vo-Baw" firstAttribute="top" secondItem="Bc9-dG-rOw" secondAttribute="top" id="8ag-Ld-dO0"/>
+                                                        <constraint firstAttribute="bottom" secondItem="gNx-Vo-Baw" secondAttribute="bottom" id="X85-s4-dCF"/>
+                                                        <constraint firstItem="gNx-Vo-Baw" firstAttribute="leading" secondItem="Bc9-dG-rOw" secondAttribute="leading" constant="10" id="rFi-z9-n26"/>
+                                                        <constraint firstAttribute="trailing" secondItem="gNx-Vo-Baw" secondAttribute="trailing" constant="10" id="v40-ru-y9U"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.8980392157" green="0.94117647059999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="46" id="itB-Oc-Ceu"/>
+                                            </constraints>
+                                            <edgeInsets key="layoutMargins" top="5" left="5" bottom="5" right="5"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                     <real key="value" value="0.0"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jop-Rr-SWB">
-                                            <rect key="frame" x="187" y="0.0" width="187" height="46"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <state key="normal" title="Chỉ số IIP">
-                                                <color key="titleColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            </state>
-                                        </button>
+                                        </stackView>
                                     </subviews>
-                                    <color key="backgroundColor" name="navigationColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="46" id="itB-Oc-Ceu"/>
+                                        <constraint firstItem="mGn-Fs-5lb" firstAttribute="top" secondItem="HmZ-Yk-qbJ" secondAttribute="top" id="J4M-xd-SgL"/>
+                                        <constraint firstItem="mGn-Fs-5lb" firstAttribute="leading" secondItem="HmZ-Yk-qbJ" secondAttribute="leading" id="hQO-JU-qaJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="mGn-Fs-5lb" secondAttribute="bottom" id="vaK-UQ-qjV"/>
+                                        <constraint firstAttribute="trailing" secondItem="mGn-Fs-5lb" secondAttribute="trailing" id="vfQ-BY-dqr"/>
                                     </constraints>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <real key="value" value="0.0"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </stackView>
+                                    <viewLayoutGuide key="contentLayoutGuide" id="sOb-LC-utj"/>
+                                    <viewLayoutGuide key="frameLayoutGuide" id="JBw-gt-4aq"/>
+                                </scrollView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="mGn-Fs-5lb" secondAttribute="bottom" id="HyY-OU-xQg"/>
-                                <constraint firstAttribute="trailing" secondItem="mGn-Fs-5lb" secondAttribute="trailing" id="Xj7-wr-W54"/>
-                                <constraint firstItem="mGn-Fs-5lb" firstAttribute="top" secondItem="KfA-lx-uyq" secondAttribute="top" id="uUJ-B7-exI"/>
-                                <constraint firstItem="mGn-Fs-5lb" firstAttribute="leading" secondItem="KfA-lx-uyq" secondAttribute="leading" id="vTu-9b-v0d"/>
+                                <constraint firstItem="HmZ-Yk-qbJ" firstAttribute="top" secondItem="KfA-lx-uyq" secondAttribute="top" id="9DF-df-a84"/>
+                                <constraint firstItem="HmZ-Yk-qbJ" firstAttribute="leading" secondItem="KfA-lx-uyq" secondAttribute="leading" id="L17-bS-Mme"/>
+                                <constraint firstItem="HmZ-Yk-qbJ" firstAttribute="centerY" secondItem="KfA-lx-uyq" secondAttribute="centerY" id="bhj-x0-y6t"/>
+                                <constraint firstItem="HmZ-Yk-qbJ" firstAttribute="centerX" secondItem="KfA-lx-uyq" secondAttribute="centerX" id="ixW-6K-TDv"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -116,6 +241,7 @@
                 <constraint firstItem="zhg-nJ-BfF" firstAttribute="top" secondItem="WWi-Rk-VBk" secondAttribute="bottom" constant="10" id="Xy8-cO-hFk"/>
                 <constraint firstItem="hgg-pS-lOp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dAG-3X-eam"/>
                 <constraint firstItem="WWi-Rk-VBk" firstAttribute="top" secondItem="hgg-pS-lOp" secondAttribute="bottom" constant="10" id="gJG-Vb-JJK"/>
+                <constraint firstItem="zhg-nJ-BfF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="154" id="htF-7G-05f"/>
                 <constraint firstItem="zhg-nJ-BfF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="iWa-Ss-pxo"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zhg-nJ-BfF" secondAttribute="trailing" id="imA-WQ-XVf"/>
                 <constraint firstItem="hgg-pS-lOp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="oY9-NC-Dwa"/>
@@ -125,9 +251,6 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="navigationColor">
-            <color red="0.88999998569488525" green="0.31400001049041748" blue="0.28600001335144043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
