@@ -271,7 +271,7 @@
                                         </switch>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rJZ-np-5Wg">
                                             <rect key="frame" x="8" y="60.5" width="60" height="5"/>
-                                            <color key="backgroundColor" red="0.0" green="0.2666666667" blue="0.51987725750000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="Giz-5v-ueS"/>
                                                 <constraint firstAttribute="height" constant="5" id="OCv-x4-bXf"/>
@@ -648,16 +648,16 @@
                     <rect key="frame" x="20" y="10" width="628" height="319.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qz2-o6-QX6" customClass="LineChartView" customModule="Charts">
-                            <rect key="frame" x="0.0" y="0.0" width="628" height="319.5"/>
+                            <rect key="frame" x="10" y="10" width="608" height="299.5"/>
                             <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="qz2-o6-QX6" secondAttribute="trailing" id="AGv-su-r4t"/>
-                        <constraint firstItem="qz2-o6-QX6" firstAttribute="top" secondItem="RT5-lk-vxP" secondAttribute="top" id="Adk-aL-t9b"/>
-                        <constraint firstAttribute="bottom" secondItem="qz2-o6-QX6" secondAttribute="bottom" id="DFz-Gp-k9h"/>
-                        <constraint firstItem="qz2-o6-QX6" firstAttribute="leading" secondItem="RT5-lk-vxP" secondAttribute="leading" id="cY2-Ps-YSa"/>
+                        <constraint firstAttribute="trailing" secondItem="qz2-o6-QX6" secondAttribute="trailing" constant="10" id="AGv-su-r4t"/>
+                        <constraint firstItem="qz2-o6-QX6" firstAttribute="top" secondItem="RT5-lk-vxP" secondAttribute="top" constant="10" id="Adk-aL-t9b"/>
+                        <constraint firstAttribute="bottom" secondItem="qz2-o6-QX6" secondAttribute="bottom" constant="10" id="DFz-Gp-k9h"/>
+                        <constraint firstItem="qz2-o6-QX6" firstAttribute="leading" secondItem="RT5-lk-vxP" secondAttribute="leading" constant="10" id="cY2-Ps-YSa"/>
                     </constraints>
                 </view>
             </subviews>

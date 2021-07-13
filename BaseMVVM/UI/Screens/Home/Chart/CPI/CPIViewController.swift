@@ -13,7 +13,7 @@ import RxSwift
 import RxCocoa
 import Charts
 
-class CPIViewController: ViewController {
+class CPIViewController: ViewController, ChartViewDelegate {
     
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var controlContent: UIView!
@@ -43,11 +43,15 @@ class CPIViewController: ViewController {
     
     override func makeUI() {
         super.makeUI()
-        setChart()
+        drawChart()
+        // quanth: thu nhỏ kích thước switch
         resizeSwitch()
-        setupSwitch()
+        // quanth: setup event switch changed
+        configureSwitchChanged()
         //addCtrlShadow(cornerRadius: 12.0, shadowRadius: 5.0)
         addChartShadow(cornerRadius: 12.0, shadowRadius: 5.0)
+        
+        lineChartView.delegate = self
     }
     
     override func bindViewModel() {
@@ -56,6 +60,16 @@ class CPIViewController: ViewController {
         
         let input = CPIViewModel.Input()
         let output = viewModel.transform(input: input)
+    }
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        print("chartValueSelected")
+        print(entry.description)
+//        lineChartView.highlightValue(x: highlight.x, y: highlight.y, dataSetIndex: highlight.dataIndex)
+    }
+    
+    private func configureLineChart() {
+        
     }
     
     private var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
@@ -90,14 +104,14 @@ class CPIViewController: ViewController {
     // Hàng hóa và dịch vụ khác
     private var values14 = [101.84, 101.09, 101.51, 101.38, 100.82, 100.86]
     
-    private var controlList = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+    private var controlList = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
-    func updateSwitch(index: Int, value: Bool){
+    private func updateSwitch(index: Int, value: Bool){
         controlList[index] = value
-        setChart()
+        drawChart()
     }
     
-    func setChart() {
+    private func drawChart() {
         var dataEntries0: [ChartDataEntry] = []
         var dataEntries1: [ChartDataEntry] = []
         var dataEntries2: [ChartDataEntry] = []
@@ -131,12 +145,12 @@ class CPIViewController: ViewController {
                         chartDataSet0.circleRadius = 5
                         chartDataSet0.circleHoleRadius = 2
                         chartDataSet0.drawValuesEnabled = false
+                        chartDataSet0.highlightEnabled = true
                         // set colors and enable value drawing
                         chartDataSet0.colors = [UIColor.App.ramsey]
                             chartDataSet0.circleColors = [UIColor.App.ramsey]
                         dataSets.append(chartDataSet0)
                     }
-
                 case 1:
                     if(controlList[j]){
                         // Hàng ăn và dịch vụ ăn uống
@@ -148,11 +162,10 @@ class CPIViewController: ViewController {
                         chartDataSet1.circleHoleRadius = 2
                         chartDataSet1.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet1.colors = [UIColor.App.auba]
-                            chartDataSet1.circleColors = [UIColor.App.auba]
+                        chartDataSet1.colors = [UIColor.purple]
+                            chartDataSet1.circleColors = [UIColor.purple]
                         dataSets.append(chartDataSet1)
                     }
-
                 case 2:
                     if(controlList[j]){
                         // Lương thực
@@ -164,8 +177,8 @@ class CPIViewController: ViewController {
                         chartDataSet2.circleHoleRadius = 2
                         chartDataSet2.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet2.colors = [UIColor.App.laca]
-                            chartDataSet2.circleColors = [UIColor.App.laca]
+                        chartDataSet2.colors = [UIColor.blue]
+                        chartDataSet2.circleColors = [UIColor.blue]
                         dataSets.append(chartDataSet2)
                     }
                 case 3:
@@ -179,8 +192,8 @@ class CPIViewController: ViewController {
                         chartDataSet3.circleHoleRadius = 2
                         chartDataSet3.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet3.colors = [UIColor.App.xhakar]
-                            chartDataSet3.circleColors = [UIColor.App.xhakar]
+                        chartDataSet3.colors = [UIColor.green]
+                        chartDataSet3.circleColors = [UIColor.green]
                         dataSets.append(chartDataSet3)
                     }
                 case 4:
@@ -194,8 +207,8 @@ class CPIViewController: ViewController {
                         chartDataSet4.circleHoleRadius = 2
                         chartDataSet4.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet4.colors = [UIColor.App.ozil]
-                            chartDataSet4.circleColors = [UIColor.App.ozil]
+                        chartDataSet4.colors = [UIColor.red]
+                            chartDataSet4.circleColors = [UIColor.red]
                         dataSets.append(chartDataSet4)
                     }
                 case 5:
@@ -209,8 +222,8 @@ class CPIViewController: ViewController {
                         chartDataSet5.circleHoleRadius = 2
                         chartDataSet5.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet5.colors = [UIColor.App.toreira]
-                            chartDataSet5.circleColors = [UIColor.App.toreira]
+                        chartDataSet5.colors = [UIColor.orange]
+                            chartDataSet5.circleColors = [UIColor.orange]
                         dataSets.append(chartDataSet5)
                     }
                 case 6:
@@ -224,11 +237,10 @@ class CPIViewController: ViewController {
                         chartDataSet6.circleHoleRadius = 2
                         chartDataSet6.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet6.colors = [UIColor.App.ramsey]
-                            chartDataSet6.circleColors = [UIColor.App.ramsey]
+                        chartDataSet6.colors = [UIColor.orange]
+                            chartDataSet6.circleColors = [UIColor.orange]
                         dataSets.append(chartDataSet6)
                     }
-
                 case 7:
                     if(controlList[j]){
                         // Hàng ăn và dịch vụ ăn uống
@@ -240,11 +252,10 @@ class CPIViewController: ViewController {
                         chartDataSet7.circleHoleRadius = 2
                         chartDataSet7.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet7.colors = [UIColor.App.auba]
-                            chartDataSet7.circleColors = [UIColor.App.auba]
+                        chartDataSet7.colors = [UIColor.blue]
+                            chartDataSet7.circleColors = [UIColor.blue]
                         dataSets.append(chartDataSet7)
                     }
-
                 case 8:
                     if(controlList[j]){
                         // Lương thực
@@ -256,11 +267,10 @@ class CPIViewController: ViewController {
                         chartDataSet8.circleHoleRadius = 2
                         chartDataSet8.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet8.colors = [UIColor.App.laca]
-                            chartDataSet8.circleColors = [UIColor.App.laca]
+                        chartDataSet8.colors = [UIColor.red]
+                            chartDataSet8.circleColors = [UIColor.red]
                         dataSets.append(chartDataSet8)
                     }
-                    
                 case 9:
                     if(controlList[j]){
                         // Thực phẩm
@@ -272,11 +282,10 @@ class CPIViewController: ViewController {
                         chartDataSet9.circleHoleRadius = 2
                         chartDataSet9.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet9.colors = [UIColor.App.twitter]
-                            chartDataSet9.circleColors = [UIColor.App.twitter]
+                        chartDataSet9.colors = [UIColor.red]
+                            chartDataSet9.circleColors = [UIColor.red]
                         dataSets.append(chartDataSet9)
                     }
-                    
                 case 10:
                     if(controlList[j]){
                         // Ăn uống ngoài gia đình
@@ -288,11 +297,10 @@ class CPIViewController: ViewController {
                         chartDataSet10.circleHoleRadius = 2
                         chartDataSet10.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet10.colors = [UIColor.App.ramsey]
-                            chartDataSet10.circleColors = [UIColor.App.ramsey]
+                        chartDataSet10.colors = [UIColor.orange]
+                            chartDataSet10.circleColors = [UIColor.orange]
                         dataSets.append(chartDataSet10)
                     }
-                    
                 case 11:
                     if(controlList[j]){
                         // Hàng ăn và dịch vụ ăn uống
@@ -304,11 +312,10 @@ class CPIViewController: ViewController {
                         chartDataSet11.circleHoleRadius = 2
                         chartDataSet11.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet11.colors = [UIColor.App.ozil]
-                            chartDataSet11.circleColors = [UIColor.App.ozil]
+                        chartDataSet11.colors = [UIColor.blue]
+                            chartDataSet11.circleColors = [UIColor.blue]
                         dataSets.append(chartDataSet11)
                     }
-
                 case 12:
                     if(controlList[j]){
                         // Lương thực
@@ -320,8 +327,8 @@ class CPIViewController: ViewController {
                         chartDataSet12.circleHoleRadius = 2
                         chartDataSet12.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet12.colors = [UIColor.App.laca]
-                            chartDataSet12.circleColors = [UIColor.App.laca]
+                        chartDataSet12.colors = [UIColor.purple]
+                            chartDataSet12.circleColors = [UIColor.purple]
                         dataSets.append(chartDataSet12)
                     }
                 case 13:
@@ -335,8 +342,8 @@ class CPIViewController: ViewController {
                         chartDataSet13.circleHoleRadius = 2
                         chartDataSet13.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet13.colors = [UIColor.App.auba]
-                            chartDataSet13.circleColors = [UIColor.App.auba]
+                        chartDataSet13.colors = [UIColor.gray]
+                            chartDataSet13.circleColors = [UIColor.gray]
                         dataSets.append(chartDataSet13)
                     }
                 case 14:
@@ -350,8 +357,8 @@ class CPIViewController: ViewController {
                         chartDataSet14.circleHoleRadius = 2
                         chartDataSet14.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet14.colors = [UIColor.App.toreira]
-                            chartDataSet14.circleColors = [UIColor.App.toreira]
+                        chartDataSet14.colors = [UIColor.red]
+                            chartDataSet14.circleColors = [UIColor.red]
                         dataSets.append(chartDataSet14)
                     }
                 default:
@@ -440,7 +447,8 @@ class CPIViewController: ViewController {
     }
     
     
-    private func setupSwitch(){
+    private func configureSwitchChanged(){
+        aSwitch.isOn = true
         aSwitch.rx
             .controlEvent(.valueChanged)
             .withLatestFrom(aSwitch.rx.value)
@@ -448,6 +456,7 @@ class CPIViewController: ViewController {
                 self.updateSwitch(index: 0, value: bool)
         }).disposed(by: disposeBag)
         
+        bSwitch.isOn = false
         bSwitch.rx
             .controlEvent(.valueChanged)
             .withLatestFrom(bSwitch.rx.value)
@@ -455,6 +464,7 @@ class CPIViewController: ViewController {
                 self.updateSwitch(index: 1, value: bool)
         }).disposed(by: disposeBag)
         
+        cSwitch.isOn = false
         cSwitch.rx
             .controlEvent(.valueChanged)
             .withLatestFrom(cSwitch.rx.value)
@@ -462,6 +472,7 @@ class CPIViewController: ViewController {
                 self.updateSwitch(index: 2, value: bool)
         }).disposed(by: disposeBag)
         
+        eSwitch.isOn = false
         eSwitch.rx
             .controlEvent(.valueChanged)
             .withLatestFrom(eSwitch.rx.value)
@@ -469,6 +480,7 @@ class CPIViewController: ViewController {
                 self.updateSwitch(index: 3, value: bool)
         }).disposed(by: disposeBag)
         
+        fSwitch.isOn = false
         fSwitch.rx
             .controlEvent(.valueChanged)
             .withLatestFrom(fSwitch.rx.value)
@@ -476,6 +488,7 @@ class CPIViewController: ViewController {
                 self.updateSwitch(index: 4, value: bool)
         }).disposed(by: disposeBag)
         
+        gSwitch.isOn = false
         gSwitch.rx
             .controlEvent(.valueChanged)
             .withLatestFrom(gSwitch.rx.value)
@@ -483,6 +496,7 @@ class CPIViewController: ViewController {
                 self.updateSwitch(index: 5, value: bool)
         }).disposed(by: disposeBag)
         
+        hSwitch.isOn = false
         hSwitch.rx
             .controlEvent(.valueChanged)
             .withLatestFrom(hSwitch.rx.value)
@@ -490,6 +504,7 @@ class CPIViewController: ViewController {
                 self.updateSwitch(index: 6, value: bool)
         }).disposed(by: disposeBag)
         
+        iSwitch.isOn = false
         iSwitch.rx
             .controlEvent(.valueChanged)
             .withLatestFrom(iSwitch.rx.value)
@@ -497,6 +512,7 @@ class CPIViewController: ViewController {
                 self.updateSwitch(index: 7, value: bool)
         }).disposed(by: disposeBag)
         
+        kSwitch.isOn = false
         kSwitch.rx
             .controlEvent(.valueChanged)
             .withLatestFrom(kSwitch.rx.value)
@@ -504,6 +520,7 @@ class CPIViewController: ViewController {
                 self.updateSwitch(index: 8, value: bool)
         }).disposed(by: disposeBag)
         
+        lSwitch.isOn = false
         lSwitch.rx
             .controlEvent(.valueChanged)
             .withLatestFrom(lSwitch.rx.value)
@@ -511,6 +528,7 @@ class CPIViewController: ViewController {
                 self.updateSwitch(index: 9, value: bool)
         }).disposed(by: disposeBag)
         
+        mSwitch.isOn = false
         mSwitch.rx
             .controlEvent(.valueChanged)
             .withLatestFrom(mSwitch.rx.value)
@@ -518,6 +536,7 @@ class CPIViewController: ViewController {
                 self.updateSwitch(index: 10, value: bool)
         }).disposed(by: disposeBag)
         
+        nSwitch.isOn = false
         nSwitch.rx
             .controlEvent(.valueChanged)
             .withLatestFrom(nSwitch.rx.value)
@@ -525,6 +544,7 @@ class CPIViewController: ViewController {
                 self.updateSwitch(index: 11, value: bool)
         }).disposed(by: disposeBag)
         
+        oSwitch.isOn = false
         oSwitch.rx
             .controlEvent(.valueChanged)
             .withLatestFrom(oSwitch.rx.value)
@@ -532,6 +552,7 @@ class CPIViewController: ViewController {
                 self.updateSwitch(index: 12, value: bool)
         }).disposed(by: disposeBag)
         
+        pSwitch.isOn = false
         pSwitch.rx
             .controlEvent(.valueChanged)
             .withLatestFrom(pSwitch.rx.value)
@@ -539,6 +560,7 @@ class CPIViewController: ViewController {
                 self.updateSwitch(index: 13, value: bool)
         }).disposed(by: disposeBag)
         
+        qSwitch.isOn = false
         qSwitch.rx
             .controlEvent(.valueChanged)
             .withLatestFrom(qSwitch.rx.value)
