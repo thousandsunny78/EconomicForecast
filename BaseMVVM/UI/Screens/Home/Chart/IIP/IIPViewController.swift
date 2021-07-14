@@ -69,30 +69,30 @@ class IIPViewController: ViewController {
     private var currentVC: ViewController?
     // Show list data
     private func showControllBoard() {
-        createControlList(areaVC: areaVC1, entity: ChartControlEntity(color: UIColor.red, content: "Toàn ngành công nghiệp", isOn: true)!)
-        createControlList(areaVC: areaVC2, entity: ChartControlEntity(color: UIColor.blue, content: "Công nghiệp khai thác mỏ", isOn: true)!)
-        createControlList(areaVC: areaVC3, entity: ChartControlEntity(color: UIColor.green, content: "Công nghiệp chế biến, chế tạo", isOn: true)!)
-        createControlList(areaVC: areaVC4, entity: ChartControlEntity(color: UIColor.yellow, content: "Công nghiệp sản xuất, phân phối điện, gas", isOn: true)!)
-        createControlList(areaVC: areaVC5, entity: ChartControlEntity(color: UIColor.red, content: "Cung cấp nước, quản lý và xử lý nước thải, rác thải", isOn: true)!)
-        createControlList(areaVC: areaVC6, entity: ChartControlEntity(color: UIColor.red, content: "Khai thác đá, cát, sỏi, đất sét và cao lanh", isOn: true)!)
-        createControlList(areaVC: areaVC7, entity: ChartControlEntity(color: UIColor.red, content: "Sản xuất chế biến thực phẩm", isOn: true)!)
-        createControlList(areaVC: areaVC8, entity: ChartControlEntity(color: UIColor.red, content: "Sản xuất sản phẩm thuốc lá", isOn: true)!)
-        createControlList(areaVC: areaVC9, entity: ChartControlEntity(color: UIColor.red, content: "Dệt", isOn: true)!)
-        createControlList(areaVC: areaVC10, entity: ChartControlEntity(color: UIColor.red, content: "Sản xuất trang phục", isOn: true)!)
-        createControlList(areaVC: areaVC11, entity: ChartControlEntity(color: UIColor.red, content: "Sản xuất da và các sản phẩm có liên quan", isOn: true)!)
-        createControlList(areaVC: areaVC12, entity: ChartControlEntity(color: UIColor.red, content: "Sản xuất giấy và sản phẩm từ giấy", isOn: true)!)
-        createControlList(areaVC: areaVC13, entity: ChartControlEntity(color: UIColor.red, content: "Sản xuất hóa chất và sản phẩm hóa chất", isOn: true)!)
-        createControlList(areaVC: areaVC14, entity: ChartControlEntity(color: UIColor.red, content: "Sản xuất sản phẩm từ cao su và plastic", isOn: true)!)
-        createControlList(areaVC: areaVC15, entity: ChartControlEntity(color: UIColor.red, content: "Sản xuất sản phẩm từ khoáng phi kim loại khác", isOn: true)!)
-        createControlList(areaVC: areaVC16, entity: ChartControlEntity(color: UIColor.red, content: "Sản xuất sản phẩm từ kim loại đúc sẵn (trừ máy móc, thiết bị)", isOn: true)!)
-        createControlList(areaVC: areaVC17, entity: ChartControlEntity(color: UIColor.red, content: "Sản xuất thiết bị điện", isOn: true)!)
-        createControlList(areaVC: areaVC18, entity: ChartControlEntity(color: UIColor.red, content: "Sản xuất máy móc thiết bị chưa được phân vào đâu", isOn: true)!)
-        createControlList(areaVC: areaVC19, entity: ChartControlEntity(color: UIColor.red, content: "Sản xuất xe có động cơ", isOn: true)!)
-        createControlList(areaVC: areaVC20, entity: ChartControlEntity(color: UIColor.red, content: "Sản xuất giường, tủ, bàn, ghế", isOn: true)!)
-        createControlList(areaVC: areaVC21, entity: ChartControlEntity(color: UIColor.red, content: "Công nghiệp chế biến, chế tạo khác", isOn: true)!)
-        createControlList(areaVC: areaVC22, entity: ChartControlEntity(color: UIColor.red, content: "Khai thác, xử lý và cung cấp nước", isOn: true)!)
-        createControlList(areaVC: areaVC23, entity: ChartControlEntity(color: UIColor.red, content: "Sản xuất và phân phối điện, khí đốt", isOn: true)!)
-        createControlList(areaVC: areaVC24, entity: ChartControlEntity(color: UIColor.red, content: "area 24", isOn: true)!)
+        createControlList(areaVC: areaVC1, entity: ChartControlEntity(color: UIColor.red, content: "Toàn ngành công nghiệp", isOn: true, index: 0)!)
+        createControlList(areaVC: areaVC2, entity: ChartControlEntity(color: UIColor.blue, content: "Công nghiệp khai thác mỏ", isOn: false, index: 1)!)
+        createControlList(areaVC: areaVC3, entity: ChartControlEntity(color: UIColor.green, content: "Công nghiệp chế biến, chế tạo", isOn: false, index: 2)!)
+        createControlList(areaVC: areaVC4, entity: ChartControlEntity(color: UIColor.yellow, content: "Công nghiệp sản xuất, phân phối điện, gas", isOn: false, index: 3)!)
+        createControlList(areaVC: areaVC5, entity: ChartControlEntity(color: UIColor.brown, content: "Cung cấp nước, quản lý và xử lý nước thải, rác thải", isOn: false, index: 4)!)
+        createControlList(areaVC: areaVC6, entity: ChartControlEntity(color: UIColor.purple, content: "Khai thác đá, cát, sỏi, đất sét và cao lanh", isOn: false, index: 5)!)
+        createControlList(areaVC: areaVC7, entity: ChartControlEntity(color: UIColor.orange, content: "Sản xuất chế biến thực phẩm", isOn: false, index: 6)!)
+        createControlList(areaVC: areaVC8, entity: ChartControlEntity(color: UIColor.black, content: "Sản xuất sản phẩm thuốc lá", isOn: false, index: 7)!)
+        createControlList(areaVC: areaVC9, entity: ChartControlEntity(color: UIColor.lightGray, content: "Dệt", isOn: false, index: 8)!)
+        createControlList(areaVC: areaVC10, entity: ChartControlEntity(color: UIColor.cyan, content: "Sản xuất trang phục", isOn: false, index: 9)!)
+        createControlList(areaVC: areaVC11, entity: ChartControlEntity(color: UIColor.red, content: "Sản xuất da và các sản phẩm có liên quan", isOn: false, index: 10)!)
+        createControlList(areaVC: areaVC12, entity: ChartControlEntity(color: UIColor.green, content: "Sản xuất giấy và sản phẩm từ giấy", isOn: false, index: 11)!)
+        createControlList(areaVC: areaVC13, entity: ChartControlEntity(color: UIColor.purple, content: "Sản xuất hóa chất và sản phẩm hóa chất", isOn: false, index: 12)!)
+        createControlList(areaVC: areaVC14, entity: ChartControlEntity(color: UIColor.yellow, content: "Sản xuất sản phẩm từ cao su và plastic", isOn: false, index: 13)!)
+        createControlList(areaVC: areaVC15, entity: ChartControlEntity(color: UIColor.systemBlue, content: "Sản xuất sản phẩm từ khoáng phi kim loại khác", isOn: false, index: 14)!)
+        createControlList(areaVC: areaVC16, entity: ChartControlEntity(color: UIColor.orange, content: "Sản xuất sản phẩm từ kim loại đúc sẵn (trừ máy móc, thiết bị)", isOn: false, index: 15)!)
+        createControlList(areaVC: areaVC17, entity: ChartControlEntity(color: UIColor.yellow, content: "Sản xuất thiết bị điện", isOn: false, index: 16)!)
+        createControlList(areaVC: areaVC18, entity: ChartControlEntity(color: UIColor.red, content: "Sản xuất máy móc thiết bị chưa được phân vào đâu", isOn: false, index: 17)!)
+        createControlList(areaVC: areaVC19, entity: ChartControlEntity(color: UIColor.gray, content: "Sản xuất xe có động cơ", isOn: false, index: 18)!)
+        createControlList(areaVC: areaVC20, entity: ChartControlEntity(color: UIColor.cyan, content: "Sản xuất giường, tủ, bàn, ghế", isOn: false, index:19)!)
+        createControlList(areaVC: areaVC21, entity: ChartControlEntity(color: UIColor.orange, content: "Công nghiệp chế biến, chế tạo khác", isOn: false, index: 20)!)
+        createControlList(areaVC: areaVC22, entity: ChartControlEntity(color: UIColor.red, content: "Khai thác, xử lý và cung cấp nước", isOn: false, index: 21)!)
+        createControlList(areaVC: areaVC23, entity: ChartControlEntity(color: UIColor.purple, content: "Sản xuất và phân phối điện, khí đốt", isOn: false, index: 22)!)
+        createControlList(areaVC: areaVC24, entity: ChartControlEntity(color: UIColor.red, content: "area 24", isOn: false, index: 23)!)
     }
     
     private func createControlList(areaVC: UIView!, entity: ChartControlEntity){
@@ -102,6 +102,7 @@ class IIPViewController: ViewController {
             let viewModel = IIPItemViewModel(navigator: navigator)
             vc.viewModel = viewModel
             vc.entity = entity
+            vc.iipVC = self
             return vc
         }()
         
@@ -190,8 +191,8 @@ class IIPViewController: ViewController {
                         chartDataSet0.drawValuesEnabled = false
                         chartDataSet0.highlightEnabled = true
                         // set colors and enable value drawing
-                        chartDataSet0.colors = [UIColor.App.ramsey]
-                            chartDataSet0.circleColors = [UIColor.App.ramsey]
+                        chartDataSet0.colors = [UIColor.red]
+                            chartDataSet0.circleColors = [UIColor.red]
                         dataSets.append(chartDataSet0)
                     }
                 case 1:
@@ -205,8 +206,8 @@ class IIPViewController: ViewController {
                         chartDataSet1.circleHoleRadius = 2
                         chartDataSet1.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet1.colors = [UIColor.purple]
-                            chartDataSet1.circleColors = [UIColor.purple]
+                        chartDataSet1.colors = [UIColor.blue]
+                            chartDataSet1.circleColors = [UIColor.blue]
                         dataSets.append(chartDataSet1)
                     }
                     
@@ -221,8 +222,8 @@ class IIPViewController: ViewController {
                         chartDataSet2.circleHoleRadius = 2
                         chartDataSet2.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet2.colors = [UIColor.blue]
-                        chartDataSet2.circleColors = [UIColor.blue]
+                        chartDataSet2.colors = [UIColor.green]
+                        chartDataSet2.circleColors = [UIColor.green]
                         dataSets.append(chartDataSet2)
                     }
                     
@@ -237,8 +238,8 @@ class IIPViewController: ViewController {
                         chartDataSet3.circleHoleRadius = 2
                         chartDataSet3.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet3.colors = [UIColor.green]
-                        chartDataSet3.circleColors = [UIColor.green]
+                        chartDataSet3.colors = [UIColor.yellow]
+                        chartDataSet3.circleColors = [UIColor.yellow]
                         dataSets.append(chartDataSet3)
                     }
                     
@@ -253,8 +254,8 @@ class IIPViewController: ViewController {
                         chartDataSet4.circleHoleRadius = 2
                         chartDataSet4.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet4.colors = [UIColor.red]
-                            chartDataSet4.circleColors = [UIColor.red]
+                        chartDataSet4.colors = [UIColor.brown]
+                            chartDataSet4.circleColors = [UIColor.brown]
                         dataSets.append(chartDataSet4)
                     }
                     
@@ -269,8 +270,8 @@ class IIPViewController: ViewController {
                         chartDataSet5.circleHoleRadius = 2
                         chartDataSet5.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet5.colors = [UIColor.orange]
-                            chartDataSet5.circleColors = [UIColor.orange]
+                        chartDataSet5.colors = [UIColor.purple]
+                            chartDataSet5.circleColors = [UIColor.purple]
                         dataSets.append(chartDataSet5)
                     }
                     
@@ -301,8 +302,8 @@ class IIPViewController: ViewController {
                         chartDataSet7.circleHoleRadius = 2
                         chartDataSet7.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet7.colors = [UIColor.blue]
-                            chartDataSet7.circleColors = [UIColor.blue]
+                        chartDataSet7.colors = [UIColor.black]
+                            chartDataSet7.circleColors = [UIColor.black]
                         dataSets.append(chartDataSet7)
                     }
                     
@@ -317,8 +318,8 @@ class IIPViewController: ViewController {
                         chartDataSet8.circleHoleRadius = 2
                         chartDataSet8.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet8.colors = [UIColor.red]
-                            chartDataSet8.circleColors = [UIColor.red]
+                        chartDataSet8.colors = [UIColor.lightGray]
+                            chartDataSet8.circleColors = [UIColor.lightGray]
                         dataSets.append(chartDataSet8)
                     }
                     
@@ -333,8 +334,8 @@ class IIPViewController: ViewController {
                         chartDataSet9.circleHoleRadius = 2
                         chartDataSet9.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet9.colors = [UIColor.red]
-                            chartDataSet9.circleColors = [UIColor.red]
+                        chartDataSet9.colors = [UIColor.cyan]
+                            chartDataSet9.circleColors = [UIColor.cyan]
                         dataSets.append(chartDataSet9)
                     }
                      
@@ -349,8 +350,8 @@ class IIPViewController: ViewController {
                         chartDataSet10.circleHoleRadius = 2
                         chartDataSet10.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet10.colors = [UIColor.orange]
-                            chartDataSet10.circleColors = [UIColor.orange]
+                        chartDataSet10.colors = [UIColor.red]
+                            chartDataSet10.circleColors = [UIColor.red]
                         dataSets.append(chartDataSet10)
                     }
                     
@@ -365,8 +366,8 @@ class IIPViewController: ViewController {
                         chartDataSet11.circleHoleRadius = 2
                         chartDataSet11.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet11.colors = [UIColor.blue]
-                            chartDataSet11.circleColors = [UIColor.blue]
+                        chartDataSet11.colors = [UIColor.green]
+                            chartDataSet11.circleColors = [UIColor.green]
                         dataSets.append(chartDataSet11)
                     }
                     
@@ -397,8 +398,8 @@ class IIPViewController: ViewController {
                         chartDataSet13.circleHoleRadius = 2
                         chartDataSet13.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet13.colors = [UIColor.gray]
-                            chartDataSet13.circleColors = [UIColor.gray]
+                        chartDataSet13.colors = [UIColor.yellow]
+                            chartDataSet13.circleColors = [UIColor.yellow]
                         dataSets.append(chartDataSet13)
                     }
                     
@@ -413,8 +414,8 @@ class IIPViewController: ViewController {
                         chartDataSet14.circleHoleRadius = 2
                         chartDataSet14.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet14.colors = [UIColor.red]
-                            chartDataSet14.circleColors = [UIColor.red]
+                        chartDataSet14.colors = [UIColor.systemBlue]
+                            chartDataSet14.circleColors = [UIColor.systemBlue]
                         dataSets.append(chartDataSet14)
                     }
                     
@@ -429,8 +430,8 @@ class IIPViewController: ViewController {
                         chartDataSet15.circleHoleRadius = 2
                         chartDataSet15.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet15.colors = [UIColor.red]
-                            chartDataSet15.circleColors = [UIColor.red]
+                        chartDataSet15.colors = [UIColor.orange]
+                            chartDataSet15.circleColors = [UIColor.orange]
                         dataSets.append(chartDataSet15)
                     }
                     
@@ -445,8 +446,8 @@ class IIPViewController: ViewController {
                         chartDataSet16.circleHoleRadius = 2
                         chartDataSet16.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet16.colors = [UIColor.red]
-                            chartDataSet16.circleColors = [UIColor.red]
+                        chartDataSet16.colors = [UIColor.yellow]
+                            chartDataSet16.circleColors = [UIColor.yellow]
                         dataSets.append(chartDataSet16)
                     }
                     
@@ -477,8 +478,8 @@ class IIPViewController: ViewController {
                         chartDataSet18.circleHoleRadius = 2
                         chartDataSet18.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet18.colors = [UIColor.red]
-                            chartDataSet18.circleColors = [UIColor.red]
+                        chartDataSet18.colors = [UIColor.gray]
+                            chartDataSet18.circleColors = [UIColor.gray]
                         dataSets.append(chartDataSet18)
                     }
                     
@@ -493,8 +494,8 @@ class IIPViewController: ViewController {
                         chartDataSet19.circleHoleRadius = 2
                         chartDataSet19.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet19.colors = [UIColor.red]
-                            chartDataSet19.circleColors = [UIColor.red]
+                        chartDataSet19.colors = [UIColor.cyan]
+                            chartDataSet19.circleColors = [UIColor.cyan]
                         dataSets.append(chartDataSet19)
                     }
                     
@@ -509,8 +510,8 @@ class IIPViewController: ViewController {
                         chartDataSet20.circleHoleRadius = 2
                         chartDataSet20.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet20.colors = [UIColor.red]
-                            chartDataSet20.circleColors = [UIColor.red]
+                        chartDataSet20.colors = [UIColor.orange]
+                            chartDataSet20.circleColors = [UIColor.orange]
                         dataSets.append(chartDataSet20)
                     }
                     
@@ -541,8 +542,8 @@ class IIPViewController: ViewController {
                         chartDataSet22.circleHoleRadius = 2
                         chartDataSet22.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet22.colors = [UIColor.red]
-                            chartDataSet22.circleColors = [UIColor.red]
+                        chartDataSet22.colors = [UIColor.purple]
+                            chartDataSet22.circleColors = [UIColor.purple]
                         dataSets.append(chartDataSet22)
                     }
                     
@@ -588,8 +589,13 @@ class IIPViewController: ViewController {
         lineChartView.legend.enabled = false
     }
     
+    func updateSwitch(index: Int, value: Bool){
+        controlList[index] = value
+        drawChart()
+    }
+    
     private var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
-    private var controlList = [true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+    private var controlList = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     // Chỉ số giá tiêu dùng chung
     private var values0 = [104.42, 103.87, 105.04, 104.38, 103.39, 102.92]
     // Hàng ăn và dịch vụ ăn uống

@@ -50,13 +50,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eII-fD-u95">
-                            <rect key="frame" x="20" y="10" width="374" height="985"/>
+                            <rect key="frame" x="20" y="10" width="374" height="1005"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxW-gQ-GBT" userLabel="ChartContent">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="340"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="360"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXa-fN-mri" customClass="LineChartView" customModule="Charts">
-                                            <rect key="frame" x="10" y="10" width="354" height="310"/>
+                                            <rect key="frame" x="10" y="10" width="354" height="330"/>
                                             <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                         </view>
                                     </subviews>
@@ -64,13 +64,13 @@
                                     <constraints>
                                         <constraint firstItem="EXa-fN-mri" firstAttribute="top" secondItem="bxW-gQ-GBT" secondAttribute="top" constant="10" id="3Tq-k2-Z3A"/>
                                         <constraint firstAttribute="trailing" secondItem="EXa-fN-mri" secondAttribute="trailing" constant="10" id="BvY-fm-Unm"/>
-                                        <constraint firstAttribute="height" constant="340" id="GgZ-xb-TRI"/>
+                                        <constraint firstAttribute="height" constant="360" id="GgZ-xb-TRI"/>
                                         <constraint firstItem="EXa-fN-mri" firstAttribute="leading" secondItem="bxW-gQ-GBT" secondAttribute="leading" constant="10" id="YCa-ej-7Uo"/>
                                         <constraint firstAttribute="bottom" secondItem="EXa-fN-mri" secondAttribute="bottom" constant="20" id="aIj-Zk-qLB"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0AJ-pC-q0K" userLabel="ControllPanel">
-                                    <rect key="frame" x="0.0" y="345" width="374" height="640"/>
+                                    <rect key="frame" x="0.0" y="365" width="374" height="640"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyH-bg-jZz" userLabel="Control">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="640"/>

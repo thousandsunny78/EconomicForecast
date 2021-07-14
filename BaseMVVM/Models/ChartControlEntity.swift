@@ -13,11 +13,13 @@ class ChartControlEntity: Mappable {
     var color: UIColor = UIColor.red
     var content: String = "no title"
     var isOn: Bool = false
+    var index: Int = -1
     
-    required init?(color: UIColor, content: String, isOn: Bool) {
+    required init?(color: UIColor, content: String, isOn: Bool, index: Int) {
         self.color = color
         self.content = content
         self.isOn = isOn
+        self.index = index
     }
     
     required init?(map: Map) {
@@ -28,5 +30,6 @@ class ChartControlEntity: Mappable {
         isOn    <- map["isOn"]
         content <- map["content"]
         color   <- map["color"]
+        index   <- map["index"]
     }
 }
