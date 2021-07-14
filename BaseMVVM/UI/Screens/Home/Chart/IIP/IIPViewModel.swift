@@ -18,13 +18,11 @@ class IIPViewModel: ViewModel, ViewModelType {
     }
     
     struct Output {
-        let cpiDataSubject: BehaviorRelay<[DataEntity]>
+        let iipDataSubject: BehaviorRelay<[DataEntity]>
     }
     
-    /// to callback to view controller
-    let cpiDatasBR = BehaviorRelay<[String]>(value: [])
     /// to store data retrieve from server
-    private let cpiDatas = BehaviorRelay<[DataEntity]>(value: [])
+    private let iipDatas = BehaviorRelay<[DataEntity]>(value: [])
     
     private let navigator: IIPNavigator
 
@@ -36,21 +34,17 @@ class IIPViewModel: ViewModel, ViewModelType {
     func transform(input: Input) -> Output {
         //Output
         let elements = BehaviorRelay<[DataEntity]>(value: [])
-        return Output(cpiDataSubject: cpiDatas)
+        return Output(iipDataSubject: iipDatas)
     }
     
-    func fetchCPIIndexs() {
-        Application.shared.apiProvider.getIIPIndexs().trackActivity(loading).subscribe(onNext: { [weak self] respones in
+    func fetchIIPIndexs() {
+        Application.shared.apiProvider.getIIPIndexs().trackActivity(loading).subscribe(
+            onNext: { [weak self] respones in
             guard let self = self else { return }
             if respones.data.isEmpty {
                 return
             }
-            self.cpiDatas.accept(respones.data)
-            //Save data
-            //UserManager.shared.saveUser(user)
-            //Navigate
-             //self.navigator.pushHome()
-            //self.navigator.pushEconamicFocast()
+            self.iipDatas.accept(respones.data)
             }, onError: {[weak self] error in
                 self?.navigator.showAlert(title: "Common.Error".localized(),
                                           message: "fetchCPIIndexs".localized())

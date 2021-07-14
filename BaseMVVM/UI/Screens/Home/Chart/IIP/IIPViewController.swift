@@ -3,7 +3,7 @@
 //  BaseMVVM
 //
 //  Created by Quan on 13/07/2021.
-//  Copyright (c) 2021 thoson.it. All rights reserved.
+//  Copyright (c) 2021 quanth.it. All rights reserved.
 //
 //  Template by: Quan
 //
@@ -51,10 +51,13 @@ class IIPViewController: ViewController {
     
     override func makeUI() {
         super.makeUI()
-        //drawChart()
-        addChartShadow(cornerRadius: 12.0, shadowRadius: 5.0)
-        //showControllBoard()
+        // quanth: showLoading
+        let Indicator = MBProgressHUD.showAdded(to: self.view, animated: true)
+        Indicator?.labelText = "Đang tải..."
+        Indicator?.isUserInteractionEnabled = false
+        Indicator?.show(true)
         
+        addChartShadow(cornerRadius: 12.0, shadowRadius: 5.0)
     }
     
     override func bindViewModel() {
@@ -65,25 +68,23 @@ class IIPViewController: ViewController {
         let output = viewModel.transform(input: input)
         
         // subcribe postal subject
-        output.cpiDataSubject.subscribe(onNext: {[weak self] cpiData in
+        output.iipDataSubject.subscribe(onNext: {[weak self] cpiData in
             guard let self = self else { return }
-            print("quanth")
             if(!cpiData.isEmpty){
                 self.cpiDatas = cpiData
                 self.drawChart()
-                self.showControllBoard()
+                self.drawControllBoard()
             }
             
         }).disposed(by: disposeBag)
         
-        viewModel.fetchCPIIndexs()
+        viewModel.fetchIIPIndexs()
     }
     
     private var cpiDatas: [DataEntity] = []
     
-    private var currentVC: ViewController?
     // Show list data
-    private func showControllBoard() {
+    private func drawControllBoard() {
         createControlList(areaVC: areaVC1, entity: ChartControlEntity(color: UIColor.red, content: cpiDatas[0].name, isOn: true, index: 0)!)
         createControlList(areaVC: areaVC2, entity: ChartControlEntity(color: UIColor.blue, content: cpiDatas[1].name, isOn: false, index: 1)!)
         createControlList(areaVC: areaVC3, entity: ChartControlEntity(color: UIColor.green, content: cpiDatas[2].name, isOn: false, index: 2)!)
@@ -435,7 +436,7 @@ class IIPViewController: ViewController {
                 case 15:
                     if(controlList[j]){
                         // Ăn uống ngoài gia đình
-                        let dataEntry15 = ChartDataEntry(x: Double(i), y: values15[i], data: months[i] as AnyObject)
+                        let dataEntry15 = ChartDataEntry(x: Double(i), y: cpiDatas[15].value[i], data: months[i] as AnyObject)
                         dataEntries15.append(dataEntry15)
                         
                         let chartDataSet15 = LineChartDataSet(entries: dataEntries15, label: nil)
@@ -451,7 +452,7 @@ class IIPViewController: ViewController {
                 case 16:
                     if(controlList[j]){
                         // Ăn uống ngoài gia đình
-                        let dataEntry16 = ChartDataEntry(x: Double(i), y: values16[i], data: months[i] as AnyObject)
+                        let dataEntry16 = ChartDataEntry(x: Double(i), y: cpiDatas[16].value[i], data: months[i] as AnyObject)
                         dataEntries16.append(dataEntry16)
                         
                         let chartDataSet16 = LineChartDataSet(entries: dataEntries16, label: nil)
@@ -467,7 +468,7 @@ class IIPViewController: ViewController {
                 case 17:
                     if(controlList[j]){
                         // Ăn uống ngoài gia đình
-                        let dataEntry17 = ChartDataEntry(x: Double(i), y: values17[i], data: months[i] as AnyObject)
+                        let dataEntry17 = ChartDataEntry(x: Double(i), y: cpiDatas[17].value[i], data: months[i] as AnyObject)
                         dataEntries17.append(dataEntry17)
                         
                         let chartDataSet17 = LineChartDataSet(entries: dataEntries17, label: nil)
@@ -483,7 +484,7 @@ class IIPViewController: ViewController {
                 case 18:
                     if(controlList[j]){
                         // Ăn uống ngoài gia đình
-                        let dataEntry18 = ChartDataEntry(x: Double(i), y: values18[i], data: months[i] as AnyObject)
+                        let dataEntry18 = ChartDataEntry(x: Double(i), y: cpiDatas[18].value[i], data: months[i] as AnyObject)
                         dataEntries18.append(dataEntry18)
                         
                         let chartDataSet18 = LineChartDataSet(entries: dataEntries18, label: nil)
@@ -499,7 +500,7 @@ class IIPViewController: ViewController {
                 case 19:
                     if(controlList[j]){
                         // Ăn uống ngoài gia đình
-                        let dataEntry19 = ChartDataEntry(x: Double(i), y: values19[i], data: months[i] as AnyObject)
+                        let dataEntry19 = ChartDataEntry(x: Double(i), y: cpiDatas[19].value[i], data: months[i] as AnyObject)
                         dataEntries19.append(dataEntry19)
                         
                         let chartDataSet19 = LineChartDataSet(entries: dataEntries19, label: nil)
@@ -515,7 +516,7 @@ class IIPViewController: ViewController {
                 case 20:
                     if(controlList[j]){
                         // Ăn uống ngoài gia đình
-                        let dataEntry20 = ChartDataEntry(x: Double(i), y: values20[i], data: months[i] as AnyObject)
+                        let dataEntry20 = ChartDataEntry(x: Double(i), y: cpiDatas[20].value[i], data: months[i] as AnyObject)
                         dataEntries20.append(dataEntry20)
                         
                         let chartDataSet20 = LineChartDataSet(entries: dataEntries20, label: nil)
@@ -531,7 +532,7 @@ class IIPViewController: ViewController {
                 case 21:
                     if(controlList[j]){
                         // Ăn uống ngoài gia đình
-                        let dataEntry21 = ChartDataEntry(x: Double(i), y: values21[i], data: months[i] as AnyObject)
+                        let dataEntry21 = ChartDataEntry(x: Double(i), y: cpiDatas[21].value[i], data: months[i] as AnyObject)
                         dataEntries21.append(dataEntry21)
                         
                         let chartDataSet21 = LineChartDataSet(entries: dataEntries21, label: nil)
@@ -547,7 +548,7 @@ class IIPViewController: ViewController {
                 case 22:
                     if(controlList[j]){
                         // Ăn uống ngoài gia đình
-                        let dataEntry22 = ChartDataEntry(x: Double(i), y: values22[i], data: months[i] as AnyObject)
+                        let dataEntry22 = ChartDataEntry(x: Double(i), y: cpiDatas[22].value[i], data: months[i] as AnyObject)
                         dataEntries22.append(dataEntry22)
                         
                         let chartDataSet22 = LineChartDataSet(entries: dataEntries22, label: nil)
@@ -583,6 +584,9 @@ class IIPViewController: ViewController {
         lineChartView.pinchZoomEnabled = false
         lineChartView.doubleTapToZoomEnabled = false
         lineChartView.legend.enabled = false
+        
+        // quanth: vẽ biểu đồ hơn lâu nên chờ vẽ xong mới tắt
+        MBProgressHUD.hide(for: self.view, animated: true)
     }
     
     func updateSwitch(index: Int, value: Bool){
@@ -592,23 +596,4 @@ class IIPViewController: ViewController {
     
     private var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
     private var controlList = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
-    
-    // Hàng hóa và dịch vụ khác
-    private var values15 = [101.84, 101.09, 101.51, 101.38, 100.82, 100.86]
-    // Hàng hóa và dịch vụ khác
-    private var values16 = [101.84, 101.09, 101.51, 101.38, 100.82, 100.86]
-    // Hàng hóa và dịch vụ khác
-    private var values17 = [101.84, 101.09, 101.51, 101.38, 100.82, 100.86]
-    // Hàng hóa và dịch vụ khác
-    private var values18 = [101.84, 101.09, 101.51, 101.38, 100.82, 100.86]
-    // Hàng hóa và dịch vụ khác
-    private var values19 = [101.84, 101.09, 101.51, 101.38, 100.82, 100.86]
-    // Hàng hóa và dịch vụ khác
-    private var values20 = [101.84, 101.09, 101.51, 101.38, 100.82, 100.86]
-    // Hàng hóa và dịch vụ khác
-    private var values21 = [101.84, 101.09, 101.51, 101.38, 100.82, 100.86]
-    // Hàng hóa và dịch vụ khác
-    private var values22 = [101.84, 101.09, 101.51, 101.38, 100.82, 100.86]
-    // Hàng hóa và dịch vụ khác
-    private var values23 = [101.84, 101.09, 101.51, 101.38, 100.82, 100.86]
 }

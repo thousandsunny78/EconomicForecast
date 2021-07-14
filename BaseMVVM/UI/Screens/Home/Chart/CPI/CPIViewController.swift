@@ -13,28 +13,29 @@ import RxSwift
 import RxCocoa
 import Charts
 
-class CPIViewController: ViewController, ChartViewDelegate {
+class CPIViewController: ViewController {
     
     @IBOutlet weak var lineChartView: LineChartView!
-    @IBOutlet weak var controlContent: UIView!
-    @IBOutlet weak var control: UIView!
-    @IBOutlet weak var lineChartContentView: UIView!
-    @IBOutlet weak var aSwitch: UISwitch!
-    @IBOutlet weak var bSwitch: UISwitch!
-    @IBOutlet weak var cSwitch: UISwitch!
-    @IBOutlet weak var eSwitch: UISwitch!
-    @IBOutlet weak var fSwitch: UISwitch!
-    @IBOutlet weak var gSwitch: UISwitch!
-    @IBOutlet weak var hSwitch: UISwitch!
-    @IBOutlet weak var iSwitch: UISwitch!
-    @IBOutlet weak var kSwitch: UISwitch!
-    @IBOutlet weak var lSwitch: UISwitch!
-    @IBOutlet weak var mSwitch: UISwitch!
-    @IBOutlet weak var nSwitch: UISwitch!
-    @IBOutlet weak var oSwitch: UISwitch!
-    @IBOutlet weak var pSwitch: UISwitch!
-    @IBOutlet weak var qSwitch: UISwitch!
+    @IBOutlet weak var chartContentView: UIView!
+    @IBOutlet weak var controlView: UIView!
+    @IBOutlet weak var areaVC1: UIView!
+    @IBOutlet weak var areaVC2: UIView!
+    @IBOutlet weak var areaVC3: UIView!
+    @IBOutlet weak var areaVC4: UIView!
+    @IBOutlet weak var areaVC5: UIView!
+    @IBOutlet weak var areaVC6: UIView!
+    @IBOutlet weak var areaVC7: UIView!
+    @IBOutlet weak var areaVC8: UIView!
+    @IBOutlet weak var areaVC9: UIView!
+    @IBOutlet weak var areaVC10: UIView!
+    @IBOutlet weak var areaVC11: UIView!
+    @IBOutlet weak var areaVC12: UIView!
+    @IBOutlet weak var areaVC13: UIView!
+    @IBOutlet weak var areaVC14: UIView!
+    @IBOutlet weak var areaVC15: UIView!
     // MARK: View lifecycle
+    
+    private var cpiDatas: [DataEntity] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,15 +44,13 @@ class CPIViewController: ViewController, ChartViewDelegate {
     
     override func makeUI() {
         super.makeUI()
-        drawChart()
-        // quanth: thu nhỏ kích thước switch
-        resizeSwitch()
-        // quanth: setup event switch changed
-        configureSwitchChanged()
-        //addCtrlShadow(cornerRadius: 12.0, shadowRadius: 5.0)
-        addChartShadow(cornerRadius: 12.0, shadowRadius: 5.0)
+        // quanth: showLoading
+        let Indicator = MBProgressHUD.showAdded(to: self.view, animated: true)
+        Indicator?.labelText = "Đang tải..."
+        Indicator?.isUserInteractionEnabled = false
+        Indicator?.show(true)
         
-        lineChartView.delegate = self
+        addChartShadow(cornerRadius: 12.0, shadowRadius: 5.0)
     }
     
     override func bindViewModel() {
@@ -60,55 +59,53 @@ class CPIViewController: ViewController, ChartViewDelegate {
         
         let input = CPIViewModel.Input()
         let output = viewModel.transform(input: input)
-    }
-    
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        print("chartValueSelected")
-        print(entry.description)
-//        lineChartView.highlightValue(x: highlight.x, y: highlight.y, dataSetIndex: highlight.dataIndex)
-    }
-    
-    private func configureLineChart() {
         
+        // subcribe postal subject
+        output.cpiDataSubject.subscribe(onNext: {[weak self] cpiData in
+            guard let self = self else { return }
+            if(!cpiData.isEmpty){
+                self.cpiDatas = cpiData
+                self.drawChart()
+                self.drawControllBoard()
+            }
+            
+        }).disposed(by: disposeBag)
+        
+        viewModel.fetchCPIIndexs()
     }
     
-    private var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
-    // Chỉ số giá tiêu dùng chung
-    private var values0 = [104.42, 103.87, 105.04, 104.38, 103.39, 102.92]
-    // Hàng ăn và dịch vụ ăn uống
-    private var values1 = [104.05, 101.11, 100.14, 99.52, 97.92, 97.39]
-    // Lương thực
-    private var values2 = [104.36, 103.24, 102.49, 101.48, 101.24, 101.89]
-    // Thực phẩm
-    private var values3 = [103.83, 100.26, 99.6, 98.79, 96.28, 95.31]
-    // Ăn uống ngoài gia đình
-    private var values4 = [104.42, 102.1, 100.31, 100.3, 100.31, 100.3]
-    // Đồ uống và thuốc lá
-    private var values5 = [102.42, 101.09, 100.69, 100.72, 100.67, 100.64]
-    // May mặc, mũ nón, giáy dép
-    private var values6 = [104.61, 103.67, 103.06, 103.14, 102.93, 103.21]
-    // Nhà ở, điện, nước, chất đốt, VLXD
-    private var values7 = [102.71, 103.89, 104.35, 103.59, 102.51, 102.65]
-    // Thiết bị và đồ dùng gia đình
-    private var values8 = [101.57, 101.33, 101.36, 101.45, 101.38, 101.32]
-    // Thuốc và dịch vụ y tế
-    private var values9 = [123.1, 123.01, 148.15, 148.21, 148.2, 148.18]
-    // Giao thông
-    private var values10 = [105.72, 110.84, 116.11, 112.24, 109.52, 105.56]
-    // Bưu chính viễn thông
-    private var values11 = [99.31, 99.47, 99.59, 99.64, 99.71, 99.87]
-    // Giáo dục
-    private var values12 = [107.9, 107.9, 107.89, 107.89, 107.88, 107.9]
-    // Văn hóa, giải trí và du lịch
-    private var values13 = [99.84, 99.53, 100.29, 100.15, 100.35, 101.22]
-    // Hàng hóa và dịch vụ khác
-    private var values14 = [101.84, 101.09, 101.51, 101.38, 100.82, 100.86]
+    // Show list data
+    private func drawControllBoard() {
+        createControlList(areaVC: areaVC1, entity: ChartControlEntity(color: UIColor.red, content: cpiDatas[0].name, isOn: true, index: 0)!)
+        createControlList(areaVC: areaVC2, entity: ChartControlEntity(color: UIColor.blue, content: cpiDatas[1].name, isOn: false, index: 1)!)
+        createControlList(areaVC: areaVC3, entity: ChartControlEntity(color: UIColor.green, content: cpiDatas[2].name, isOn: false, index: 2)!)
+        createControlList(areaVC: areaVC4, entity: ChartControlEntity(color: UIColor.yellow, content: cpiDatas[3].name, isOn: false, index: 3)!)
+        createControlList(areaVC: areaVC5, entity: ChartControlEntity(color: UIColor.brown, content: cpiDatas[4].name, isOn: false, index: 4)!)
+        createControlList(areaVC: areaVC6, entity: ChartControlEntity(color: UIColor.purple, content: cpiDatas[5].name, isOn: false, index: 5)!)
+        createControlList(areaVC: areaVC7, entity: ChartControlEntity(color: UIColor.orange, content: cpiDatas[6].name, isOn: false, index: 6)!)
+        createControlList(areaVC: areaVC8, entity: ChartControlEntity(color: UIColor.black, content: cpiDatas[7].name, isOn: false, index: 7)!)
+        createControlList(areaVC: areaVC9, entity: ChartControlEntity(color: UIColor.lightGray, content: cpiDatas[8].name, isOn: false, index: 8)!)
+        createControlList(areaVC: areaVC10, entity: ChartControlEntity(color: UIColor.cyan, content: cpiDatas[9].name, isOn: false, index: 9)!)
+        createControlList(areaVC: areaVC11, entity: ChartControlEntity(color: UIColor.red, content: cpiDatas[10].name, isOn: false, index: 10)!)
+        createControlList(areaVC: areaVC12, entity: ChartControlEntity(color: UIColor.green, content: cpiDatas[11].name, isOn: false, index: 11)!)
+        createControlList(areaVC: areaVC13, entity: ChartControlEntity(color: UIColor.purple, content: cpiDatas[12].name, isOn: false, index: 12)!)
+        createControlList(areaVC: areaVC14, entity: ChartControlEntity(color: UIColor.yellow, content: cpiDatas[13].name, isOn: false, index: 13)!)
+        createControlList(areaVC: areaVC15, entity: ChartControlEntity(color: UIColor.systemBlue, content: cpiDatas[14].name, isOn: false, index: 14)!)
+    }
     
-    private var controlList = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
-    
-    private func updateSwitch(index: Int, value: Bool){
-        controlList[index] = value
-        drawChart()
+    private func createControlList(areaVC: UIView!, entity: ChartControlEntity){
+        let controllBoardVC: ViewController = {
+            let vc = CPIItemViewController(nibName: CPIItemViewController.className, bundle: nil)
+            let navigator = CPIItemNavigator(with: vc)
+            let viewModel = CPIItemViewModel(navigator: navigator)
+            vc.viewModel = viewModel
+            vc.entity = entity
+            vc.cpiVC = self
+            return vc
+        }()
+        
+        addChildViewController(controllBoardVC, toContainerView: areaVC)
+        
     }
     
     private func drawChart() {
@@ -127,10 +124,16 @@ class CPIViewController: ViewController, ChartViewDelegate {
         var dataEntries12: [ChartDataEntry] = []
         var dataEntries13: [ChartDataEntry] = []
         var dataEntries14: [ChartDataEntry] = []
-        
+        var dataEntries15: [ChartDataEntry] = []
+        var dataEntries16: [ChartDataEntry] = []
+        var dataEntries17: [ChartDataEntry] = []
+        var dataEntries18: [ChartDataEntry] = []
+        var dataEntries19: [ChartDataEntry] = []
+        var dataEntries20: [ChartDataEntry] = []
+        var dataEntries21: [ChartDataEntry] = []
+        var dataEntries22: [ChartDataEntry] = []
         var dataSets: [LineChartDataSet] = []
-    
-
+        
         // quanth: tạo entries
         for i in 0..<months.count {
             for j in 0..<controlList.count {
@@ -138,7 +141,7 @@ class CPIViewController: ViewController, ChartViewDelegate {
                 case 0:
                     if(controlList[j]){
                         // Chỉ số giá tiêu dùng chung
-                        let dataEntry0 = ChartDataEntry(x: Double(i), y: values0[i], data: months[i] as AnyObject)
+                        let dataEntry0 = ChartDataEntry(x: Double(i), y: cpiDatas[0].value[i], data: months[i] as AnyObject)
                         dataEntries0.append(dataEntry0)
                         
                         let chartDataSet0 = LineChartDataSet(entries: dataEntries0, label: nil)
@@ -147,14 +150,14 @@ class CPIViewController: ViewController, ChartViewDelegate {
                         chartDataSet0.drawValuesEnabled = false
                         chartDataSet0.highlightEnabled = true
                         // set colors and enable value drawing
-                        chartDataSet0.colors = [UIColor.App.ramsey]
-                            chartDataSet0.circleColors = [UIColor.App.ramsey]
+                        chartDataSet0.colors = [UIColor.red]
+                            chartDataSet0.circleColors = [UIColor.red]
                         dataSets.append(chartDataSet0)
                     }
                 case 1:
                     if(controlList[j]){
                         // Hàng ăn và dịch vụ ăn uống
-                        let dataEntry1 = ChartDataEntry(x: Double(i), y: values1[i], data: months[i] as AnyObject)
+                        let dataEntry1 = ChartDataEntry(x: Double(i), y: cpiDatas[1].value[i], data: months[i] as AnyObject)
                         dataEntries1.append(dataEntry1)
                         
                         let chartDataSet1 = LineChartDataSet(entries: dataEntries1, label: nil)
@@ -162,14 +165,15 @@ class CPIViewController: ViewController, ChartViewDelegate {
                         chartDataSet1.circleHoleRadius = 2
                         chartDataSet1.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet1.colors = [UIColor.purple]
-                            chartDataSet1.circleColors = [UIColor.purple]
+                        chartDataSet1.colors = [UIColor.blue]
+                            chartDataSet1.circleColors = [UIColor.blue]
                         dataSets.append(chartDataSet1)
                     }
+                    
                 case 2:
                     if(controlList[j]){
                         // Lương thực
-                        let dataEntry2 = ChartDataEntry(x: Double(i), y: values2[i], data: months[i] as AnyObject)
+                        let dataEntry2 = ChartDataEntry(x: Double(i), y: cpiDatas[2].value[i], data: months[i] as AnyObject)
                         dataEntries2.append(dataEntry2)
                         
                         let chartDataSet2 = LineChartDataSet(entries: dataEntries2, label: nil)
@@ -177,14 +181,15 @@ class CPIViewController: ViewController, ChartViewDelegate {
                         chartDataSet2.circleHoleRadius = 2
                         chartDataSet2.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet2.colors = [UIColor.blue]
-                        chartDataSet2.circleColors = [UIColor.blue]
+                        chartDataSet2.colors = [UIColor.green]
+                        chartDataSet2.circleColors = [UIColor.green]
                         dataSets.append(chartDataSet2)
                     }
+                    
                 case 3:
                     if(controlList[j]){
                         // Thực phẩm
-                        let dataEntry3 = ChartDataEntry(x: Double(i), y: values3[i], data: months[i] as AnyObject)
+                        let dataEntry3 = ChartDataEntry(x: Double(i), y: cpiDatas[3].value[i], data: months[i] as AnyObject)
                         dataEntries3.append(dataEntry3)
                         
                         let chartDataSet3 = LineChartDataSet(entries: dataEntries3, label: nil)
@@ -192,14 +197,15 @@ class CPIViewController: ViewController, ChartViewDelegate {
                         chartDataSet3.circleHoleRadius = 2
                         chartDataSet3.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet3.colors = [UIColor.green]
-                        chartDataSet3.circleColors = [UIColor.green]
+                        chartDataSet3.colors = [UIColor.yellow]
+                        chartDataSet3.circleColors = [UIColor.yellow]
                         dataSets.append(chartDataSet3)
                     }
+                    
                 case 4:
                     if(controlList[j]){
                         // Ăn uống ngoài gia đình
-                        let dataEntry4 = ChartDataEntry(x: Double(i), y: values4[i], data: months[i] as AnyObject)
+                        let dataEntry4 = ChartDataEntry(x: Double(i), y: cpiDatas[4].value[i], data: months[i] as AnyObject)
                         dataEntries4.append(dataEntry4)
                         
                         let chartDataSet4 = LineChartDataSet(entries: dataEntries4, label: nil)
@@ -207,14 +213,15 @@ class CPIViewController: ViewController, ChartViewDelegate {
                         chartDataSet4.circleHoleRadius = 2
                         chartDataSet4.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet4.colors = [UIColor.red]
-                            chartDataSet4.circleColors = [UIColor.red]
+                        chartDataSet4.colors = [UIColor.brown]
+                            chartDataSet4.circleColors = [UIColor.brown]
                         dataSets.append(chartDataSet4)
                     }
+                    
                 case 5:
                     if(controlList[j]){
                         // Đồ uống và thuốc lá
-                        let dataEntry5 = ChartDataEntry(x: Double(i), y: values5[i], data: months[i] as AnyObject)
+                        let dataEntry5 = ChartDataEntry(x: Double(i), y: cpiDatas[5].value[i], data: months[i] as AnyObject)
                         dataEntries5.append(dataEntry5)
                         
                         let chartDataSet5 = LineChartDataSet(entries: dataEntries5, label: nil)
@@ -222,14 +229,15 @@ class CPIViewController: ViewController, ChartViewDelegate {
                         chartDataSet5.circleHoleRadius = 2
                         chartDataSet5.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet5.colors = [UIColor.orange]
-                            chartDataSet5.circleColors = [UIColor.orange]
+                        chartDataSet5.colors = [UIColor.purple]
+                            chartDataSet5.circleColors = [UIColor.purple]
                         dataSets.append(chartDataSet5)
                     }
+                    
                 case 6:
                     if(controlList[j]){
                         // Chỉ số giá tiêu dùng chung
-                        let dataEntry6 = ChartDataEntry(x: Double(i), y: values6[i], data: months[i] as AnyObject)
+                        let dataEntry6 = ChartDataEntry(x: Double(i), y: cpiDatas[6].value[i], data: months[i] as AnyObject)
                         dataEntries6.append(dataEntry6)
                         
                         let chartDataSet6 = LineChartDataSet(entries: dataEntries6, label: nil)
@@ -241,10 +249,11 @@ class CPIViewController: ViewController, ChartViewDelegate {
                             chartDataSet6.circleColors = [UIColor.orange]
                         dataSets.append(chartDataSet6)
                     }
+                    
                 case 7:
                     if(controlList[j]){
                         // Hàng ăn và dịch vụ ăn uống
-                        let dataEntry7 = ChartDataEntry(x: Double(i), y: values7[i], data: months[i] as AnyObject)
+                        let dataEntry7 = ChartDataEntry(x: Double(i), y: cpiDatas[7].value[i], data: months[i] as AnyObject)
                         dataEntries7.append(dataEntry7)
                         
                         let chartDataSet7 = LineChartDataSet(entries: dataEntries7, label: nil)
@@ -252,14 +261,15 @@ class CPIViewController: ViewController, ChartViewDelegate {
                         chartDataSet7.circleHoleRadius = 2
                         chartDataSet7.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet7.colors = [UIColor.blue]
-                            chartDataSet7.circleColors = [UIColor.blue]
+                        chartDataSet7.colors = [UIColor.black]
+                            chartDataSet7.circleColors = [UIColor.black]
                         dataSets.append(chartDataSet7)
                     }
+                    
                 case 8:
                     if(controlList[j]){
                         // Lương thực
-                        let dataEntry8 = ChartDataEntry(x: Double(i), y: values8[i], data: months[i] as AnyObject)
+                        let dataEntry8 = ChartDataEntry(x: Double(i), y: cpiDatas[8].value[i], data: months[i] as AnyObject)
                         dataEntries8.append(dataEntry8)
                         
                         let chartDataSet8 = LineChartDataSet(entries: dataEntries8, label: nil)
@@ -267,14 +277,15 @@ class CPIViewController: ViewController, ChartViewDelegate {
                         chartDataSet8.circleHoleRadius = 2
                         chartDataSet8.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet8.colors = [UIColor.red]
-                            chartDataSet8.circleColors = [UIColor.red]
+                        chartDataSet8.colors = [UIColor.lightGray]
+                            chartDataSet8.circleColors = [UIColor.lightGray]
                         dataSets.append(chartDataSet8)
                     }
+                    
                 case 9:
                     if(controlList[j]){
                         // Thực phẩm
-                        let dataEntry9 = ChartDataEntry(x: Double(i), y: values9[i], data: months[i] as AnyObject)
+                        let dataEntry9 = ChartDataEntry(x: Double(i), y: cpiDatas[9].value[i], data: months[i] as AnyObject)
                         dataEntries9.append(dataEntry9)
                         
                         let chartDataSet9 = LineChartDataSet(entries: dataEntries9, label: nil)
@@ -282,14 +293,15 @@ class CPIViewController: ViewController, ChartViewDelegate {
                         chartDataSet9.circleHoleRadius = 2
                         chartDataSet9.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet9.colors = [UIColor.red]
-                            chartDataSet9.circleColors = [UIColor.red]
+                        chartDataSet9.colors = [UIColor.cyan]
+                            chartDataSet9.circleColors = [UIColor.cyan]
                         dataSets.append(chartDataSet9)
                     }
+                     
                 case 10:
                     if(controlList[j]){
                         // Ăn uống ngoài gia đình
-                        let dataEntry10 = ChartDataEntry(x: Double(i), y: values10[i], data: months[i] as AnyObject)
+                        let dataEntry10 = ChartDataEntry(x: Double(i), y: cpiDatas[10].value[i], data: months[i] as AnyObject)
                         dataEntries10.append(dataEntry10)
                         
                         let chartDataSet10 = LineChartDataSet(entries: dataEntries10, label: nil)
@@ -297,14 +309,15 @@ class CPIViewController: ViewController, ChartViewDelegate {
                         chartDataSet10.circleHoleRadius = 2
                         chartDataSet10.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet10.colors = [UIColor.orange]
-                            chartDataSet10.circleColors = [UIColor.orange]
+                        chartDataSet10.colors = [UIColor.red]
+                            chartDataSet10.circleColors = [UIColor.red]
                         dataSets.append(chartDataSet10)
                     }
+                    
                 case 11:
                     if(controlList[j]){
                         // Hàng ăn và dịch vụ ăn uống
-                        let dataEntry11 = ChartDataEntry(x: Double(i), y: values11[i], data: months[i] as AnyObject)
+                        let dataEntry11 = ChartDataEntry(x: Double(i), y: cpiDatas[11].value[i], data: months[i] as AnyObject)
                         dataEntries11.append(dataEntry11)
                         
                         let chartDataSet11 = LineChartDataSet(entries: dataEntries11, label: nil)
@@ -312,14 +325,15 @@ class CPIViewController: ViewController, ChartViewDelegate {
                         chartDataSet11.circleHoleRadius = 2
                         chartDataSet11.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet11.colors = [UIColor.blue]
-                            chartDataSet11.circleColors = [UIColor.blue]
+                        chartDataSet11.colors = [UIColor.green]
+                            chartDataSet11.circleColors = [UIColor.green]
                         dataSets.append(chartDataSet11)
                     }
+                    
                 case 12:
                     if(controlList[j]){
                         // Lương thực
-                        let dataEntry12 = ChartDataEntry(x: Double(i), y: values12[i], data: months[i] as AnyObject)
+                        let dataEntry12 = ChartDataEntry(x: Double(i), y: cpiDatas[12].value[i], data: months[i] as AnyObject)
                         dataEntries12.append(dataEntry12)
                         
                         let chartDataSet12 = LineChartDataSet(entries: dataEntries12, label: nil)
@@ -331,10 +345,11 @@ class CPIViewController: ViewController, ChartViewDelegate {
                             chartDataSet12.circleColors = [UIColor.purple]
                         dataSets.append(chartDataSet12)
                     }
+                    
                 case 13:
                     if(controlList[j]){
                         // Thực phẩm
-                        let dataEntry13 = ChartDataEntry(x: Double(i), y: values13[i], data: months[i] as AnyObject)
+                        let dataEntry13 = ChartDataEntry(x: Double(i), y: cpiDatas[13].value[i], data: months[i] as AnyObject)
                         dataEntries13.append(dataEntry13)
                         
                         let chartDataSet13 = LineChartDataSet(entries: dataEntries13, label: nil)
@@ -342,14 +357,15 @@ class CPIViewController: ViewController, ChartViewDelegate {
                         chartDataSet13.circleHoleRadius = 2
                         chartDataSet13.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet13.colors = [UIColor.gray]
-                            chartDataSet13.circleColors = [UIColor.gray]
+                        chartDataSet13.colors = [UIColor.yellow]
+                            chartDataSet13.circleColors = [UIColor.yellow]
                         dataSets.append(chartDataSet13)
                     }
+                    
                 case 14:
                     if(controlList[j]){
                         // Ăn uống ngoài gia đình
-                        let dataEntry14 = ChartDataEntry(x: Double(i), y: values14[i], data: months[i] as AnyObject)
+                        let dataEntry14 = ChartDataEntry(x: Double(i), y: cpiDatas[14].value[i], data: months[i] as AnyObject)
                         dataEntries14.append(dataEntry14)
                         
                         let chartDataSet14 = LineChartDataSet(entries: dataEntries14, label: nil)
@@ -357,16 +373,145 @@ class CPIViewController: ViewController, ChartViewDelegate {
                         chartDataSet14.circleHoleRadius = 2
                         chartDataSet14.drawValuesEnabled = false
                         // set colors and enable value drawing
-                        chartDataSet14.colors = [UIColor.red]
-                            chartDataSet14.circleColors = [UIColor.red]
+                        chartDataSet14.colors = [UIColor.systemBlue]
+                            chartDataSet14.circleColors = [UIColor.systemBlue]
                         dataSets.append(chartDataSet14)
                     }
+                    
+                case 15:
+                    if(controlList[j]){
+                        // Ăn uống ngoài gia đình
+                        let dataEntry15 = ChartDataEntry(x: Double(i), y: cpiDatas[15].value[i], data: months[i] as AnyObject)
+                        dataEntries15.append(dataEntry15)
+                        
+                        let chartDataSet15 = LineChartDataSet(entries: dataEntries15, label: nil)
+                        chartDataSet15.circleRadius = 5
+                        chartDataSet15.circleHoleRadius = 2
+                        chartDataSet15.drawValuesEnabled = false
+                        // set colors and enable value drawing
+                        chartDataSet15.colors = [UIColor.orange]
+                            chartDataSet15.circleColors = [UIColor.orange]
+                        dataSets.append(chartDataSet15)
+                    }
+                    
+                case 16:
+                    if(controlList[j]){
+                        // Ăn uống ngoài gia đình
+                        let dataEntry16 = ChartDataEntry(x: Double(i), y: cpiDatas[16].value[i], data: months[i] as AnyObject)
+                        dataEntries16.append(dataEntry16)
+                        
+                        let chartDataSet16 = LineChartDataSet(entries: dataEntries16, label: nil)
+                        chartDataSet16.circleRadius = 5
+                        chartDataSet16.circleHoleRadius = 2
+                        chartDataSet16.drawValuesEnabled = false
+                        // set colors and enable value drawing
+                        chartDataSet16.colors = [UIColor.yellow]
+                            chartDataSet16.circleColors = [UIColor.yellow]
+                        dataSets.append(chartDataSet16)
+                    }
+                    
+                case 17:
+                    if(controlList[j]){
+                        // Ăn uống ngoài gia đình
+                        let dataEntry17 = ChartDataEntry(x: Double(i), y: cpiDatas[17].value[i], data: months[i] as AnyObject)
+                        dataEntries17.append(dataEntry17)
+                        
+                        let chartDataSet17 = LineChartDataSet(entries: dataEntries17, label: nil)
+                        chartDataSet17.circleRadius = 5
+                        chartDataSet17.circleHoleRadius = 2
+                        chartDataSet17.drawValuesEnabled = false
+                        // set colors and enable value drawing
+                        chartDataSet17.colors = [UIColor.red]
+                            chartDataSet17.circleColors = [UIColor.red]
+                        dataSets.append(chartDataSet17)
+                    }
+                    
+                case 18:
+                    if(controlList[j]){
+                        // Ăn uống ngoài gia đình
+                        let dataEntry18 = ChartDataEntry(x: Double(i), y: cpiDatas[18].value[i], data: months[i] as AnyObject)
+                        dataEntries18.append(dataEntry18)
+                        
+                        let chartDataSet18 = LineChartDataSet(entries: dataEntries18, label: nil)
+                        chartDataSet18.circleRadius = 5
+                        chartDataSet18.circleHoleRadius = 2
+                        chartDataSet18.drawValuesEnabled = false
+                        // set colors and enable value drawing
+                        chartDataSet18.colors = [UIColor.gray]
+                            chartDataSet18.circleColors = [UIColor.gray]
+                        dataSets.append(chartDataSet18)
+                    }
+                    
+                case 19:
+                    if(controlList[j]){
+                        // Ăn uống ngoài gia đình
+                        let dataEntry19 = ChartDataEntry(x: Double(i), y: cpiDatas[19].value[i], data: months[i] as AnyObject)
+                        dataEntries19.append(dataEntry19)
+                        
+                        let chartDataSet19 = LineChartDataSet(entries: dataEntries19, label: nil)
+                        chartDataSet19.circleRadius = 5
+                        chartDataSet19.circleHoleRadius = 2
+                        chartDataSet19.drawValuesEnabled = false
+                        // set colors and enable value drawing
+                        chartDataSet19.colors = [UIColor.cyan]
+                            chartDataSet19.circleColors = [UIColor.cyan]
+                        dataSets.append(chartDataSet19)
+                    }
+                    
+                case 20:
+                    if(controlList[j]){
+                        // Ăn uống ngoài gia đình
+                        let dataEntry20 = ChartDataEntry(x: Double(i), y: cpiDatas[20].value[i], data: months[i] as AnyObject)
+                        dataEntries20.append(dataEntry20)
+                        
+                        let chartDataSet20 = LineChartDataSet(entries: dataEntries20, label: nil)
+                        chartDataSet20.circleRadius = 5
+                        chartDataSet20.circleHoleRadius = 2
+                        chartDataSet20.drawValuesEnabled = false
+                        // set colors and enable value drawing
+                        chartDataSet20.colors = [UIColor.orange]
+                            chartDataSet20.circleColors = [UIColor.orange]
+                        dataSets.append(chartDataSet20)
+                    }
+                    
+                case 21:
+                    if(controlList[j]){
+                        // Ăn uống ngoài gia đình
+                        let dataEntry21 = ChartDataEntry(x: Double(i), y: cpiDatas[21].value[i], data: months[i] as AnyObject)
+                        dataEntries21.append(dataEntry21)
+                        
+                        let chartDataSet21 = LineChartDataSet(entries: dataEntries21, label: nil)
+                        chartDataSet21.circleRadius = 5
+                        chartDataSet21.circleHoleRadius = 2
+                        chartDataSet21.drawValuesEnabled = false
+                        // set colors and enable value drawing
+                        chartDataSet21.colors = [UIColor.red]
+                            chartDataSet21.circleColors = [UIColor.red]
+                        dataSets.append(chartDataSet21)
+                    }
+                    
+                case 22:
+                    if(controlList[j]){
+                        // Ăn uống ngoài gia đình
+                        let dataEntry22 = ChartDataEntry(x: Double(i), y: cpiDatas[22].value[i], data: months[i] as AnyObject)
+                        dataEntries22.append(dataEntry22)
+                        
+                        let chartDataSet22 = LineChartDataSet(entries: dataEntries22, label: nil)
+                        chartDataSet22.circleRadius = 5
+                        chartDataSet22.circleHoleRadius = 2
+                        chartDataSet22.drawValuesEnabled = false
+                        // set colors and enable value drawing
+                        chartDataSet22.colors = [UIColor.purple]
+                            chartDataSet22.circleColors = [UIColor.purple]
+                        dataSets.append(chartDataSet22)
+                    }
+                    
                 default:
                     print("Have you done something new?")
                 }
             }
         }
-
+        
         let chartData = LineChartData(dataSets: dataSets)
         lineChartView.data = chartData
 
@@ -384,26 +529,9 @@ class CPIViewController: ViewController, ChartViewDelegate {
         lineChartView.pinchZoomEnabled = false
         lineChartView.doubleTapToZoomEnabled = false
         lineChartView.legend.enabled = false
-    }
-    
-    // quanth: round and shadow uiview
-    private func addCtrlShadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
-        control.layer.cornerRadius = cornerRadius
-        control.layer.masksToBounds = true
-
-        controlContent.layer.cornerRadius = cornerRadius
-        controlContent.layer.masksToBounds = false
-
-        controlContent.layer.shadowColor = UIColor.black.cgColor
-        controlContent.layer.shadowOffset = CGSize(width: 1, height: 1)
-        controlContent.layer.shadowOpacity = 0.2
-        controlContent.layer.shadowRadius = shadowRadius
-
-        control.frame = control.bounds
-        control.autoresizingMask = [
-            .flexibleWidth, .flexibleHeight
-        ]
         
+        // quanth: vẽ biểu đồ hơn lâu nên chờ vẽ xong mới tắt
+        MBProgressHUD.hide(for: self.view, animated: true)
     }
     
     // quanth: round and shadow uiview
@@ -411,13 +539,13 @@ class CPIViewController: ViewController, ChartViewDelegate {
         lineChartView.layer.cornerRadius = cornerRadius
         lineChartView.layer.masksToBounds = true
 
-        lineChartContentView.layer.cornerRadius = cornerRadius
-        lineChartContentView.layer.masksToBounds = false
+        chartContentView.layer.cornerRadius = cornerRadius
+        chartContentView.layer.masksToBounds = false
 
-        lineChartContentView.layer.shadowColor = UIColor.black.cgColor
-        lineChartContentView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        lineChartContentView.layer.shadowOpacity = 0.2
-        lineChartContentView.layer.shadowRadius = shadowRadius
+        chartContentView.layer.shadowColor = UIColor.black.cgColor
+        chartContentView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        chartContentView.layer.shadowOpacity = 0.2
+        chartContentView.layer.shadowRadius = shadowRadius
 
         lineChartView.frame = lineChartView.bounds
         lineChartView.autoresizingMask = [
@@ -426,146 +554,13 @@ class CPIViewController: ViewController, ChartViewDelegate {
         
     }
     
-    private func resizeSwitch(){
-        aSwitch.set(width: 30, height: 20)
-        bSwitch.set(width: 30, height: 20)
-        cSwitch.set(width: 30, height: 20)
-        eSwitch.set(width: 30, height: 20)
-        fSwitch.set(width: 30, height: 20)
-        
-        gSwitch.set(width: 30, height: 20)
-        hSwitch.set(width: 30, height: 20)
-        iSwitch.set(width: 30, height: 20)
-        kSwitch.set(width: 30, height: 20)
-        lSwitch.set(width: 30, height: 20)
-        
-        mSwitch.set(width: 30, height: 20)
-        nSwitch.set(width: 30, height: 20)
-        oSwitch.set(width: 30, height: 20)
-        pSwitch.set(width: 30, height: 20)
-        qSwitch.set(width: 30, height: 20)
+    func updateSwitch(index: Int, value: Bool){
+        controlList[index] = value
+        drawChart()
     }
     
+    private var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+    private var controlList = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
-    private func configureSwitchChanged(){
-        aSwitch.isOn = true
-        aSwitch.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(aSwitch.rx.value)
-            .subscribe(onNext : { bool in
-                self.updateSwitch(index: 0, value: bool)
-        }).disposed(by: disposeBag)
-        
-        bSwitch.isOn = false
-        bSwitch.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(bSwitch.rx.value)
-            .subscribe(onNext : { bool in
-                self.updateSwitch(index: 1, value: bool)
-        }).disposed(by: disposeBag)
-        
-        cSwitch.isOn = false
-        cSwitch.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(cSwitch.rx.value)
-            .subscribe(onNext : { bool in
-                self.updateSwitch(index: 2, value: bool)
-        }).disposed(by: disposeBag)
-        
-        eSwitch.isOn = false
-        eSwitch.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(eSwitch.rx.value)
-            .subscribe(onNext : { bool in
-                self.updateSwitch(index: 3, value: bool)
-        }).disposed(by: disposeBag)
-        
-        fSwitch.isOn = false
-        fSwitch.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(fSwitch.rx.value)
-            .subscribe(onNext : { bool in
-                self.updateSwitch(index: 4, value: bool)
-        }).disposed(by: disposeBag)
-        
-        gSwitch.isOn = false
-        gSwitch.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(gSwitch.rx.value)
-            .subscribe(onNext : { bool in
-                self.updateSwitch(index: 5, value: bool)
-        }).disposed(by: disposeBag)
-        
-        hSwitch.isOn = false
-        hSwitch.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(hSwitch.rx.value)
-            .subscribe(onNext : { bool in
-                self.updateSwitch(index: 6, value: bool)
-        }).disposed(by: disposeBag)
-        
-        iSwitch.isOn = false
-        iSwitch.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(iSwitch.rx.value)
-            .subscribe(onNext : { bool in
-                self.updateSwitch(index: 7, value: bool)
-        }).disposed(by: disposeBag)
-        
-        kSwitch.isOn = false
-        kSwitch.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(kSwitch.rx.value)
-            .subscribe(onNext : { bool in
-                self.updateSwitch(index: 8, value: bool)
-        }).disposed(by: disposeBag)
-        
-        lSwitch.isOn = false
-        lSwitch.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(lSwitch.rx.value)
-            .subscribe(onNext : { bool in
-                self.updateSwitch(index: 9, value: bool)
-        }).disposed(by: disposeBag)
-        
-        mSwitch.isOn = false
-        mSwitch.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(mSwitch.rx.value)
-            .subscribe(onNext : { bool in
-                self.updateSwitch(index: 10, value: bool)
-        }).disposed(by: disposeBag)
-        
-        nSwitch.isOn = false
-        nSwitch.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(nSwitch.rx.value)
-            .subscribe(onNext : { bool in
-                self.updateSwitch(index: 11, value: bool)
-        }).disposed(by: disposeBag)
-        
-        oSwitch.isOn = false
-        oSwitch.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(oSwitch.rx.value)
-            .subscribe(onNext : { bool in
-                self.updateSwitch(index: 12, value: bool)
-        }).disposed(by: disposeBag)
-        
-        pSwitch.isOn = false
-        pSwitch.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(pSwitch.rx.value)
-            .subscribe(onNext : { bool in
-                self.updateSwitch(index: 13, value: bool)
-        }).disposed(by: disposeBag)
-        
-        qSwitch.isOn = false
-        qSwitch.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(qSwitch.rx.value)
-            .subscribe(onNext : { bool in
-                self.updateSwitch(index: 14, value: bool)
-        }).disposed(by: disposeBag)
-    }
+    
 }

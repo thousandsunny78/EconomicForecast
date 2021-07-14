@@ -1,8 +1,8 @@
 //
-//  ControllColectionViewModel.swift
+//  CPIItemViewModel.swift
 //  BaseMVVM
 //
-//  Created by Quan on 13/07/2021.
+//  Created by Quan on 14/07/2021.
 //  Copyright (c) 2021 thoson.it. All rights reserved.
 //
 //  Template by: Quan
@@ -12,7 +12,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class ControllColectionViewModel: ViewModel, ViewModelType {
+class CPIItemViewModel: ViewModel, ViewModelType {
     struct Input {
         
     }
@@ -21,9 +21,9 @@ class ControllColectionViewModel: ViewModel, ViewModelType {
         
     }
     
-    private let navigator: ControllColectionNavigator
+    private let navigator: CPIItemNavigator
 
-    init(navigator: ControllColectionNavigator) {
+    init(navigator: CPIItemNavigator) {
         self.navigator = navigator
         super.init(navigator: navigator)
     }
