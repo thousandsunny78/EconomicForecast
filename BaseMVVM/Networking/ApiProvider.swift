@@ -72,6 +72,18 @@ struct ApiProvider {
             .mapObject(ArrayResponse<Chart>.self)
     }
     
+    func getCPIIndexs() -> Single<CPIEntity> {
+        return provider.rx.request(.getCPIIndexs)
+            .filterSuccessfulStatusCodes()
+            .mapObject(CPIEntity.self)
+    }
+    
+    func getIIPIndexs() -> Single<CPIEntity> {
+        return provider.rx.request(.getIIPIndexs)
+            .filterSuccessfulStatusCodes()
+            .mapObject(CPIEntity.self)
+    }
+    
     // quanth: thiết lập thời gian timeout cho request api là 3s
     // https://stackoverflow.com/questions/40116000/how-can-i-set-timeout-for-requests-using-moya-pod
     class CustomAlamofireSession: Alamofire.Session {

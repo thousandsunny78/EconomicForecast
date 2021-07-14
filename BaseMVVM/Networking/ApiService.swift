@@ -26,6 +26,8 @@ enum ApiService {
     case downloadAvatar(contentPath: String)
     // MARK: - 1. khai báo function
     case getCharts(page: Int, pageSize: Int)
+    case getCPIIndexs
+    case getIIPIndexs
 }
 
 extension ApiService: TargetType {
@@ -40,6 +42,10 @@ extension ApiService: TargetType {
         // 2. khai báo api url nếu ko dùng base url
         case .getCharts:
             return URL(string: "https://quanth.getCharts")!
+        case .getCPIIndexs:
+            return URL(string: "https://forecast-appp.herokuapp.com")!
+        case .getIIPIndexs:
+            return URL(string: "https://forecast-appp.herokuapp.com")!
         default:
             return URL(string: Configs.Network.apiBaseUrl)!
         }
@@ -62,7 +68,11 @@ extension ApiService: TargetType {
         // 3. khai báo subfix của api link
         case .getCharts( _, _):
             return "/api/charts"
-        }
+        case .getCPIIndexs:
+            return "/get_cpi"
+        case .getIIPIndexs:
+            return "/get_iip"
+        } 
     }
     
     var method: Moya.Method {

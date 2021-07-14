@@ -27,7 +27,6 @@
                 <outlet property="areaVC21" destination="LeN-kV-2qq" id="Qqq-IY-PKj"/>
                 <outlet property="areaVC22" destination="KZC-h5-DbJ" id="J59-vK-EFt"/>
                 <outlet property="areaVC23" destination="cIY-F0-Lma" id="KmM-Mo-krG"/>
-                <outlet property="areaVC24" destination="Ugv-qf-mQa" id="Wir-hc-6nZ"/>
                 <outlet property="areaVC3" destination="7IB-MF-mwe" id="KkF-Gu-rLu"/>
                 <outlet property="areaVC4" destination="W8W-lh-sSz" id="lsy-V2-aWK"/>
                 <outlet property="areaVC5" destination="0DX-QZ-vB7" id="k0X-iO-1e5"/>
@@ -324,26 +323,17 @@
                                                             <rect key="frame" x="124.5" y="0.0" width="125" height="80"/>
                                                             <color key="backgroundColor" systemColor="systemTealColor"/>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ugv-qf-mQa" userLabel="View3">
-                                                            <rect key="frame" x="249.5" y="0.0" width="124.5" height="80"/>
-                                                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                                        </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" name="navigationColor"/>
+                                                    <color key="backgroundColor" red="0.8980392157" green="0.94117647059999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="cIY-F0-Lma" secondAttribute="bottom" id="0vA-G1-FdF"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Ugv-qf-mQa" secondAttribute="trailing" id="4xZ-D5-HNA"/>
                                                         <constraint firstItem="KZC-h5-DbJ" firstAttribute="width" secondItem="Mvr-Hy-Heg" secondAttribute="width" multiplier="1:3" id="Fzz-yc-FZe"/>
                                                         <constraint firstAttribute="height" constant="80" id="I5c-40-SvE"/>
-                                                        <constraint firstItem="Ugv-qf-mQa" firstAttribute="top" secondItem="Mvr-Hy-Heg" secondAttribute="top" id="ICr-Cy-OLl"/>
-                                                        <constraint firstItem="Ugv-qf-mQa" firstAttribute="width" secondItem="Mvr-Hy-Heg" secondAttribute="width" multiplier="1:3" id="KEx-dB-pdK"/>
-                                                        <constraint firstItem="Ugv-qf-mQa" firstAttribute="top" secondItem="Mvr-Hy-Heg" secondAttribute="top" id="LPD-wa-mA5"/>
+                                                        <constraint firstItem="cIY-F0-Lma" firstAttribute="leading" secondItem="KZC-h5-DbJ" secondAttribute="trailing" id="KUq-hH-j4f"/>
                                                         <constraint firstItem="cIY-F0-Lma" firstAttribute="width" secondItem="Mvr-Hy-Heg" secondAttribute="width" multiplier="1:3" id="Ng2-ps-cRj"/>
                                                         <constraint firstAttribute="bottom" secondItem="KZC-h5-DbJ" secondAttribute="bottom" id="bag-iT-Ghi"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Ugv-qf-mQa" secondAttribute="bottom" id="dQm-SV-TQV"/>
                                                         <constraint firstItem="cIY-F0-Lma" firstAttribute="top" secondItem="Mvr-Hy-Heg" secondAttribute="top" id="ffU-gz-GW8"/>
                                                         <constraint firstItem="KZC-h5-DbJ" firstAttribute="top" secondItem="Mvr-Hy-Heg" secondAttribute="top" id="gtC-pE-n7t"/>
-                                                        <constraint firstItem="Ugv-qf-mQa" firstAttribute="leading" secondItem="cIY-F0-Lma" secondAttribute="trailing" id="sEh-0e-9BX"/>
                                                         <constraint firstItem="KZC-h5-DbJ" firstAttribute="leading" secondItem="Mvr-Hy-Heg" secondAttribute="leading" id="wkv-Xg-uSM"/>
                                                     </constraints>
                                                 </view>
