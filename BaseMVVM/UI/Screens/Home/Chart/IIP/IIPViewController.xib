@@ -49,30 +49,54 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eII-fD-u95">
-                            <rect key="frame" x="20" y="10" width="374" height="1005"/>
+                            <rect key="frame" x="20" y="10" width="374" height="1055.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxW-gQ-GBT" userLabel="ChartContent">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="360"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chỉ số sản xuất công nghiệp IIP" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFX-Y9-n4z">
+                                            <rect key="frame" x="0.0" y="10" width="364" height="11"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXa-fN-mri" customClass="LineChartView" customModule="Charts">
-                                            <rect key="frame" x="10" y="10" width="354" height="330"/>
+                                            <rect key="frame" x="10" y="31" width="354" height="284.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chỉ số IIP của Tỉnh Đồng Nai sáu tháng đầu năm 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReW-ze-EjR">
+                                            <rect key="frame" x="10" y="335.5" width="354" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="EXa-fN-mri" firstAttribute="top" secondItem="bxW-gQ-GBT" secondAttribute="top" constant="10" id="3Tq-k2-Z3A"/>
+                                        <constraint firstAttribute="trailing" secondItem="oFX-Y9-n4z" secondAttribute="trailing" constant="10" id="8UQ-Xx-k7w"/>
                                         <constraint firstAttribute="trailing" secondItem="EXa-fN-mri" secondAttribute="trailing" constant="10" id="BvY-fm-Unm"/>
                                         <constraint firstAttribute="height" constant="360" id="GgZ-xb-TRI"/>
+                                        <constraint firstItem="ReW-ze-EjR" firstAttribute="top" secondItem="EXa-fN-mri" secondAttribute="bottom" constant="20" id="PXN-SY-GJI"/>
+                                        <constraint firstAttribute="trailing" secondItem="ReW-ze-EjR" secondAttribute="trailing" constant="10" id="RoI-oa-dwE"/>
+                                        <constraint firstItem="oFX-Y9-n4z" firstAttribute="top" secondItem="bxW-gQ-GBT" secondAttribute="top" constant="10" id="SQ6-8q-Bib"/>
+                                        <constraint firstItem="oFX-Y9-n4z" firstAttribute="leading" secondItem="bxW-gQ-GBT" secondAttribute="leading" id="TYC-4p-Z2n"/>
                                         <constraint firstItem="EXa-fN-mri" firstAttribute="leading" secondItem="bxW-gQ-GBT" secondAttribute="leading" constant="10" id="YCa-ej-7Uo"/>
-                                        <constraint firstAttribute="bottom" secondItem="EXa-fN-mri" secondAttribute="bottom" constant="20" id="aIj-Zk-qLB"/>
+                                        <constraint firstItem="EXa-fN-mri" firstAttribute="top" secondItem="oFX-Y9-n4z" secondAttribute="bottom" constant="10" id="hvV-kx-MkF"/>
+                                        <constraint firstItem="ReW-ze-EjR" firstAttribute="leading" secondItem="bxW-gQ-GBT" secondAttribute="leading" constant="10" id="ndA-Zs-8Hu"/>
+                                        <constraint firstAttribute="bottom" secondItem="ReW-ze-EjR" secondAttribute="bottom" constant="10" id="rBZ-Uf-yIq"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0AJ-pC-q0K" userLabel="ControllPanel">
-                                    <rect key="frame" x="0.0" y="365" width="374" height="640"/>
+                                    <rect key="frame" x="0.0" y="365" width="374" height="690.5"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Các chỉ tiêu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1t-8g-sgf">
+                                            <rect key="frame" x="10" y="10" width="364" height="30.5"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyH-bg-jZz" userLabel="Control">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="640"/>
+                                            <rect key="frame" x="0.0" y="50.5" width="374" height="640"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W3y-GC-g7T" userLabel="GroupView1">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
@@ -368,12 +392,15 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    <color key="backgroundColor" red="0.8980392157" green="0.94117647059999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="tyH-bg-jZz" firstAttribute="leading" secondItem="0AJ-pC-q0K" secondAttribute="leading" id="2xY-oo-GN3"/>
                                         <constraint firstAttribute="trailing" secondItem="tyH-bg-jZz" secondAttribute="trailing" id="60u-1g-gw3"/>
+                                        <constraint firstItem="tyH-bg-jZz" firstAttribute="top" secondItem="b1t-8g-sgf" secondAttribute="bottom" constant="10" id="EKm-hI-YCA"/>
+                                        <constraint firstItem="b1t-8g-sgf" firstAttribute="leading" secondItem="0AJ-pC-q0K" secondAttribute="leading" constant="10" id="EiS-Wy-1PN"/>
+                                        <constraint firstAttribute="trailing" secondItem="b1t-8g-sgf" secondAttribute="trailing" id="Kjr-HK-c0n"/>
+                                        <constraint firstItem="b1t-8g-sgf" firstAttribute="top" secondItem="0AJ-pC-q0K" secondAttribute="top" constant="10" id="kt5-Sw-Wv4"/>
                                         <constraint firstAttribute="bottom" secondItem="tyH-bg-jZz" secondAttribute="bottom" id="u9E-xA-AdR"/>
-                                        <constraint firstItem="tyH-bg-jZz" firstAttribute="top" secondItem="0AJ-pC-q0K" secondAttribute="top" id="whp-cB-ph0"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -408,9 +435,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

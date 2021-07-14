@@ -374,136 +374,8 @@ class CPIViewController: ViewController {
                         chartDataSet14.drawValuesEnabled = false
                         // set colors and enable value drawing
                         chartDataSet14.colors = [UIColor.systemBlue]
-                            chartDataSet14.circleColors = [UIColor.systemBlue]
+                        chartDataSet14.circleColors = [UIColor.systemBlue]
                         dataSets.append(chartDataSet14)
-                    }
-                    
-                case 15:
-                    if(controlList[j]){
-                        // Ăn uống ngoài gia đình
-                        let dataEntry15 = ChartDataEntry(x: Double(i), y: cpiDatas[15].value[i], data: months[i] as AnyObject)
-                        dataEntries15.append(dataEntry15)
-                        
-                        let chartDataSet15 = LineChartDataSet(entries: dataEntries15, label: nil)
-                        chartDataSet15.circleRadius = 5
-                        chartDataSet15.circleHoleRadius = 2
-                        chartDataSet15.drawValuesEnabled = false
-                        // set colors and enable value drawing
-                        chartDataSet15.colors = [UIColor.orange]
-                            chartDataSet15.circleColors = [UIColor.orange]
-                        dataSets.append(chartDataSet15)
-                    }
-                    
-                case 16:
-                    if(controlList[j]){
-                        // Ăn uống ngoài gia đình
-                        let dataEntry16 = ChartDataEntry(x: Double(i), y: cpiDatas[16].value[i], data: months[i] as AnyObject)
-                        dataEntries16.append(dataEntry16)
-                        
-                        let chartDataSet16 = LineChartDataSet(entries: dataEntries16, label: nil)
-                        chartDataSet16.circleRadius = 5
-                        chartDataSet16.circleHoleRadius = 2
-                        chartDataSet16.drawValuesEnabled = false
-                        // set colors and enable value drawing
-                        chartDataSet16.colors = [UIColor.yellow]
-                            chartDataSet16.circleColors = [UIColor.yellow]
-                        dataSets.append(chartDataSet16)
-                    }
-                    
-                case 17:
-                    if(controlList[j]){
-                        // Ăn uống ngoài gia đình
-                        let dataEntry17 = ChartDataEntry(x: Double(i), y: cpiDatas[17].value[i], data: months[i] as AnyObject)
-                        dataEntries17.append(dataEntry17)
-                        
-                        let chartDataSet17 = LineChartDataSet(entries: dataEntries17, label: nil)
-                        chartDataSet17.circleRadius = 5
-                        chartDataSet17.circleHoleRadius = 2
-                        chartDataSet17.drawValuesEnabled = false
-                        // set colors and enable value drawing
-                        chartDataSet17.colors = [UIColor.red]
-                            chartDataSet17.circleColors = [UIColor.red]
-                        dataSets.append(chartDataSet17)
-                    }
-                    
-                case 18:
-                    if(controlList[j]){
-                        // Ăn uống ngoài gia đình
-                        let dataEntry18 = ChartDataEntry(x: Double(i), y: cpiDatas[18].value[i], data: months[i] as AnyObject)
-                        dataEntries18.append(dataEntry18)
-                        
-                        let chartDataSet18 = LineChartDataSet(entries: dataEntries18, label: nil)
-                        chartDataSet18.circleRadius = 5
-                        chartDataSet18.circleHoleRadius = 2
-                        chartDataSet18.drawValuesEnabled = false
-                        // set colors and enable value drawing
-                        chartDataSet18.colors = [UIColor.gray]
-                            chartDataSet18.circleColors = [UIColor.gray]
-                        dataSets.append(chartDataSet18)
-                    }
-                    
-                case 19:
-                    if(controlList[j]){
-                        // Ăn uống ngoài gia đình
-                        let dataEntry19 = ChartDataEntry(x: Double(i), y: cpiDatas[19].value[i], data: months[i] as AnyObject)
-                        dataEntries19.append(dataEntry19)
-                        
-                        let chartDataSet19 = LineChartDataSet(entries: dataEntries19, label: nil)
-                        chartDataSet19.circleRadius = 5
-                        chartDataSet19.circleHoleRadius = 2
-                        chartDataSet19.drawValuesEnabled = false
-                        // set colors and enable value drawing
-                        chartDataSet19.colors = [UIColor.cyan]
-                            chartDataSet19.circleColors = [UIColor.cyan]
-                        dataSets.append(chartDataSet19)
-                    }
-                    
-                case 20:
-                    if(controlList[j]){
-                        // Ăn uống ngoài gia đình
-                        let dataEntry20 = ChartDataEntry(x: Double(i), y: cpiDatas[20].value[i], data: months[i] as AnyObject)
-                        dataEntries20.append(dataEntry20)
-                        
-                        let chartDataSet20 = LineChartDataSet(entries: dataEntries20, label: nil)
-                        chartDataSet20.circleRadius = 5
-                        chartDataSet20.circleHoleRadius = 2
-                        chartDataSet20.drawValuesEnabled = false
-                        // set colors and enable value drawing
-                        chartDataSet20.colors = [UIColor.orange]
-                            chartDataSet20.circleColors = [UIColor.orange]
-                        dataSets.append(chartDataSet20)
-                    }
-                    
-                case 21:
-                    if(controlList[j]){
-                        // Ăn uống ngoài gia đình
-                        let dataEntry21 = ChartDataEntry(x: Double(i), y: cpiDatas[21].value[i], data: months[i] as AnyObject)
-                        dataEntries21.append(dataEntry21)
-                        
-                        let chartDataSet21 = LineChartDataSet(entries: dataEntries21, label: nil)
-                        chartDataSet21.circleRadius = 5
-                        chartDataSet21.circleHoleRadius = 2
-                        chartDataSet21.drawValuesEnabled = false
-                        // set colors and enable value drawing
-                        chartDataSet21.colors = [UIColor.red]
-                            chartDataSet21.circleColors = [UIColor.red]
-                        dataSets.append(chartDataSet21)
-                    }
-                    
-                case 22:
-                    if(controlList[j]){
-                        // Ăn uống ngoài gia đình
-                        let dataEntry22 = ChartDataEntry(x: Double(i), y: cpiDatas[22].value[i], data: months[i] as AnyObject)
-                        dataEntries22.append(dataEntry22)
-                        
-                        let chartDataSet22 = LineChartDataSet(entries: dataEntries22, label: nil)
-                        chartDataSet22.circleRadius = 5
-                        chartDataSet22.circleHoleRadius = 2
-                        chartDataSet22.drawValuesEnabled = false
-                        // set colors and enable value drawing
-                        chartDataSet22.colors = [UIColor.purple]
-                            chartDataSet22.circleColors = [UIColor.purple]
-                        dataSets.append(chartDataSet22)
                     }
                     
                 default:
@@ -529,6 +401,11 @@ class CPIViewController: ViewController {
         lineChartView.pinchZoomEnabled = false
         lineChartView.doubleTapToZoomEnabled = false
         lineChartView.legend.enabled = false
+        
+        // quanth: bấm vào point sẽ hiện thông tin
+        let marker = BalloonMarker()
+        marker.chartView = lineChartView
+        lineChartView.marker = marker
         
         // quanth: vẽ biểu đồ hơn lâu nên chờ vẽ xong mới tắt
         MBProgressHUD.hide(for: self.view, animated: true)

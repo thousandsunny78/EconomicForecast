@@ -585,6 +585,11 @@ class IIPViewController: ViewController {
         lineChartView.doubleTapToZoomEnabled = false
         lineChartView.legend.enabled = false
         
+        // quanth: bấm vào point sẽ hiện thông tin
+        let marker = BalloonMarker()
+        marker.chartView = lineChartView
+        lineChartView.marker = marker
+        
         // quanth: vẽ biểu đồ hơn lâu nên chờ vẽ xong mới tắt
         MBProgressHUD.hide(for: self.view, animated: true)
     }

@@ -41,30 +41,54 @@
                     <rect key="frame" x="0.0" y="0.0" width="524" height="912"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-7t-WdD">
-                            <rect key="frame" x="20" y="10" width="484" height="765"/>
+                            <rect key="frame" x="20" y="10" width="484" height="805.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7V-bC-fZ8" userLabel="ChartContent">
                                     <rect key="frame" x="0.0" y="0.0" width="484" height="360"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chỉ số giá tiêu dùng CPI" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOH-sN-ldF">
+                                            <rect key="frame" x="0.0" y="10" width="474" height="11"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNX-qM-Llu" customClass="LineChartView" customModule="Charts">
-                                            <rect key="frame" x="10" y="10" width="464" height="330"/>
+                                            <rect key="frame" x="10" y="31" width="464" height="284.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chỉ số CPI của Tỉnh Đồng Nai sáu tháng đầu năm 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEt-SK-C53">
+                                            <rect key="frame" x="0.0" y="335.5" width="484" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="fNX-qM-Llu" secondAttribute="trailing" constant="10" id="60b-6q-4X6"/>
+                                        <constraint firstItem="iOH-sN-ldF" firstAttribute="top" secondItem="F7V-bC-fZ8" secondAttribute="top" constant="10" id="73D-dl-Zhc"/>
                                         <constraint firstItem="fNX-qM-Llu" firstAttribute="leading" secondItem="F7V-bC-fZ8" secondAttribute="leading" constant="10" id="7B4-Uc-5C6"/>
-                                        <constraint firstItem="fNX-qM-Llu" firstAttribute="top" secondItem="F7V-bC-fZ8" secondAttribute="top" constant="10" id="WLE-hy-Lxv"/>
-                                        <constraint firstAttribute="bottom" secondItem="fNX-qM-Llu" secondAttribute="bottom" constant="20" id="aBQ-6a-Gte"/>
+                                        <constraint firstItem="iOH-sN-ldF" firstAttribute="leading" secondItem="F7V-bC-fZ8" secondAttribute="leading" id="DoU-PU-3Dm"/>
+                                        <constraint firstAttribute="trailing" secondItem="sEt-SK-C53" secondAttribute="trailing" id="GSR-0C-BtE"/>
+                                        <constraint firstItem="sEt-SK-C53" firstAttribute="top" secondItem="fNX-qM-Llu" secondAttribute="bottom" constant="20" id="MER-MP-3bM"/>
+                                        <constraint firstItem="sEt-SK-C53" firstAttribute="leading" secondItem="F7V-bC-fZ8" secondAttribute="leading" id="Twe-Y2-nb6"/>
+                                        <constraint firstAttribute="trailing" secondItem="iOH-sN-ldF" secondAttribute="trailing" constant="10" id="V8z-F3-gRb"/>
+                                        <constraint firstAttribute="bottom" secondItem="sEt-SK-C53" secondAttribute="bottom" constant="10" id="Wfc-Sx-Vex"/>
                                         <constraint firstAttribute="height" constant="360" id="c8U-y0-IK8"/>
+                                        <constraint firstItem="fNX-qM-Llu" firstAttribute="top" secondItem="iOH-sN-ldF" secondAttribute="bottom" constant="10" id="hFf-Hf-OX7"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x6U-2L-dA0" userLabel="ControllPanel">
-                                    <rect key="frame" x="0.0" y="365" width="484" height="400"/>
+                                    <rect key="frame" x="0.0" y="365" width="484" height="440.5"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Các chỉ tiêu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTB-xL-wbz">
+                                            <rect key="frame" x="10" y="10" width="464" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dG-BL-cUj" userLabel="Control">
-                                            <rect key="frame" x="0.0" y="0.0" width="484" height="400"/>
+                                            <rect key="frame" x="0.0" y="40.5" width="484" height="400"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jjR-wI-AxP" userLabel="GroupView1">
                                                     <rect key="frame" x="0.0" y="0.0" width="484" height="80"/>
@@ -258,10 +282,13 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    <color key="backgroundColor" red="0.8980392157" green="0.94117647059999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstItem="3dG-BL-cUj" firstAttribute="top" secondItem="x6U-2L-dA0" secondAttribute="top" id="HeO-CA-0Ur"/>
+                                        <constraint firstItem="3dG-BL-cUj" firstAttribute="top" secondItem="qTB-xL-wbz" secondAttribute="bottom" constant="10" id="Gc6-aI-f7b"/>
+                                        <constraint firstAttribute="trailing" secondItem="qTB-xL-wbz" secondAttribute="trailing" constant="10" id="HAa-Xb-PMk"/>
                                         <constraint firstAttribute="trailing" secondItem="3dG-BL-cUj" secondAttribute="trailing" id="R2w-ta-i69"/>
+                                        <constraint firstItem="qTB-xL-wbz" firstAttribute="top" secondItem="x6U-2L-dA0" secondAttribute="top" constant="10" id="SCb-8d-pND"/>
+                                        <constraint firstItem="qTB-xL-wbz" firstAttribute="leading" secondItem="x6U-2L-dA0" secondAttribute="leading" constant="10" id="Zr2-bM-Sgf"/>
                                         <constraint firstItem="3dG-BL-cUj" firstAttribute="leading" secondItem="x6U-2L-dA0" secondAttribute="leading" id="fBJ-HN-nW1"/>
                                         <constraint firstAttribute="bottom" secondItem="3dG-BL-cUj" secondAttribute="bottom" id="fxt-js-plQ"/>
                                     </constraints>
@@ -297,9 +324,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
