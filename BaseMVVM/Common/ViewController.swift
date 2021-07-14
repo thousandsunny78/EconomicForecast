@@ -72,7 +72,7 @@ extension ViewController {
         var titleAttribute: NSMutableAttributedString?
         if let title = title {
             let attributes = [
-                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .heavy),
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .heavy),
                 NSAttributedString.Key.foregroundColor: UIColor.white
             ]
             titleAttribute = NSMutableAttributedString(string: title,
@@ -91,7 +91,7 @@ extension ViewController {
         }
         
         label.backgroundColor = .clear
-        label.numberOfLines = 2
+        label.numberOfLines = 1
         label.textAlignment = .center
         //Muiltible title
         if let titleAttribute = titleAttribute, let subTitleAttribute = subTitleAttribute {

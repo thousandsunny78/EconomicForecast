@@ -46,17 +46,27 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7V-bC-fZ8" userLabel="ChartContent">
                                     <rect key="frame" x="0.0" y="0.0" width="484" height="360"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chỉ số giá tiêu dùng CPI" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOH-sN-ldF">
-                                            <rect key="frame" x="0.0" y="10" width="474" height="11"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8z-cV-oso" userLabel="Forecast">
+                                            <rect key="frame" x="380.5" y="0.0" width="103.5" height="315.5"/>
+                                            <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="0.099313900170736755" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chỉ số giá tiêu dùng CPI" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOH-sN-ldF">
+                                            <rect key="frame" x="10" y="10" width="464" height="11"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dự báo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lei-xW-Fpf">
+                                            <rect key="frame" x="380.5" y="10" width="103.5" height="11"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="9"/>
+                                            <color key="textColor" red="0.070588235289999995" green="0.46666666670000001" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNX-qM-Llu" customClass="LineChartView" customModule="Charts">
                                             <rect key="frame" x="10" y="31" width="464" height="284.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chỉ số CPI của Tỉnh Đồng Nai sáu tháng đầu năm 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEt-SK-C53">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chỉ số CPI của Tỉnh Đồng Nai  năm 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEt-SK-C53">
                                             <rect key="frame" x="0.0" y="335.5" width="484" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -65,17 +75,26 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="sEt-SK-C53" firstAttribute="top" secondItem="s8z-cV-oso" secondAttribute="bottom" constant="20" id="4WL-kW-ElV"/>
                                         <constraint firstAttribute="trailing" secondItem="fNX-qM-Llu" secondAttribute="trailing" constant="10" id="60b-6q-4X6"/>
                                         <constraint firstItem="iOH-sN-ldF" firstAttribute="top" secondItem="F7V-bC-fZ8" secondAttribute="top" constant="10" id="73D-dl-Zhc"/>
                                         <constraint firstItem="fNX-qM-Llu" firstAttribute="leading" secondItem="F7V-bC-fZ8" secondAttribute="leading" constant="10" id="7B4-Uc-5C6"/>
-                                        <constraint firstItem="iOH-sN-ldF" firstAttribute="leading" secondItem="F7V-bC-fZ8" secondAttribute="leading" id="DoU-PU-3Dm"/>
+                                        <constraint firstItem="iOH-sN-ldF" firstAttribute="leading" secondItem="F7V-bC-fZ8" secondAttribute="leading" constant="10" id="DoU-PU-3Dm"/>
                                         <constraint firstAttribute="trailing" secondItem="sEt-SK-C53" secondAttribute="trailing" id="GSR-0C-BtE"/>
+                                        <constraint firstItem="lei-xW-Fpf" firstAttribute="top" secondItem="iOH-sN-ldF" secondAttribute="top" id="IsC-Bw-Kve"/>
                                         <constraint firstItem="sEt-SK-C53" firstAttribute="top" secondItem="fNX-qM-Llu" secondAttribute="bottom" constant="20" id="MER-MP-3bM"/>
+                                        <constraint firstItem="s8z-cV-oso" firstAttribute="width" secondItem="F7V-bC-fZ8" secondAttribute="width" multiplier="3:14" id="Npu-8Q-eAP"/>
+                                        <constraint firstItem="sEt-SK-C53" firstAttribute="top" secondItem="s8z-cV-oso" secondAttribute="bottom" constant="20" id="PBh-f9-WHW"/>
                                         <constraint firstItem="sEt-SK-C53" firstAttribute="leading" secondItem="F7V-bC-fZ8" secondAttribute="leading" id="Twe-Y2-nb6"/>
                                         <constraint firstAttribute="trailing" secondItem="iOH-sN-ldF" secondAttribute="trailing" constant="10" id="V8z-F3-gRb"/>
+                                        <constraint firstItem="lei-xW-Fpf" firstAttribute="leading" secondItem="s8z-cV-oso" secondAttribute="leading" id="VdE-py-n1k"/>
                                         <constraint firstAttribute="bottom" secondItem="sEt-SK-C53" secondAttribute="bottom" constant="10" id="Wfc-Sx-Vex"/>
+                                        <constraint firstAttribute="trailing" secondItem="s8z-cV-oso" secondAttribute="trailing" id="Zhp-g1-ySX"/>
+                                        <constraint firstItem="lei-xW-Fpf" firstAttribute="trailing" secondItem="s8z-cV-oso" secondAttribute="trailing" id="aLp-AK-Cca"/>
+                                        <constraint firstAttribute="trailing" secondItem="s8z-cV-oso" secondAttribute="trailing" id="awO-95-clq"/>
                                         <constraint firstAttribute="height" constant="360" id="c8U-y0-IK8"/>
                                         <constraint firstItem="fNX-qM-Llu" firstAttribute="top" secondItem="iOH-sN-ldF" secondAttribute="bottom" constant="10" id="hFf-Hf-OX7"/>
+                                        <constraint firstItem="s8z-cV-oso" firstAttribute="top" secondItem="F7V-bC-fZ8" secondAttribute="top" id="veK-dR-jD1"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x6U-2L-dA0" userLabel="ControllPanel">

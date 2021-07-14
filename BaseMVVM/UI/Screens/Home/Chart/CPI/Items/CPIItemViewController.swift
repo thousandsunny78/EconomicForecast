@@ -55,6 +55,7 @@ class CPIItemViewController: ViewController {
     
     private func resizeSwitch(){
         switchVC.set(width: 30, height: 20)
+        switchVC.onTintColor = UIColor.App.tabSelected
     }
     
     private func configureSwitchChanged(){

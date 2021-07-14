@@ -124,14 +124,7 @@ class CPIViewController: ViewController {
         var dataEntries12: [ChartDataEntry] = []
         var dataEntries13: [ChartDataEntry] = []
         var dataEntries14: [ChartDataEntry] = []
-        var dataEntries15: [ChartDataEntry] = []
-        var dataEntries16: [ChartDataEntry] = []
-        var dataEntries17: [ChartDataEntry] = []
-        var dataEntries18: [ChartDataEntry] = []
-        var dataEntries19: [ChartDataEntry] = []
-        var dataEntries20: [ChartDataEntry] = []
-        var dataEntries21: [ChartDataEntry] = []
-        var dataEntries22: [ChartDataEntry] = []
+    
         var dataSets: [LineChartDataSet] = []
         
         // quanth: tạo entries
@@ -151,7 +144,11 @@ class CPIViewController: ViewController {
                         chartDataSet0.highlightEnabled = true
                         // set colors and enable value drawing
                         chartDataSet0.colors = [UIColor.red]
-                            chartDataSet0.circleColors = [UIColor.red]
+                        chartDataSet0.circleColors = [UIColor.red]
+                        
+                        /// quanth: nếu muốn có đường nét đứt thì dùng cái này
+                        // chartDataSet0.lineWidth = 3
+                        // chartDataSet0.lineDashLengths = [5]
                         dataSets.append(chartDataSet0)
                     }
                 case 1:
@@ -436,7 +433,7 @@ class CPIViewController: ViewController {
         drawChart()
     }
     
-    private var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+    private var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     private var controlList = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
     

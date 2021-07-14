@@ -206,7 +206,7 @@ class IIPViewController: ViewController {
                         chartDataSet0.highlightEnabled = true
                         // set colors and enable value drawing
                         chartDataSet0.colors = [UIColor.red]
-                            chartDataSet0.circleColors = [UIColor.red]
+                            chartDataSet0.circleColors = [UIColor.red] 
                         dataSets.append(chartDataSet0)
                     }
                 case 1:
@@ -599,6 +599,6 @@ class IIPViewController: ViewController {
         drawChart()
     }
     
-    private var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+    private var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     private var controlList = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
 }

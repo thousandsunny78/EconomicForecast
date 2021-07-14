@@ -18,7 +18,7 @@ class BalloonMarker: MarkerView {
     private let drawAttributes: [NSAttributedString.Key: Any] = [
         .font: UIFont.boldSystemFont(ofSize: 15),
         .foregroundColor: UIColor.App.tabSelected,
-        .backgroundColor: UIColor.white
+        .backgroundColor: UIColor(white: 1, alpha: 0)
     ]
 
     override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
