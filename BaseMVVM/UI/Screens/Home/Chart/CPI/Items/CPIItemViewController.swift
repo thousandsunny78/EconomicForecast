@@ -20,7 +20,7 @@ class CPIItemViewController: ViewController {
     @IBOutlet weak var lineVC: UIView!
     
     var entity: ChartControlEntity = ChartControlEntity(color: UIColor.red, content: "no title", isOn: false, index: -1)!
-    var cpiVC: CPIViewController? = nil
+    var cpiVC: CPIBottomSheetViewController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,7 @@ class CPIItemViewController: ViewController {
     
     private func resizeSwitch(){
         switchVC.set(width: 30, height: 20)
-        switchVC.onTintColor = UIColor.App.tabSelected
+        switchVC.onTintColor = UIColor.systemBlue
     }
     
     private func configureSwitchChanged(){

@@ -56,18 +56,25 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vG-ug-SK8" userLabel="Forecast">
                                             <rect key="frame" x="294" y="0.0" width="80" height="315.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dự báo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwt-9T-RFA">
+                                                    <rect key="frame" x="10" y="10" width="60" height="11"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="9"/>
+                                                    <color key="textColor" red="0.070588235289999995" green="0.46666666670000001" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="0.099313900169999997" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="pwt-9T-RFA" firstAttribute="top" secondItem="1vG-ug-SK8" secondAttribute="top" constant="10" id="FIs-mj-gcj"/>
+                                                <constraint firstAttribute="trailing" secondItem="pwt-9T-RFA" secondAttribute="trailing" constant="10" id="nI2-0U-bE2"/>
+                                                <constraint firstItem="pwt-9T-RFA" firstAttribute="leading" secondItem="1vG-ug-SK8" secondAttribute="leading" constant="10" id="obP-i0-ay5"/>
+                                            </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chỉ số sản xuất công nghiệp IIP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFX-Y9-n4z">
                                             <rect key="frame" x="10" y="10" width="354" height="11"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dự báo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwt-9T-RFA">
-                                            <rect key="frame" x="294" y="10" width="80" height="11"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="9"/>
-                                            <color key="textColor" red="0.070588235289999995" green="0.46666666670000001" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXa-fN-mri" customClass="LineChartView" customModule="Charts">
@@ -94,10 +101,7 @@
                                         <constraint firstItem="oFX-Y9-n4z" firstAttribute="top" secondItem="bxW-gQ-GBT" secondAttribute="top" constant="10" id="SQ6-8q-Bib"/>
                                         <constraint firstItem="oFX-Y9-n4z" firstAttribute="leading" secondItem="bxW-gQ-GBT" secondAttribute="leading" constant="10" id="TYC-4p-Z2n"/>
                                         <constraint firstItem="EXa-fN-mri" firstAttribute="leading" secondItem="bxW-gQ-GBT" secondAttribute="leading" constant="10" id="YCa-ej-7Uo"/>
-                                        <constraint firstItem="pwt-9T-RFA" firstAttribute="top" secondItem="oFX-Y9-n4z" secondAttribute="top" id="cDV-Qg-fKb"/>
-                                        <constraint firstItem="pwt-9T-RFA" firstAttribute="leading" secondItem="1vG-ug-SK8" secondAttribute="leading" id="ftm-ny-TXj"/>
                                         <constraint firstItem="EXa-fN-mri" firstAttribute="top" secondItem="oFX-Y9-n4z" secondAttribute="bottom" constant="10" id="hvV-kx-MkF"/>
-                                        <constraint firstItem="pwt-9T-RFA" firstAttribute="trailing" secondItem="1vG-ug-SK8" secondAttribute="trailing" id="iCH-Dc-R3p"/>
                                         <constraint firstItem="1vG-ug-SK8" firstAttribute="top" secondItem="bxW-gQ-GBT" secondAttribute="top" id="jyg-Qk-Epn"/>
                                         <constraint firstItem="ReW-ze-EjR" firstAttribute="leading" secondItem="bxW-gQ-GBT" secondAttribute="leading" constant="10" id="ndA-Zs-8Hu"/>
                                         <constraint firstAttribute="bottom" secondItem="ReW-ze-EjR" secondAttribute="bottom" constant="10" id="rBZ-Uf-yIq"/>

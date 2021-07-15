@@ -12,27 +12,27 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Charts
+import FittedSheets
 
 class CPIViewController: ViewController {
     
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var chartContentView: UIView!
-    @IBOutlet weak var controlView: UIView!
-    @IBOutlet weak var areaVC1: UIView!
-    @IBOutlet weak var areaVC2: UIView!
-    @IBOutlet weak var areaVC3: UIView!
-    @IBOutlet weak var areaVC4: UIView!
-    @IBOutlet weak var areaVC5: UIView!
-    @IBOutlet weak var areaVC6: UIView!
-    @IBOutlet weak var areaVC7: UIView!
-    @IBOutlet weak var areaVC8: UIView!
-    @IBOutlet weak var areaVC9: UIView!
-    @IBOutlet weak var areaVC10: UIView!
-    @IBOutlet weak var areaVC11: UIView!
-    @IBOutlet weak var areaVC12: UIView!
-    @IBOutlet weak var areaVC13: UIView!
-    @IBOutlet weak var areaVC14: UIView!
-    @IBOutlet weak var areaVC15: UIView!
+    @IBOutlet weak var month1Button: UIButton!
+    @IBOutlet weak var month3Button: UIButton!
+    @IBOutlet weak var month6Button: UIButton!
+    @IBOutlet weak var year1Button: UIButton!
+    @IBOutlet weak var offButton: UIButton!
+    @IBOutlet weak var month1VC: UIView!
+    @IBOutlet weak var month3VC: UIView!
+    @IBOutlet weak var month6VC: UIView!
+    @IBOutlet weak var year1VC: UIView!
+    @IBOutlet weak var offVC: UIView!
+    @IBOutlet weak var forecastVC: UIView!
+    @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var barChartContentView: UIView!
+    @IBOutlet weak var barChartView: BarChartView!
+    
     // MARK: View lifecycle
     
     private var cpiDatas: [DataEntity] = []
@@ -44,6 +44,7 @@ class CPIViewController: ViewController {
     
     override func makeUI() {
         super.makeUI()
+        forecastVC.isHidden = true
         // quanth: showLoading
         let Indicator = MBProgressHUD.showAdded(to: self.view, animated: true)
         Indicator?.labelText = "Đang tải..."
@@ -51,6 +52,10 @@ class CPIViewController: ViewController {
         Indicator?.show(true)
         
         addChartShadow(cornerRadius: 12.0, shadowRadius: 5.0)
+        addBarChartShadow(cornerRadius: 12.0, shadowRadius: 5.0)
+        
+        createMenu()
+        createSettingButton()
     }
     
     override func bindViewModel() {
@@ -66,46 +71,12 @@ class CPIViewController: ViewController {
             if(!cpiData.isEmpty){
                 self.cpiDatas = cpiData
                 self.drawChart()
-                self.drawControllBoard()
+                self.drawBarChart()
             }
             
         }).disposed(by: disposeBag)
         
         viewModel.fetchCPIIndexs()
-    }
-    
-    // Show list data
-    private func drawControllBoard() {
-        createControlList(areaVC: areaVC1, entity: ChartControlEntity(color: UIColor.red, content: cpiDatas[0].name, isOn: true, index: 0)!)
-        createControlList(areaVC: areaVC2, entity: ChartControlEntity(color: UIColor.blue, content: cpiDatas[1].name, isOn: false, index: 1)!)
-        createControlList(areaVC: areaVC3, entity: ChartControlEntity(color: UIColor.green, content: cpiDatas[2].name, isOn: false, index: 2)!)
-        createControlList(areaVC: areaVC4, entity: ChartControlEntity(color: UIColor.yellow, content: cpiDatas[3].name, isOn: false, index: 3)!)
-        createControlList(areaVC: areaVC5, entity: ChartControlEntity(color: UIColor.brown, content: cpiDatas[4].name, isOn: false, index: 4)!)
-        createControlList(areaVC: areaVC6, entity: ChartControlEntity(color: UIColor.purple, content: cpiDatas[5].name, isOn: false, index: 5)!)
-        createControlList(areaVC: areaVC7, entity: ChartControlEntity(color: UIColor.orange, content: cpiDatas[6].name, isOn: false, index: 6)!)
-        createControlList(areaVC: areaVC8, entity: ChartControlEntity(color: UIColor.black, content: cpiDatas[7].name, isOn: false, index: 7)!)
-        createControlList(areaVC: areaVC9, entity: ChartControlEntity(color: UIColor.lightGray, content: cpiDatas[8].name, isOn: false, index: 8)!)
-        createControlList(areaVC: areaVC10, entity: ChartControlEntity(color: UIColor.cyan, content: cpiDatas[9].name, isOn: false, index: 9)!)
-        createControlList(areaVC: areaVC11, entity: ChartControlEntity(color: UIColor.red, content: cpiDatas[10].name, isOn: false, index: 10)!)
-        createControlList(areaVC: areaVC12, entity: ChartControlEntity(color: UIColor.green, content: cpiDatas[11].name, isOn: false, index: 11)!)
-        createControlList(areaVC: areaVC13, entity: ChartControlEntity(color: UIColor.purple, content: cpiDatas[12].name, isOn: false, index: 12)!)
-        createControlList(areaVC: areaVC14, entity: ChartControlEntity(color: UIColor.yellow, content: cpiDatas[13].name, isOn: false, index: 13)!)
-        createControlList(areaVC: areaVC15, entity: ChartControlEntity(color: UIColor.systemBlue, content: cpiDatas[14].name, isOn: false, index: 14)!)
-    }
-    
-    private func createControlList(areaVC: UIView!, entity: ChartControlEntity){
-        let controllBoardVC: ViewController = {
-            let vc = CPIItemViewController(nibName: CPIItemViewController.className, bundle: nil)
-            let navigator = CPIItemNavigator(with: vc)
-            let viewModel = CPIItemViewModel(navigator: navigator)
-            vc.viewModel = viewModel
-            vc.entity = entity
-            vc.cpiVC = self
-            return vc
-        }()
-        
-        addChildViewController(controllBoardVC, toContainerView: areaVC)
-        
     }
     
     private func drawChart() {
@@ -428,13 +399,186 @@ class CPIViewController: ViewController {
         
     }
     
+    // quanth: round and shadow uiview
+    private func addBarChartShadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
+        barChartView.layer.cornerRadius = cornerRadius
+        barChartView.layer.masksToBounds = true
+
+        barChartContentView.layer.cornerRadius = cornerRadius
+        barChartContentView.layer.masksToBounds = false
+
+        barChartContentView.layer.shadowColor = UIColor.black.cgColor
+        barChartContentView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        barChartContentView.layer.shadowOpacity = 0.2
+        barChartContentView.layer.shadowRadius = shadowRadius
+
+        barChartView.frame = barChartView.bounds
+        barChartView.autoresizingMask = [
+            .flexibleWidth, .flexibleHeight
+        ]
+        
+    }
+    
     func updateSwitch(index: Int, value: Bool){
         controlList[index] = value
         drawChart()
     }
     
-    private var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    private var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"]
     private var controlList = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+    private var options = [false, false, false, false, true]
     
+    private func selectItem(index: Int){
+        switch index {
+        case 0:
+            month1VC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            month1Button.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            month1Button.backgroundColor = UIColor.App.tabSelected.withAlphaComponent(0.25)
+            month1Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
+            options[0] = true
+        case 1:
+            month3VC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            month3Button.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            month3Button.backgroundColor = UIColor.App.tabSelected.withAlphaComponent(0.25)
+            month3Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
+            options[1] = true
+        case 2:
+            month6VC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            month6Button.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            month6Button.backgroundColor = UIColor.App.tabSelected.withAlphaComponent(0.25)
+            month6Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
+            options[2] = true
+        case 3:
+            year1VC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            year1Button.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            year1Button.backgroundColor = UIColor.App.tabSelected.withAlphaComponent(0.25)
+            year1Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
+            options[3] = true
+        case 4:
+            offVC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            offButton.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            offButton.backgroundColor = UIColor.App.tabSelected.withAlphaComponent(0.25)
+            offButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+            options[4] = true
+        default:
+            print("do nothing")
+        }
+    }
     
+    private func unSelectItem(index: Int){
+        switch index {
+        case 0:
+            month1VC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            month1Button.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            month1Button.backgroundColor = UIColor.white
+            month1Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
+            options[0] = false
+        case 1:
+            month3VC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            month3Button.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            month3Button.backgroundColor = UIColor.white
+            month3Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
+            options[1] = false
+        case 2:
+            month6VC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            month6Button.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            month6Button.backgroundColor = UIColor.white
+            month6Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
+            options[2] = false
+        case 3:
+            year1VC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            year1Button.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            year1Button.backgroundColor = UIColor.white
+            year1Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
+            options[3] = false
+        case 4:
+            offVC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            offButton.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
+            offButton.backgroundColor = UIColor.white
+            offButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+            options[4] = false
+        default:
+            print("do nothing")
+        }
+    }
+    
+    private func setupMenuTapEvent(contentVC: UIView, button: UIButton, index: Int){
+        //Setup tabs
+        button.rx.tap.bind { [weak self] () in
+            if(self?.options[index] == false){
+                for i in 0...self!.options.count{
+                    if(i != index){
+                        self?.unSelectItem(index: i)
+                        self?.options[index] = false
+                    }
+                }
+                self?.selectItem(index: index)
+                self?.options[index] = true
+                
+                if (index == 1) {
+                    self!.forecastVC.isHidden = false
+                    self?.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                    self!.drawChart()
+                } else {
+                    self!.forecastVC.isHidden = true
+                    self?.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"]
+                    self!.drawChart()
+                }
+            }
+        }.disposed(by: disposeBag)
+    }
+    
+    private func createMenu(){
+        unSelectItem(index: 0)
+        unSelectItem(index: 1)
+        unSelectItem(index: 2)
+        unSelectItem(index: 3)
+        selectItem(index: 4)
+
+        setupMenuTapEvent(contentVC: month1VC, button: month1Button, index: 0)
+        setupMenuTapEvent(contentVC: month3VC, button: month3Button, index: 1)
+        setupMenuTapEvent(contentVC: month6VC, button: month6Button, index: 2)
+        setupMenuTapEvent(contentVC: year1VC, button: year1Button, index: 3)
+        setupMenuTapEvent(contentVC: offVC, button: offButton, index: 4)
+    }
+    
+    private func createSettingButton(){
+        settingButton.rx.tap.bind { [weak self] () in
+            let controller = CPIBottomSheetViewController()
+            controller.cpiVC = self
+            controller.cpiDatas = self?.cpiDatas ?? []
+            controller.controlList = self?.controlList ?? []
+            let sheetController = SheetViewController(controller: controller)
+            sheetController.topCornersRadius = 12
+            sheetController.setSizes([.fixed(420), .fullScreen])
+            self?.present(sheetController, animated: true, completion: nil)
+        }.disposed(by: disposeBag)
+    }
+    
+    private func drawBarChart(){
+        barChartView.animate(yAxisDuration: 2.0)
+        barChartView.pinchZoomEnabled = false
+        barChartView.drawBarShadowEnabled = false
+        barChartView.drawBordersEnabled = false
+        barChartView.doubleTapToZoomEnabled = false
+        barChartView.drawGridBackgroundEnabled = true
+        barChartView.chartDescription?.text = "Bar Chart View"
+        
+        setChart(dataPoints: players, values: goals.map { Double($0) })
+    }
+    
+    func setChart(dataPoints: [String], values: [Double]) {
+      barChartView.noDataText = "You need to provide data for the chart."
+      
+      var dataEntries: [BarChartDataEntry] = []
+      
+      for i in 0..<dataPoints.count {
+        let dataEntry = BarChartDataEntry(x: Double(i), y: Double(values[i]))
+        dataEntries.append(dataEntry)
+      }
+      
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Bar Chart View")
+      let chartData = BarChartData(dataSet: chartDataSet)
+      barChartView.data = chartData
+    }
 }

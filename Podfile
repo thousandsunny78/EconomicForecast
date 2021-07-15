@@ -34,6 +34,8 @@ def shared_pods
   pod 'PromiseKit', '~> 6.0'
   # Charts
   pod 'Charts', '~> 3.6.0'
+  # Bottom Sheet
+  pod 'FittedSheets'
 end
 
 target 'BaseMVVM' do

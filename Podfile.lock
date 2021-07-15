@@ -4,6 +4,7 @@ PODS:
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
+  - FittedSheets (1.4.6)
   - IQKeyboardManagerSwift (6.5.6)
   - KeychainAccess (4.2.2)
   - Kingfisher (6.2.1)
@@ -40,6 +41,7 @@ PODS:
 DEPENDENCIES:
   - ActionSheetPicker-3.0 (from `https://github.com/linhtinh11/ActionSheetPicker-3.0.git`)
   - Charts (~> 3.6.0)
+  - FittedSheets
   - IQKeyboardManagerSwift
   - KeychainAccess
   - Kingfisher
@@ -56,6 +58,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Charts
+    - FittedSheets
     - IQKeyboardManagerSwift
     - KeychainAccess
     - Kingfisher
@@ -84,6 +87,7 @@ SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  FittedSheets: 7f37fee2567d15dcde391f31eccbffb660ddebf0
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   Kingfisher: e71c6fac2aebb1262888cabc2cb13d313362a48f
@@ -99,6 +103,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
 
-PODFILE CHECKSUM: c8f0ba4e5e34a46fefc39447c07a8cfcd2ea66fc
+PODFILE CHECKSUM: 1fdb93403034f7302913f7dba3ea02a0fa3211f3
 
 COCOAPODS: 1.10.1

@@ -175,3 +175,27 @@ extension UISwitch {
         transform = CGAffineTransform(scaleX: widthRatio, y: heightRatio)
     }
 }
+
+extension UIButton {
+
+    func roundButton(borderWidth: CGFloat, color: UIColor) {
+
+        let dSize: CGFloat = min(self.frame.height, self.frame.width)
+        self.clipsToBounds = true
+        self.layer.cornerRadius = dSize/2.0
+        self.layer.borderWidth = borderWidth
+        self.layer.borderColor = color.cgColor
+    }
+}
+
+extension UIView {
+
+    func roundView(borderWidth: CGFloat, color: UIColor) {
+
+        let dSize: CGFloat = min(self.frame.height, self.frame.width)
+        self.clipsToBounds = true
+        self.layer.cornerRadius = dSize/2.0
+        self.layer.borderWidth = borderWidth
+        self.layer.borderColor = color.cgColor
+    }
+}
