@@ -31,6 +31,13 @@ class CPIForecastViewController: ViewController {
     @IBOutlet weak var forecastVC: UIView!
     @IBOutlet weak var settingButton: UIButton!
     
+    struct ForecastConstants {
+        static let ITEM_PER_SCREEN: Int = 6
+        static let FORECAST_1_ITEM: Int = 1
+        static let FORECAST_2_ITEM: Int = 2
+        static let FORECAST_3_ITEM: Int = 3
+    }
+    
     var cpiDatas: [CPIDataEntity] = []
     var timelines = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"]
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"]
@@ -45,7 +52,7 @@ class CPIForecastViewController: ViewController {
         super.makeUI()
         forecastVC.isHidden = true
         /// quanth gọi trước khi vẽ biểu đồ
-        drawTimeLine(size: 6)
+        drawTimeLine(size: ForecastConstants.ITEM_PER_SCREEN)
         if(!months.isEmpty){
             drawChart()
         }
@@ -63,20 +70,35 @@ class CPIForecastViewController: ViewController {
     
     private func drawChart() {
         var dataEntries0: [ChartDataEntry] = []
+        var dataEntries0A: [ChartDataEntry] = []
         var dataEntries1: [ChartDataEntry] = []
+        var dataEntries1A: [ChartDataEntry] = []
         var dataEntries2: [ChartDataEntry] = []
+        var dataEntries2A: [ChartDataEntry] = []
         var dataEntries3: [ChartDataEntry] = []
+        var dataEntries3A: [ChartDataEntry] = []
         var dataEntries4: [ChartDataEntry] = []
+        var dataEntries4A: [ChartDataEntry] = []
         var dataEntries5: [ChartDataEntry] = []
+        var dataEntries5A: [ChartDataEntry] = []
         var dataEntries6: [ChartDataEntry] = []
+        var dataEntries6A: [ChartDataEntry] = []
         var dataEntries7: [ChartDataEntry] = []
+        var dataEntries7A: [ChartDataEntry] = []
         var dataEntries8: [ChartDataEntry] = []
+        var dataEntries8A: [ChartDataEntry] = []
         var dataEntries9: [ChartDataEntry] = []
+        var dataEntries9A: [ChartDataEntry] = []
         var dataEntries10: [ChartDataEntry] = []
+        var dataEntries10A: [ChartDataEntry] = []
         var dataEntries11: [ChartDataEntry] = []
+        var dataEntries11A: [ChartDataEntry] = []
         var dataEntries12: [ChartDataEntry] = []
+        var dataEntries12A: [ChartDataEntry] = []
         var dataEntries13: [ChartDataEntry] = []
+        var dataEntries13A: [ChartDataEntry] = []
         var dataEntries14: [ChartDataEntry] = []
+        var dataEntries14A: [ChartDataEntry] = []
     
         var dataSets: [LineChartDataSet] = []
         
@@ -87,37 +109,63 @@ class CPIForecastViewController: ViewController {
                 case 0:
                     if(controlList[j]){
                         // Chỉ số giá tiêu dùng chung
-                        let dataEntry0 = ChartDataEntry(x: Double(i), y: cpiDatas[0].value[i], data: months[i] as AnyObject)
-                        dataEntries0.append(dataEntry0)
+                        if i < ForecastConstants.ITEM_PER_SCREEN + 1 {
+                            let dataEntry0 = ChartDataEntry(x: Double(i), y: cpiDatas[0].value[i], data: months[i] as AnyObject)
+                            dataEntries0.append(dataEntry0)
+                            
+                            let chartDataSet0 = LineChartDataSet(entries: dataEntries0, label: nil)
+                            chartDataSet0.circleRadius = 5
+                            chartDataSet0.circleHoleRadius = 2
+                            chartDataSet0.drawValuesEnabled = false
+                            chartDataSet0.highlightEnabled = true
+                            // set colors and enable value drawing
+                            chartDataSet0.colors = [UIColor.red]
+                            chartDataSet0.circleColors = [UIColor.red]
+                            
+                            /// quanth: nếu muốn có đường nét đứt thì dùng cái này
+                            // chartDataSet0.lineWidth = 3
+                            // chartDataSet0.lineDashLengths = [5]
+                            dataSets.append(chartDataSet0)
+                        }
                         
-                        let chartDataSet0 = LineChartDataSet(entries: dataEntries0, label: nil)
-                        chartDataSet0.circleRadius = 5
-                        chartDataSet0.circleHoleRadius = 2
-                        chartDataSet0.drawValuesEnabled = false
-                        chartDataSet0.highlightEnabled = true
-                        // set colors and enable value drawing
-                        chartDataSet0.colors = [UIColor.red]
-                        chartDataSet0.circleColors = [UIColor.red]
+                        if i > ForecastConstants.ITEM_PER_SCREEN - 1 {
+                            // Chỉ số giá tiêu dùng chung
+                            let dataEntry0A = ChartDataEntry(x: Double(i), y: cpiDatas[0].value[i], data: months[i] as AnyObject)
+                            dataEntries0A.append(dataEntry0A)
+                            
+                            let chartDataSet0A = LineChartDataSet(entries: dataEntries0A, label: nil)
+                            chartDataSet0A.circleRadius = 5
+                            chartDataSet0A.circleHoleRadius = 2
+                            chartDataSet0A.drawValuesEnabled = false
+                            chartDataSet0A.highlightEnabled = true
+                            // set colors and enable value drawing
+                            chartDataSet0A.colors = [UIColor.red]
+                            chartDataSet0A.circleColors = [UIColor.red]
+                            
+                            /// quanth: nếu muốn có đường nét đứt thì dùng cái này
+                            chartDataSet0A.lineWidth = 3
+                            chartDataSet0A.lineDashLengths = [5]
+                            dataSets.append(chartDataSet0A)
+                        }
                         
-                        /// quanth: nếu muốn có đường nét đứt thì dùng cái này
-                        // chartDataSet0.lineWidth = 3
-                        // chartDataSet0.lineDashLengths = [5]
-                        dataSets.append(chartDataSet0)
                     }
                 case 1:
                     if(controlList[j]){
                         // Hàng ăn và dịch vụ ăn uống
-                        let dataEntry1 = ChartDataEntry(x: Double(i), y: cpiDatas[1].value[i], data: months[i] as AnyObject)
-                        dataEntries1.append(dataEntry1)
+                        if i < ForecastConstants.ITEM_PER_SCREEN + 1 {
+                            let dataEntry1 = ChartDataEntry(x: Double(i), y: cpiDatas[1].value[i], data: months[i] as AnyObject)
+                            dataEntries1.append(dataEntry1)
+                            
+                            let chartDataSet1 = LineChartDataSet(entries: dataEntries1, label: nil)
+                            chartDataSet1.circleRadius = 5
+                            chartDataSet1.circleHoleRadius = 2
+                            chartDataSet1.drawValuesEnabled = false
+                            // set colors and enable value drawing
+                            chartDataSet1.colors = [UIColor.blue]
+                                chartDataSet1.circleColors = [UIColor.blue]
+                            dataSets.append(chartDataSet1)
+                        }
                         
-                        let chartDataSet1 = LineChartDataSet(entries: dataEntries1, label: nil)
-                        chartDataSet1.circleRadius = 5
-                        chartDataSet1.circleHoleRadius = 2
-                        chartDataSet1.drawValuesEnabled = false
-                        // set colors and enable value drawing
-                        chartDataSet1.colors = [UIColor.blue]
-                            chartDataSet1.circleColors = [UIColor.blue]
-                        dataSets.append(chartDataSet1)
                     }
                     
                 case 2:
@@ -457,12 +505,12 @@ class CPIForecastViewController: ViewController {
                 if (index == 1) {
                     self!.forecastVC.isHidden = false
                     /// quanth gọi trước khi vẽ biểu đồ
-                    self!.drawTimeLine(size: 9)
+                    self!.drawTimeLine(size: ForecastConstants.ITEM_PER_SCREEN + ForecastConstants.FORECAST_3_ITEM)
                     self!.drawChart()
                 } else {
                     self!.forecastVC.isHidden = true
                     /// quanth gọi trước khi vẽ biểu đồ
-                    self!.drawTimeLine(size: 6)
+                    self!.drawTimeLine(size: ForecastConstants.ITEM_PER_SCREEN)
                     self!.drawChart()
                 }
             }
