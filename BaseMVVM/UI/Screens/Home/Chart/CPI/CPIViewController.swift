@@ -555,30 +555,84 @@ class CPIViewController: ViewController {
         }.disposed(by: disposeBag)
     }
     
+    /// quanth: bar chart
     private func drawBarChart(){
         barChartView.animate(yAxisDuration: 2.0)
-        barChartView.pinchZoomEnabled = false
-        barChartView.drawBarShadowEnabled = false
-        barChartView.drawBordersEnabled = false
-        barChartView.doubleTapToZoomEnabled = false
-        barChartView.drawGridBackgroundEnabled = true
-        barChartView.chartDescription?.text = "Bar Chart View"
+        //        barChartView.pinchZoomEnabled = false
+        //        barChartView.drawBarShadowEnabled = false
+        //        barChartView.drawBordersEnabled = false
+        //        barChartView.doubleTapToZoomEnabled = false
+        //        barChartView.drawGridBackgroundEnabled = true
+        //        barChartView.chartDescription?.text = "Bar Chart View"
+        barChartView.chartDescription?.text = ""
+        barChartView.scaleXEnabled = false
+        barChartView.scaleYEnabled = false
+        barChartView.highlightPerTapEnabled = true
+        barChartView.dragEnabled = true
+        barChartView.fitBars = true
+        barChartView.drawValueAboveBarEnabled = true
+        barChartView.animate(yAxisDuration: 0.5)
+        barChartView.legend.enabled = false
+        barChartView.legend.drawInside = true
         
-        setChart(dataPoints: players, values: goals.map { Double($0) })
+        barChartView.xAxis.drawGridLinesEnabled = false
+        barChartView.xAxis.enabled = true
+        barChartView.xAxis.axisLineColor = #colorLiteral(red: 0.1215686275, green: 0.4705882353, blue: 0.7058823529, alpha: 1)
+        barChartView.xAxis.granularityEnabled = false
+        barChartView.xAxis.granularity = 1
+        barChartView.xAxis.labelPosition = .bottom
+        barChartView.xAxis.labelCount = 12
+        
+        /// quanth: fix lỗi danh sách năm toàn hiển thị số
+        let formatter = BarChartFormatter(values: months)
+        let xAxis = XAxis()
+        xAxis.valueFormatter = formatter
+        barChartView.xAxis.valueFormatter = xAxis.valueFormatter
+        
+        barChartView.leftAxis.axisMinimum = 0
+        barChartView.leftAxis.granularity = 1
+        barChartView.leftAxis.granularityEnabled = true
+        barChartView.leftAxis.drawGridLinesEnabled = false
+        barChartView.leftAxis.axisLineColor = #colorLiteral(red: 0.1219139919, green: 0.4706707597, blue: 0.7069483399, alpha: 1)
+        
+        barChartView.rightAxis.enabled = false
+        barChartView.rightAxis.drawGridLinesEnabled = false
+        
+        setChart(dataPoints: months, values: cpiDatas[0].value)
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
-      barChartView.noDataText = "You need to provide data for the chart."
-      
-      var dataEntries: [BarChartDataEntry] = []
-      
-      for i in 0..<dataPoints.count {
-        let dataEntry = BarChartDataEntry(x: Double(i), y: Double(values[i]))
-        dataEntries.append(dataEntry)
-      }
-      
+        barChartView.noDataText = "You need to provide data for the chart."
+        
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            //  let dataEntry0 = ChartDataEntry(x: Double(i), y: cpiDatas[0].value[i], data: months[i] as AnyObject)
+            let dataEntry = BarChartDataEntry(x: Double(i), y: Double(values[i]), data: dataPoints[i] as AnyObject)
+            dataEntries.append(dataEntry)
+        }
+        
         let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Bar Chart View")
-      let chartData = BarChartData(dataSet: chartDataSet)
-      barChartView.data = chartData
+        let chartData = BarChartData(dataSet: chartDataSet)
+        barChartView.data = chartData
+    }
+}
+
+class BarChartFormatter: NSObject,IAxisValueFormatter,IValueFormatter {
+
+
+    var values : [String]
+    required init (values : [String]) {
+        self.values = values
+        super.init()
+    }
+
+
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        return values[Int(value)]
+    }
+
+    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
+        return values[Int(entry.x)]
     }
 }
