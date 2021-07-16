@@ -43,7 +43,7 @@ extension ApiService: TargetType {
         case .getCharts:
             return URL(string: "https://quanth.getCharts")!
         case .getCPIIndexs:
-            return URL(string: "https://quanth.free.beeceptor.com")! // https://quanth.free.beeceptor.com/ http://192.168.10.94:5000
+            return URL(string: "https://quanthb.free.beeceptor.com")! // https://quanth.free.beeceptor.com/ http://192.168.10.94:5000
         case .getIIPIndexs:
             return URL(string: "https://forecast-appp.herokuapp.com")!
         default:
@@ -69,7 +69,7 @@ extension ApiService: TargetType {
         case .getCharts( _, _):
             return "/api/charts"
         case .getCPIIndexs:
-            return "/cpies" // /api/v1/cpies
+            return "/api/v1/cpies"
         case .getIIPIndexs:
             return "/get_iip"
         } 
