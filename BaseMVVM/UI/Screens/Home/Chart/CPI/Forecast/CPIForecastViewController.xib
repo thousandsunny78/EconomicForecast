@@ -71,10 +71,10 @@
                             <rect key="frame" x="0.0" y="55" width="507" height="603"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M21-dm-ZGM" userLabel="Forecast">
-                                    <rect key="frame" x="398.5" y="0.0" width="108.5" height="508.5"/>
+                                    <rect key="frame" x="355" y="0.0" width="152" height="508.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dự báo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vzk-WG-Biy">
-                                            <rect key="frame" x="10" y="10" width="88.5" height="11"/>
+                                            <rect key="frame" x="10" y="10" width="132" height="11"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="9"/>
                                             <color key="textColor" red="0.070588235289999995" green="0.46666666670000001" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -263,7 +263,7 @@
                                 <constraint firstAttribute="trailing" secondItem="uZN-dv-9Es" secondAttribute="trailing" constant="10" id="VyT-BP-cdZ"/>
                                 <constraint firstItem="uZN-dv-9Es" firstAttribute="leading" secondItem="2Ri-fE-mcg" secondAttribute="leading" constant="10" id="YRY-xA-Y2U"/>
                                 <constraint firstAttribute="bottom" secondItem="bmM-nh-Yqa" secondAttribute="bottom" constant="10" id="a4K-5v-z1b"/>
-                                <constraint firstItem="M21-dm-ZGM" firstAttribute="width" secondItem="2Ri-fE-mcg" secondAttribute="width" multiplier="3:14" id="bvJ-38-f5I"/>
+                                <constraint firstItem="M21-dm-ZGM" firstAttribute="width" secondItem="2Ri-fE-mcg" secondAttribute="width" multiplier="3:10" id="bvJ-38-f5I"/>
                                 <constraint firstItem="uZN-dv-9Es" firstAttribute="top" secondItem="znT-28-rEY" secondAttribute="bottom" constant="10" id="etU-rc-Sr7"/>
                                 <constraint firstAttribute="bottom" secondItem="M21-dm-ZGM" secondAttribute="bottom" constant="94.5" id="qMk-Ay-vyt"/>
                                 <constraint firstAttribute="trailing" secondItem="GGo-Do-Ro5" secondAttribute="trailing" id="rEx-U8-5e8"/>

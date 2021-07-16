@@ -44,6 +44,7 @@ class CPIForecastViewController: ViewController {
     override func makeUI() {
         super.makeUI()
         forecastVC.isHidden = true
+        /// quanth gọi trước khi vẽ biểu đồ
         drawTimeLine(size: 6)
         if(!months.isEmpty){
             drawChart()
@@ -455,10 +456,12 @@ class CPIForecastViewController: ViewController {
                 
                 if (index == 1) {
                     self!.forecastVC.isHidden = false
+                    /// quanth gọi trước khi vẽ biểu đồ
                     self!.drawTimeLine(size: 9)
                     self!.drawChart()
                 } else {
                     self!.forecastVC.isHidden = true
+                    /// quanth gọi trước khi vẽ biểu đồ
                     self!.drawTimeLine(size: 6)
                     self!.drawChart()
                 }

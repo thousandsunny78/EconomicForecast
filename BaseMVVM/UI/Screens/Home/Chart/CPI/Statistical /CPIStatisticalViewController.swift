@@ -31,8 +31,11 @@ class CPIStatisticalViewController: ViewController {
     
     override func makeUI() {
         super.makeUI()
+        /// quanth: cần gọi trước khi vẽ
+        drawTimeLine(size: 6)
         drawChart()
         createSettingButton()
+        
     }
     
     override func bindViewModel() {
@@ -180,6 +183,18 @@ class CPIStatisticalViewController: ViewController {
             sheetController.setSizes([.fixed(420), .fullScreen])
             self?.present(sheetController, animated: true, completion: nil)
         }.disposed(by: disposeBag)
+    }
+    
+    private func drawTimeLine(size: Int){
+        if(timelines.isEmpty){
+            return
+        }
+        months = []
+        for i in 0..<timelines.count{
+            if(i < size){
+                months.append(timelines[i])
+            }
+        }
     }
 }
 
