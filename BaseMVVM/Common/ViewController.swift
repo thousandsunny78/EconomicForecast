@@ -10,8 +10,16 @@ import UIKit
 import RxSwift
 import RxCocoa
 import MBProgressHUD
+import Charts
 
 class ViewController: UIViewController {
+    struct Constants {
+        static let CPI_FORECAST: Int = 0
+        static let CPI_STATISTICAL: Int = 1
+        static let IIP_FORECAST: Int = 2
+        static let IIP_STATISTICAL: Int = 3
+    }
+    
     var viewModel: ViewModel?
     var navigator: Navigator?
     
@@ -197,5 +205,24 @@ extension UIView {
         self.layer.cornerRadius = dSize/2.0
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = color.cgColor
+    }
+}
+
+class BarChartFormatter: NSObject,IAxisValueFormatter,IValueFormatter {
+
+
+    var values : [String]
+    required init (values : [String]) {
+        self.values = values
+        super.init()
+    }
+
+
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        return values[Int(value)]
+    }
+
+    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
+        return values[Int(entry.x)]
     }
 }

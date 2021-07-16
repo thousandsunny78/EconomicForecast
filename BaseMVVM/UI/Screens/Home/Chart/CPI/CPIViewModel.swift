@@ -18,11 +18,11 @@ class CPIViewModel: ViewModel, ViewModelType {
     }
     
     struct Output {
-        let cpiDataSubject: BehaviorRelay<[DataEntity]>
+        let cpiDataSubject: BehaviorRelay<DataEntity?>
     }
     
     /// to store data retrieve from server
-    private let cpiDatas = BehaviorRelay<[DataEntity]>(value: [])
+    private let cpiDatas = BehaviorRelay<DataEntity?>(value: nil)
     
     private let navigator: CPINavigator
 
@@ -32,7 +32,6 @@ class CPIViewModel: ViewModel, ViewModelType {
     }
 
     func transform(input: Input) -> Output {
-        let elements = BehaviorRelay<[DataEntity]>(value: [])
         return Output(cpiDataSubject: cpiDatas)
     }
     
@@ -40,7 +39,7 @@ class CPIViewModel: ViewModel, ViewModelType {
         Application.shared.apiProvider.getCPIIndexs().trackActivity(loading).subscribe(
             onNext: { [weak self] respones in
             guard let self = self else { return }
-            if respones.data.isEmpty {
+            if respones.data == nil {
                 return
             }
             self.cpiDatas.accept(respones.data)

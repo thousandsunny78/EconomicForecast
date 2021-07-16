@@ -31,8 +31,10 @@ class CPIBottomSheetViewController: ViewController {
     @IBOutlet weak var areaVC14: UIView!
     @IBOutlet weak var areaVC15: UIView!
     
-    var cpiDatas: [DataEntity] = []
-    var cpiVC: CPIViewController? = nil
+    var cpiDatas: [CPIDataEntity] = []
+    var cpiVC: ViewController? = nil
+    var type: Int? = -1
+    
     var controlList = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
     override func viewDidLoad() {
@@ -89,6 +91,23 @@ class CPIBottomSheetViewController: ViewController {
     }
     
     func updateSwitch(index: Int, value: Bool){
-        cpiVC?.updateSwitch(index: index, value: value)
+        switch type {
+        case Constants.CPI_FORECAST:
+            (cpiVC as! CPIForecastViewController).updateSwitch(index: index, value: value)
+        case Constants.CPI_STATISTICAL:
+            (cpiVC as! CPIStatisticalViewController).updateSwitch(index: index, value: value)
+            for i in 0..<controlList.count {
+                controlList[i] = false
+            }
+            controlList[index] = value
+            drawControllBoard()
+        case Constants.IIP_FORECAST:
+            print("do nothing")
+        case Constants.IIP_FORECAST:
+            print("do nothing")
+        default:
+            print("do nothing")
+        }
+        
     }
 }

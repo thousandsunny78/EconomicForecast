@@ -12,7 +12,7 @@ import Foundation
 import ObjectMapper
 
 class CPIEntity: Mappable {
-    var data: [DataEntity] = []
+    var data: DataEntity? = nil
     
     required init?(map: Map) {
         
@@ -24,6 +24,20 @@ class CPIEntity: Mappable {
 }
 
 class DataEntity: Mappable {
+    var cpi: [CPIDataEntity] = []
+    var timeline: [String] = []
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        cpi    <- map["cpi"]
+        timeline   <- map["timeline"]
+    }
+}
+
+class CPIDataEntity: Mappable {
     var name: String = ""
     var value: [Double] = []
     
@@ -33,6 +47,6 @@ class DataEntity: Mappable {
     
     func mapping(map: Map) {
         name    <- map["name"]
-        value   <- map["value"]
+        value   <- map["val"]
     }
 }

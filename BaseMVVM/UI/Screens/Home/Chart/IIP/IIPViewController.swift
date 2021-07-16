@@ -44,6 +44,8 @@ class IIPViewController: ViewController {
     @IBOutlet weak var areaVC22: UIView!
     @IBOutlet weak var areaVC23: UIView!
     
+    private var cpiDatas: [CPIDataEntity] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,10 +70,10 @@ class IIPViewController: ViewController {
         let output = viewModel.transform(input: input)
         
         // subcribe postal subject
-        output.iipDataSubject.subscribe(onNext: {[weak self] cpiData in
+        output.iipDataSubject.subscribe(onNext: {[weak self] data in
             guard let self = self else { return }
-            if(!cpiData.isEmpty){
-                self.cpiDatas = cpiData
+            if(data != nil){
+                self.cpiDatas = data?.cpi ?? []
                 self.drawChart()
                 self.drawControllBoard()
             }
@@ -81,7 +83,7 @@ class IIPViewController: ViewController {
         viewModel.fetchIIPIndexs()
     }
     
-    private var cpiDatas: [DataEntity] = []
+    
     
     // Show list data
     private func drawControllBoard() {
