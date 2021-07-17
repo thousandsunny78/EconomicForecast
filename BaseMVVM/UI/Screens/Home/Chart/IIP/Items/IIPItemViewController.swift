@@ -15,12 +15,14 @@ import RxCocoa
 class IIPItemViewController: ViewController {
     
     // MARK: View lifecycle
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var switchVC: UISwitch!
     @IBOutlet weak var lineVC: UIView!
+    @IBOutlet weak var label: UIButton!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var areaView: UIView!
     
     var entity: ChartControlEntity = ChartControlEntity(color: UIColor.red, content: "no title", isOn: false, index: -1)!
-    var iipVC: IIPViewController? = nil
+    var iipVC: IIPBottomSheetViewController? = nil
+    var isOn: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +31,8 @@ class IIPItemViewController: ViewController {
     
     override func makeUI() {
         super.makeUI()
-        resizeSwitch()
         initUI()
-        configureSwitchChanged()
+        bindTapEvent()
     }
     
     override func bindViewModel() {
@@ -43,9 +44,15 @@ class IIPItemViewController: ViewController {
     }
     
     private func initUI(){
-        label.text = entity.content
-        switchVC.isOn = entity.isOn
+        configButton()
+        addShadow(cornerRadius: 12.0, shadowRadius: 5.0)
+        label.setTitle(entity.content, for: .normal)
         lineVC.backgroundColor = entity.color
+        if(entity.isOn){
+            selectItem()
+        } else {
+            unSelectItem()
+        }
     }
     
     func updateUI(entity: ChartControlEntity){
@@ -53,19 +60,53 @@ class IIPItemViewController: ViewController {
         initUI()
     }
     
-    private func resizeSwitch(){
-        switchVC.set(width: 30, height: 20)
-        switchVC.onTintColor = UIColor.systemBlue
+    private func bindTapEvent(){
+        label.rx.tap.bind { [weak self] () in
+            if self?.isOn == true {
+                self?.iipVC?.updateSwitch(index: self?.entity.index ?? -1, value: false)
+                self?.unSelectItem()
+                self?.isOn = false
+            } else {
+                self?.iipVC?.updateSwitch(index: self?.entity.index ?? -1, value: true)
+                self?.selectItem()
+                self?.isOn = true
+            }
+        }.disposed(by: disposeBag)
     }
     
-    private func configureSwitchChanged(){
-        switchVC.isOn = self.entity.isOn
-        switchVC.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(switchVC.rx.value)
-            .subscribe(onNext : { bool in
-                self.iipVC?.updateSwitch(index: self.entity.index, value: bool)
-        }).disposed(by: disposeBag)
+    private func unSelectItem(){
+        contentView.backgroundColor = UIColor.white
+        label.setTitleColor(UIColor.App.tabSelected, for: .normal)
     }
+    
+    private func selectItem(){
+        contentView.backgroundColor = UIColor.App.tabSelected.withAlphaComponent(0.1)
+        label.setTitleColor(UIColor.App.tabSelected, for: .normal)
+    }
+    
+    private func configButton(){
+        label.titleLabel?.textAlignment = .center
+    }
+    
+    // quanth: round and shadow uiview
+    private func addShadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
+        areaView.layer.cornerRadius = 0.0
+        areaView.layer.masksToBounds = true
+
+        contentView.layer.cornerRadius = cornerRadius
+        contentView.layer.masksToBounds = false
+
+        contentView.layer.shadowColor = UIColor.black.cgColor
+        contentView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        contentView.layer.shadowOpacity = 0.2
+        contentView.layer.shadowRadius = shadowRadius
+
+        areaView.frame = contentView.bounds
+        areaView.autoresizingMask = [
+            .flexibleWidth, .flexibleHeight
+        ]
+        
+    }
+    
     
 }

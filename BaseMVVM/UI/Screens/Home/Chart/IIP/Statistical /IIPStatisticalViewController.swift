@@ -1,8 +1,8 @@
 //
-//  CPIStatisticalViewController.swift
+//  IIPStatisticalViewController.swift
 //  BaseMVVM
 //
-//  Created by Quan on 16/07/2021.
+//  Created by Quan on 17/07/2021.
 //  Copyright (c) 2021 quanth. All rights reserved.
 //
 //  Template by: Quan
@@ -14,12 +14,12 @@ import RxCocoa
 import Charts
 import FittedSheets
 
-class CPIStatisticalViewController: ViewController {
+class IIPStatisticalViewController: ViewController {
     
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var settingButton: UIButton!
     
-    var cpiDatas: [CPIDataEntity] = []
+    var iipDatas: [CPIDataEntity] = []
     var timelines = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"]
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"]
     private var controlList = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
@@ -31,7 +31,6 @@ class CPIStatisticalViewController: ViewController {
     
     override func makeUI() {
         super.makeUI()
-        /// quanth: cần gọi trước khi vẽ
         drawTimeLine(size: 6)
         drawChart()
         createSettingButton()
@@ -40,9 +39,9 @@ class CPIStatisticalViewController: ViewController {
     
     override func bindViewModel() {
         super.bindViewModel()
-        guard let viewModel = self.viewModel as? CPIStatisticalViewModel else { return }
+        guard let viewModel = self.viewModel as? IIPStatisticalViewModel else { return }
         
-        let input = CPIStatisticalViewModel.Input()
+        let input = IIPStatisticalViewModel.Input()
         let output = viewModel.transform(input: input)
     }
     
@@ -91,7 +90,7 @@ class CPIStatisticalViewController: ViewController {
             }
         }
         if result != -1 {
-            setChart(dataPoints: months, values: cpiDatas[result].value)
+            setChart(dataPoints: months, values: iipDatas[result].value)
         }
         
         
@@ -103,7 +102,6 @@ class CPIStatisticalViewController: ViewController {
         var dataEntries: [BarChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
-            //  let dataEntry0 = ChartDataEntry(x: Double(i), y: cpiDatas[0].value[i], data: months[i] as AnyObject)
             let dataEntry = BarChartDataEntry(x: Double(i), y: Double(values[i]), data: dataPoints[i] as AnyObject)
             dataEntries.append(dataEntry)
         }
@@ -173,10 +171,10 @@ class CPIStatisticalViewController: ViewController {
     
     private func createSettingButton(){
         settingButton.rx.tap.bind { [weak self] () in
-            let controller = CPIBottomSheetViewController()
+            let controller = IIPBottomSheetViewController()
             controller.type = Constants.CPI_STATISTICAL
-            controller.cpiVC = self
-            controller.cpiDatas = self?.cpiDatas ?? []
+            controller.iipVC = self
+            controller.iipDatas = self?.iipDatas ?? []
             controller.controlList = self?.controlList ?? []
             let sheetController = SheetViewController(controller: controller)
             sheetController.topCornersRadius = 12
@@ -197,4 +195,3 @@ class CPIStatisticalViewController: ViewController {
         }
     }
 }
-

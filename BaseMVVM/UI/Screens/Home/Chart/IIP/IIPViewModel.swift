@@ -38,7 +38,7 @@ class IIPViewModel: ViewModel, ViewModelType {
     }
     
     func fetchIIPIndexs() {
-        Application.shared.apiProvider.getIIPIndexs().trackActivity(loading).subscribe(
+        Application.shared.apiProvider.getCPIIndexs().trackActivity(loading).subscribe(
             onNext: { [weak self] respones in
             guard let self = self else { return }
             if respones == nil {
