@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CPIPercentViewController" customModule="BaseMVVM" customModuleProvider="target">
+            <connections>
+                <outlet property="pieChartView" destination="vQ5-dx-jJQ" id="se0-1U-toj"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="546" height="670"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yVi-x5-pT1">
+                    <rect key="frame" x="0.0" y="0.0" width="546" height="670"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smh-e1-AF9" userLabel="BarChartContent">
+                            <rect key="frame" x="0.0" y="0.0" width="546" height="670"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQ5-dx-jJQ" customClass="PieChartView" customModule="Charts">
+                                    <rect key="frame" x="10" y="0.0" width="526" height="670"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="vQ5-dx-jJQ" firstAttribute="leading" secondItem="Smh-e1-AF9" secondAttribute="leading" constant="10" id="8gh-Jm-pYk"/>
+                                <constraint firstItem="vQ5-dx-jJQ" firstAttribute="top" secondItem="Smh-e1-AF9" secondAttribute="top" id="CbY-uh-UbI"/>
+                                <constraint firstAttribute="bottom" secondItem="vQ5-dx-jJQ" secondAttribute="bottom" id="HHY-NN-h2s"/>
+                                <constraint firstAttribute="trailing" secondItem="vQ5-dx-jJQ" secondAttribute="trailing" constant="10" id="g1x-Rk-cok"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="yVi-x5-pT1" secondAttribute="bottom" id="0NE-Pb-yMF"/>
+                <constraint firstItem="yVi-x5-pT1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="J7i-es-Ik8"/>
+                <constraint firstAttribute="trailing" secondItem="yVi-x5-pT1" secondAttribute="trailing" id="QpC-cb-uvL"/>
+                <constraint firstItem="yVi-x5-pT1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="epr-r2-1D5"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="227.536231884058" y="64.285714285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -12,6 +12,10 @@
             <connections>
                 <outlet property="forecastContent" destination="F7V-bC-fZ8" id="FRn-QN-h7f"/>
                 <outlet property="forecastView" destination="d4A-cL-8HU" id="S9D-DX-sgg"/>
+                <outlet property="percentLeftView" destination="bWi-Xm-v5A" id="Uso-Ha-zEb"/>
+                <outlet property="percentRightView" destination="W4p-W8-96u" id="Zda-fg-6YQ"/>
+                <outlet property="ratioContent" destination="L9k-j9-TBV" id="DfF-Gs-frc"/>
+                <outlet property="ratioView" destination="HfK-dS-47w" id="FCE-Fo-KJn"/>
                 <outlet property="statisticalContent" destination="kLs-1O-PBb" id="WDe-Gm-kbO"/>
                 <outlet property="statisticalView" destination="BnZ-9b-2VD" id="d7L-N8-tZm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -26,7 +30,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="524" height="912"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-7t-WdD">
-                            <rect key="frame" x="20" y="10" width="484" height="820"/>
+                            <rect key="frame" x="20" y="10" width="484" height="1490"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7V-bC-fZ8" userLabel="ForecastContent">
                                     <rect key="frame" x="0.0" y="0.0" width="484" height="400"/>
@@ -62,6 +66,44 @@
                                         <constraint firstAttribute="height" constant="400" id="r4y-Od-jSP"/>
                                     </constraints>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9k-j9-TBV" userLabel="RatioContent">
+                                    <rect key="frame" x="0.0" y="840" width="484" height="650"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HfK-dS-47w" userLabel="RatioArea">
+                                            <rect key="frame" x="0.0" y="0.0" width="484" height="400"/>
+                                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWi-Xm-v5A" userLabel="LeftArea">
+                                            <rect key="frame" x="0.0" y="400" width="242" height="250"/>
+                                            <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="250" id="mP1-bY-NMr"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W4p-W8-96u" userLabel="RightArea">
+                                            <rect key="frame" x="242" y="400" width="242" height="250"/>
+                                            <color key="backgroundColor" systemColor="systemTealColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="250" id="SjK-Fq-Fb2"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="W4p-W8-96u" firstAttribute="width" secondItem="L9k-j9-TBV" secondAttribute="width" multiplier="1:2" id="3Pn-tO-aOE"/>
+                                        <constraint firstAttribute="bottom" secondItem="W4p-W8-96u" secondAttribute="bottom" id="66x-jV-Pj5"/>
+                                        <constraint firstAttribute="bottom" secondItem="bWi-Xm-v5A" secondAttribute="bottom" id="E3H-lY-igg"/>
+                                        <constraint firstAttribute="trailing" secondItem="W4p-W8-96u" secondAttribute="trailing" id="F3z-24-MOp"/>
+                                        <constraint firstItem="bWi-Xm-v5A" firstAttribute="leading" secondItem="L9k-j9-TBV" secondAttribute="leading" id="N5z-3Q-E59"/>
+                                        <constraint firstAttribute="trailing" secondItem="HfK-dS-47w" secondAttribute="trailing" id="Plq-QH-lYQ"/>
+                                        <constraint firstItem="HfK-dS-47w" firstAttribute="leading" secondItem="L9k-j9-TBV" secondAttribute="leading" id="bC2-Oa-Ya4"/>
+                                        <constraint firstAttribute="height" constant="650" id="hI0-xs-Fef"/>
+                                        <constraint firstItem="W4p-W8-96u" firstAttribute="top" secondItem="HfK-dS-47w" secondAttribute="bottom" id="hdV-pi-uPy"/>
+                                        <constraint firstItem="HfK-dS-47w" firstAttribute="top" secondItem="L9k-j9-TBV" secondAttribute="top" id="i0L-ic-5Xa"/>
+                                        <constraint firstItem="bWi-Xm-v5A" firstAttribute="top" secondItem="HfK-dS-47w" secondAttribute="bottom" id="nuB-ru-bce"/>
+                                        <constraint firstItem="bWi-Xm-v5A" firstAttribute="width" secondItem="L9k-j9-TBV" secondAttribute="width" multiplier="1:2" id="xrN-tq-A0u"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                         </stackView>
                     </subviews>
@@ -90,6 +132,15 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
