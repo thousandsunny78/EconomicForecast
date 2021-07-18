@@ -172,7 +172,7 @@ class IIPStatisticalViewController: ViewController {
     private func createSettingButton(){
         settingButton.rx.tap.bind { [weak self] () in
             let controller = IIPBottomSheetViewController()
-            controller.type = Constants.CPI_STATISTICAL
+            controller.type = Constants.IIP_STATISTICAL
             controller.iipVC = self
             controller.iipDatas = self?.iipDatas ?? []
             controller.controlList = self?.controlList ?? []

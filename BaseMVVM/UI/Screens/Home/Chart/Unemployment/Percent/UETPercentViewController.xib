@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UETPercentViewController" customModule="BaseMVVM" customModuleProvider="target">
+            <connections>
+                <outlet property="pieChartView" destination="dUl-Ub-g3z" id="Fbk-UT-pTR"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="439" height="552"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VLB-xQ-8NC">
+                    <rect key="frame" x="0.0" y="0.0" width="439" height="552"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vk1-Aq-OOg" userLabel="BarChartContent">
+                            <rect key="frame" x="0.0" y="0.0" width="439" height="552"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUl-Ub-g3z" customClass="PieChartView" customModule="Charts">
+                                    <rect key="frame" x="10" y="0.0" width="419" height="552"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="dUl-Ub-g3z" secondAttribute="bottom" id="0vM-Lc-kCH"/>
+                                <constraint firstItem="dUl-Ub-g3z" firstAttribute="top" secondItem="vk1-Aq-OOg" secondAttribute="top" id="NcZ-z6-pLX"/>
+                                <constraint firstItem="dUl-Ub-g3z" firstAttribute="leading" secondItem="vk1-Aq-OOg" secondAttribute="leading" constant="10" id="e3H-Vu-NZZ"/>
+                                <constraint firstAttribute="trailing" secondItem="dUl-Ub-g3z" secondAttribute="trailing" constant="10" id="yf3-g3-vc8"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="VLB-xQ-8NC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5NY-70-BSy"/>
+                <constraint firstAttribute="bottom" secondItem="VLB-xQ-8NC" secondAttribute="bottom" id="96s-41-mf7"/>
+                <constraint firstAttribute="trailing" secondItem="VLB-xQ-8NC" secondAttribute="trailing" id="DdV-4K-6jp"/>
+                <constraint firstItem="VLB-xQ-8NC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JcH-E9-gAF"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="150" y="24.776785714285712"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

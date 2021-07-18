@@ -53,6 +53,14 @@ class HomeChartViewController: ViewController {
         return viewController
     }()
     
+    private lazy var tab5VC: ViewController = {
+        let viewController = UnemploymentViewController(nibName: UnemploymentViewController.className, bundle: nil)
+        let navigator = UnemploymentNavigator(with: viewController)
+        let viewModel = UnemploymentViewModel(navigator: navigator)
+        viewController.viewModel = viewModel
+        return viewController
+    }()
+    
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,55 +95,9 @@ class HomeChartViewController: ViewController {
         tab2VCButton.rx.tap.bind { [weak self] () in
             self?.showTab2()
         }.disposed(by: disposeBag)
-    
-//        aSwitch.rx
-//            .controlEvent(.valueChanged)
-//            .withLatestFrom(aSwitch.rx.value)
-//            .subscribe(onNext : { bool in
-//                if(self.currentViewController == self.tab1VC){
-//                    (self.tab1VC as! CPIViewController).updateSwitch(index: 0, value: bool)
-//                }
-//            }).disposed(by: disposeBag)
-//        bSwitch.rx
-//            .controlEvent(.valueChanged)
-//            .withLatestFrom(bSwitch.rx.value)
-//            .subscribe(onNext : { bool in
-//                if(self.currentViewController == self.tab1VC){
-//                    (self.tab1VC as! CPIViewController).updateSwitch(index: 4, value: bool)
-//                }
-//            }).disposed(by: disposeBag)
-//        cSwitch.rx
-//            .controlEvent(.valueChanged)
-//            .withLatestFrom(cSwitch.rx.value)
-//            .subscribe(onNext : { bool in
-//                if(self.currentViewController == self.tab1VC){
-//                    (self.tab1VC as! CPIViewController).updateSwitch(index: 1, value: bool)
-//                }
-//            }).disposed(by: disposeBag)
-//        dSwitch.rx
-//            .controlEvent(.valueChanged)
-//            .withLatestFrom(dSwitch.rx.value)
-//            .subscribe(onNext : { bool in
-//                if(self.currentViewController == self.tab1VC){
-//                    (self.tab1VC as! CPIViewController).updateSwitch(index: 5, value: bool)
-//                }
-//            }).disposed(by: disposeBag)
-//        eSwitch.rx
-//            .controlEvent(.valueChanged)
-//            .withLatestFrom(eSwitch.rx.value)
-//            .subscribe(onNext : { bool in
-//                if(self.currentViewController == self.tab1VC){
-//                    (self.tab1VC as! CPIViewController).updateSwitch(index: 2, value: bool)
-//                }
-//            }).disposed(by: disposeBag)
-//        fSwitch.rx
-//            .controlEvent(.valueChanged)
-//            .withLatestFrom(fSwitch.rx.value)
-//            .subscribe(onNext : { bool in
-//                if(self.currentViewController == self.tab1VC){
-//                    (self.tab1VC as! CPIViewController).updateSwitch(index: 3, value: bool)
-//                }
-//            }).disposed(by: disposeBag)
+        tab5VCButton.rx.tap.bind { [weak self] () in
+            self?.showTab5()
+        }.disposed(by: disposeBag)
         
     }
     
@@ -159,6 +121,8 @@ class HomeChartViewController: ViewController {
         tab1VCButton.setTitleColor(UIColor.App.tabUnselected, for: .normal)
         tab2VCButton.backgroundColor = UIColor.white
         tab2VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab5VCButton.backgroundColor = UIColor.white
+        tab5VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
     }
     
     private func showTab2() {
@@ -170,6 +134,21 @@ class HomeChartViewController: ViewController {
         tab1VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
         tab2VCButton.backgroundColor = UIColor.App.tabSelected
         tab2VCButton.setTitleColor(UIColor.App.tabUnselected, for: .normal)
+        tab5VCButton.backgroundColor = UIColor.white
+        tab5VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+    }
+    
+    private func showTab5() {
+        currentViewController?.removeViewAndControllerFromParentViewController()
+        addChildViewController(tab5VC, toContainerView: contentVC)
+        currentViewController = tab5VC
+        
+        tab5VCButton.backgroundColor = UIColor.App.tabSelected
+        tab5VCButton.setTitleColor(UIColor.App.tabUnselected, for: .normal)
+        tab1VCButton.backgroundColor = UIColor.white
+        tab1VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab2VCButton.backgroundColor = UIColor.white
+        tab2VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
     }
     
     // quanth: round and shadow uiview

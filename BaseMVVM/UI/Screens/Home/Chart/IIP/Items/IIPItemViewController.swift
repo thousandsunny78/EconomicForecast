@@ -23,6 +23,8 @@ class IIPItemViewController: ViewController {
     var entity: ChartControlEntity = ChartControlEntity(color: UIColor.red, content: "no title", isOn: false, index: -1)!
     var iipVC: IIPBottomSheetViewController? = nil
     var isOn: Bool = false
+    var clickSubject = PublishSubject<(Int, Bool)>()
+    var type: Int? = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +34,24 @@ class IIPItemViewController: ViewController {
     override func makeUI() {
         super.makeUI()
         initUI()
-        bindTapEvent()
+        if type == Constants.CPI_STATISTICAL {
+            bindSingleTapEvent()
+        } else {
+            bindTapEvent()
+        }
+        
+        clickSubject.subscribe (onNext: {[weak self] (index, isOn) in
+            guard let self = self else { return }
+            if index == self.entity.index {
+                if isOn == false {
+                    self.unSelectItem()
+                } else {
+                    self.selectItem()
+                }
+                self.isOn = isOn
+            }
+        }).disposed(by: disposeBag)
+
     }
     
     override func bindViewModel() {
@@ -67,6 +86,16 @@ class IIPItemViewController: ViewController {
                 self?.unSelectItem()
                 self?.isOn = false
             } else {
+                self?.iipVC?.updateSwitch(index: self?.entity.index ?? -1, value: true)
+                self?.selectItem()
+                self?.isOn = true
+            }
+        }.disposed(by: disposeBag)
+    }
+    
+    private func bindSingleTapEvent(){
+        label.rx.tap.bind { [weak self] () in
+            if self?.isOn == false {
                 self?.iipVC?.updateSwitch(index: self?.entity.index ?? -1, value: true)
                 self?.selectItem()
                 self?.isOn = true

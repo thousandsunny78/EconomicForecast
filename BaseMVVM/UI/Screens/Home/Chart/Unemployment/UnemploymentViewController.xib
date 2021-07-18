@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GDPViewController" customModule="BaseMVVM" customModuleProvider="target">
+            <connections>
+                <outlet property="percentLeftView" destination="gll-kW-6IU" id="bnX-6Y-ECU"/>
+                <outlet property="percentRightView" destination="dpS-dr-nUt" id="3RG-JH-n6t"/>
+                <outlet property="ratioArea" destination="XSg-dd-wMe" id="kHq-LP-KE2"/>
+                <outlet property="ratioContent" destination="2nI-bj-wB1" id="r0Q-CB-Ce2"/>
+                <outlet property="ratioView" destination="p08-of-tCF" id="jbT-aj-PBN"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZ6-7f-NRT">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uYg-ss-D03">
+                            <rect key="frame" x="20" y="10" width="374" height="650"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2nI-bj-wB1" userLabel="RatioContent">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="650"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XSg-dd-wMe" userLabel="RatioArea">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="650"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p08-of-tCF" userLabel="RatioView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="365.5"/>
+                                                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gll-kW-6IU" userLabel="LeftArea">
+                                                    <rect key="frame" x="0.0" y="365.5" width="187" height="250"/>
+                                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="250" id="dAA-Yc-RRc"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpS-dr-nUt" userLabel="RightArea">
+                                                    <rect key="frame" x="187" y="365.5" width="187" height="250"/>
+                                                    <color key="backgroundColor" systemColor="systemTealColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="250" id="gV6-bT-gl1"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tỷ lệ thất nghiệp của Tỉnh Đồng Nai" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zed-WM-NIC">
+                                                    <rect key="frame" x="0.0" y="625.5" width="374" height="14.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                    <color key="textColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Zed-WM-NIC" secondAttribute="bottom" constant="10" id="0Rb-Ld-TWr"/>
+                                                <constraint firstItem="dpS-dr-nUt" firstAttribute="top" secondItem="p08-of-tCF" secondAttribute="bottom" id="1T1-lc-pgo"/>
+                                                <constraint firstAttribute="trailing" secondItem="p08-of-tCF" secondAttribute="trailing" id="6hQ-uR-HFG"/>
+                                                <constraint firstItem="gll-kW-6IU" firstAttribute="width" secondItem="XSg-dd-wMe" secondAttribute="width" multiplier="1:2" id="7Wc-wB-Cm7"/>
+                                                <constraint firstItem="gll-kW-6IU" firstAttribute="top" secondItem="p08-of-tCF" secondAttribute="bottom" id="DP3-DG-xaB"/>
+                                                <constraint firstAttribute="height" constant="650" id="Eqg-JY-Aqo"/>
+                                                <constraint firstItem="Zed-WM-NIC" firstAttribute="top" secondItem="gll-kW-6IU" secondAttribute="bottom" constant="10" id="Gys-kh-2eM"/>
+                                                <constraint firstItem="Zed-WM-NIC" firstAttribute="leading" secondItem="XSg-dd-wMe" secondAttribute="leading" id="NUF-WF-caU"/>
+                                                <constraint firstItem="p08-of-tCF" firstAttribute="top" secondItem="XSg-dd-wMe" secondAttribute="top" id="NhO-iw-cX7"/>
+                                                <constraint firstAttribute="trailing" secondItem="dpS-dr-nUt" secondAttribute="trailing" id="NlZ-K7-1P9"/>
+                                                <constraint firstItem="dpS-dr-nUt" firstAttribute="width" secondItem="XSg-dd-wMe" secondAttribute="width" multiplier="1:2" id="P0j-KV-WN6"/>
+                                                <constraint firstItem="gll-kW-6IU" firstAttribute="leading" secondItem="XSg-dd-wMe" secondAttribute="leading" id="W1y-WC-xuS"/>
+                                                <constraint firstAttribute="trailing" secondItem="Zed-WM-NIC" secondAttribute="trailing" id="YoY-LU-4He"/>
+                                                <constraint firstItem="p08-of-tCF" firstAttribute="leading" secondItem="XSg-dd-wMe" secondAttribute="leading" id="hTh-FH-IoN"/>
+                                                <constraint firstItem="Zed-WM-NIC" firstAttribute="top" secondItem="dpS-dr-nUt" secondAttribute="bottom" constant="10" id="s54-Ga-Pws"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.8980392157" green="0.94117647059999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="XSg-dd-wMe" firstAttribute="top" secondItem="2nI-bj-wB1" secondAttribute="top" id="SOD-zC-4J8"/>
+                                        <constraint firstAttribute="trailing" secondItem="XSg-dd-wMe" secondAttribute="trailing" id="hcg-wb-r0i"/>
+                                        <constraint firstItem="XSg-dd-wMe" firstAttribute="leading" secondItem="2nI-bj-wB1" secondAttribute="leading" id="oUV-ZF-jWZ"/>
+                                        <constraint firstAttribute="bottom" secondItem="XSg-dd-wMe" secondAttribute="bottom" id="uSo-Lz-lfJ"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="uYg-ss-D03" secondAttribute="bottom" constant="20" id="2FW-Lw-IXj"/>
+                        <constraint firstAttribute="trailing" secondItem="uYg-ss-D03" secondAttribute="trailing" constant="20" id="3Dz-XQ-nPe"/>
+                        <constraint firstItem="uYg-ss-D03" firstAttribute="leading" secondItem="FZ6-7f-NRT" secondAttribute="leading" constant="20" id="55b-HX-rmD"/>
+                        <constraint firstItem="uYg-ss-D03" firstAttribute="centerX" secondItem="FZ6-7f-NRT" secondAttribute="centerX" id="HqT-vc-ge0"/>
+                        <constraint firstItem="uYg-ss-D03" firstAttribute="top" secondItem="FZ6-7f-NRT" secondAttribute="top" constant="10" id="iSd-TY-ix7"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="ahy-nM-6YY"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="Uyt-I8-hmG"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="0.8980392157" green="0.94117647059999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="FZ6-7f-NRT" secondAttribute="trailing" id="1pY-qZ-fpn"/>
+                <constraint firstItem="FZ6-7f-NRT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2kT-HN-1iR"/>
+                <constraint firstItem="FZ6-7f-NRT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ncR-14-QrM"/>
+                <constraint firstItem="FZ6-7f-NRT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="opF-PJ-tTD"/>
+                <constraint firstItem="FZ6-7f-NRT" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="u1Q-bi-d7F"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="131.8840579710145" y="139.95535714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

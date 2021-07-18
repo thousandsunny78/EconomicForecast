@@ -37,6 +37,8 @@ class CPIBottomSheetViewController: ViewController {
     
     var controlList = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
+    let clickSubject = PublishSubject<(Int, Bool)>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -83,6 +85,8 @@ class CPIBottomSheetViewController: ViewController {
             vc.viewModel = viewModel
             vc.entity = entity
             vc.cpiVC = self
+            vc.clickSubject = self.clickSubject
+            vc.type = self.type
             return vc
         }()
         
@@ -98,9 +102,9 @@ class CPIBottomSheetViewController: ViewController {
             (cpiVC as! CPIStatisticalViewController).updateSwitch(index: index, value: value)
             for i in 0..<controlList.count {
                 controlList[i] = false
+                clickSubject.onNext((i, false))
             }
             controlList[index] = value
-            drawControllBoard()
         case Constants.IIP_FORECAST:
             print("do nothing")
         case Constants.IIP_FORECAST:
