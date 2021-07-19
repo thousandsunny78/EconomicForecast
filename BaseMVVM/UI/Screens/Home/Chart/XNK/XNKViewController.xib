@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XNKViewController" customModule="BaseMVVM" customModuleProvider="target">
+            <connections>
+                <outlet property="ratioContent" destination="a2I-RP-8uc" id="Jga-Cv-Mig"/>
+                <outlet property="ratioView" destination="EgK-Cf-ObA" id="SuH-n4-DPA"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="532" height="690"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ksV-mz-AFB">
+                    <rect key="frame" x="0.0" y="0.0" width="532" height="690"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Yu-Bn-DbI">
+                            <rect key="frame" x="20" y="10" width="492" height="400"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2I-RP-8uc" userLabel="CompareContent">
+                                    <rect key="frame" x="0.0" y="0.0" width="492" height="400"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EgK-Cf-ObA" userLabel="CompareArea">
+                                            <rect key="frame" x="0.0" y="0.0" width="492" height="400"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="EgK-Cf-ObA" secondAttribute="trailing" id="CvS-ae-o0f"/>
+                                        <constraint firstItem="EgK-Cf-ObA" firstAttribute="top" secondItem="a2I-RP-8uc" secondAttribute="top" id="Zpl-Be-xbV"/>
+                                        <constraint firstAttribute="height" constant="400" id="asZ-0Q-9OY"/>
+                                        <constraint firstItem="EgK-Cf-ObA" firstAttribute="leading" secondItem="a2I-RP-8uc" secondAttribute="leading" id="okZ-sW-erh"/>
+                                        <constraint firstAttribute="bottom" secondItem="EgK-Cf-ObA" secondAttribute="bottom" id="yNB-2L-Ufd"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="2Yu-Bn-DbI" firstAttribute="centerX" secondItem="ksV-mz-AFB" secondAttribute="centerX" id="O2L-qj-d6Q"/>
+                        <constraint firstItem="2Yu-Bn-DbI" firstAttribute="top" secondItem="ksV-mz-AFB" secondAttribute="top" constant="10" id="dCu-R9-5bx"/>
+                        <constraint firstAttribute="bottom" secondItem="2Yu-Bn-DbI" secondAttribute="bottom" constant="20" id="ipu-kn-tEU"/>
+                        <constraint firstItem="2Yu-Bn-DbI" firstAttribute="leading" secondItem="ksV-mz-AFB" secondAttribute="leading" constant="20" id="q7o-HA-Kjj"/>
+                        <constraint firstAttribute="trailing" secondItem="2Yu-Bn-DbI" secondAttribute="trailing" constant="20" id="vWF-kM-zVA"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="lcc-pi-lEw"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="8Yx-nX-KUg"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="0.8980392157" green="0.94117647059999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="ksV-mz-AFB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Bae-9f-fYL"/>
+                <constraint firstItem="ksV-mz-AFB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Nmx-O2-nbJ"/>
+                <constraint firstItem="ksV-mz-AFB" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="WvV-ru-Lt8"/>
+                <constraint firstAttribute="trailing" secondItem="ksV-mz-AFB" secondAttribute="trailing" id="bcZ-Ua-Ug4"/>
+                <constraint firstItem="ksV-mz-AFB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mxv-3A-2Ts"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="217.39130434782609" y="70.982142857142847"/>
+        </view>
+    </objects>
+</document>

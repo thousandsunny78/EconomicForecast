@@ -102,7 +102,7 @@ class IIPStatisticalViewController: ViewController {
         var dataEntries: [BarChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(x: Double(i), y: Double(values[i]), data: dataPoints[i] as AnyObject)
+            let dataEntry = BarChartDataEntry(x: Double(i), y: Double(values[i] - 100), data: dataPoints[i] as AnyObject)
             dataEntries.append(dataEntry)
         }
         
@@ -119,7 +119,7 @@ class IIPStatisticalViewController: ViewController {
         if result != -1 {
             switch result {
             case 0:
-                color = UIColor.red
+                color = UIColor.App.unemployment_female
             case 1:
                 color = UIColor.blue
             case 2:

@@ -50,13 +50,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="46"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mGn-Fs-5lb">
-                                            <rect key="frame" x="0.0" y="0.0" width="1260" height="46"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1140" height="46"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I3T-I3-Lmv" userLabel="ContentView1">
-                                                    <rect key="frame" x="5" y="5" width="200" height="36"/>
+                                                    <rect key="frame" x="5" y="5" width="180" height="36"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQ9-Qh-b1B">
-                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="36"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="36"/>
                                                             <color key="backgroundColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <state key="normal" title="Chỉ số CPI">
                                                                 <color key="titleColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
@@ -77,10 +77,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKF-0Z-ZEe" userLabel="ContentView2">
-                                                    <rect key="frame" x="215" y="5" width="200" height="36"/>
+                                                    <rect key="frame" x="195" y="5" width="180" height="36"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jop-Rr-SWB">
-                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="36"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="36"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <state key="normal" title="Chỉ số IIP">
                                                                 <color key="titleColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -96,10 +96,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oLU-76-bRl" userLabel="ContentView3">
-                                                    <rect key="frame" x="425" y="5" width="200" height="36"/>
+                                                    <rect key="frame" x="385" y="5" width="180" height="36"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-oo-A32">
-                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="36"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="36"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <state key="normal" title="Chỉ số GDP">
                                                                 <color key="titleColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -115,10 +115,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8qz-VY-5pf" userLabel="ContentView4">
-                                                    <rect key="frame" x="635" y="5" width="200" height="36"/>
+                                                    <rect key="frame" x="575" y="5" width="180" height="36"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bn-E6-Xxb">
-                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="36"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="36"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <state key="normal" title="Chỉ số XNK">
                                                                 <color key="titleColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -134,10 +134,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyD-s7-bM8" userLabel="ContentView5">
-                                                    <rect key="frame" x="845" y="5" width="200" height="36"/>
+                                                    <rect key="frame" x="765" y="5" width="180" height="36"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Db4-KL-nYd">
-                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="36"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="36"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <state key="normal" title="Thất nghiệp">
                                                                 <color key="titleColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -154,10 +154,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bc9-dG-rOw" userLabel="ContentView6">
-                                                    <rect key="frame" x="1055" y="5" width="200" height="36"/>
+                                                    <rect key="frame" x="955" y="5" width="180" height="36"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNx-Vo-Baw">
-                                                            <rect key="frame" x="10" y="0.0" width="180" height="36"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="36"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <state key="normal" title="Thu chi ngân sách">
                                                                 <color key="titleColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -168,8 +168,9 @@
                                                     <constraints>
                                                         <constraint firstItem="gNx-Vo-Baw" firstAttribute="top" secondItem="Bc9-dG-rOw" secondAttribute="top" id="8ag-Ld-dO0"/>
                                                         <constraint firstAttribute="bottom" secondItem="gNx-Vo-Baw" secondAttribute="bottom" id="X85-s4-dCF"/>
-                                                        <constraint firstItem="gNx-Vo-Baw" firstAttribute="leading" secondItem="Bc9-dG-rOw" secondAttribute="leading" constant="10" id="rFi-z9-n26"/>
-                                                        <constraint firstAttribute="trailing" secondItem="gNx-Vo-Baw" secondAttribute="trailing" constant="10" id="v40-ru-y9U"/>
+                                                        <constraint firstItem="gNx-Vo-Baw" firstAttribute="leading" secondItem="Bc9-dG-rOw" secondAttribute="leading" id="rFi-z9-n26"/>
+                                                        <constraint firstAttribute="width" constant="180" id="sVd-9r-9yg"/>
+                                                        <constraint firstAttribute="trailing" secondItem="gNx-Vo-Baw" secondAttribute="trailing" id="v40-ru-y9U"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>

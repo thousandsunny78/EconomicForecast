@@ -53,10 +53,34 @@ class HomeChartViewController: ViewController {
         return viewController
     }()
     
+    private lazy var tab3VC: ViewController = {
+        let viewController = GDPViewController(nibName: GDPViewController.className, bundle: nil)
+        let navigator = GDPNavigator(with: viewController)
+        let viewModel = GDPViewModel(navigator: navigator)
+        viewController.viewModel = viewModel
+        return viewController
+    }()
+    
+    private lazy var tab4VC: ViewController = {
+        let viewController = XNKViewController(nibName: XNKViewController.className, bundle: nil)
+        let navigator = XNKNavigator(with: viewController)
+        let viewModel = XNKViewModel(navigator: navigator)
+        viewController.viewModel = viewModel
+        return viewController
+    }()
+    
     private lazy var tab5VC: ViewController = {
         let viewController = UnemploymentViewController(nibName: UnemploymentViewController.className, bundle: nil)
         let navigator = UnemploymentNavigator(with: viewController)
         let viewModel = UnemploymentViewModel(navigator: navigator)
+        viewController.viewModel = viewModel
+        return viewController
+    }()
+    
+    private lazy var tab6VC: ViewController = {
+        let viewController = FinanceViewController(nibName: FinanceViewController.className, bundle: nil)
+        let navigator = FinanceNavigator(with: viewController)
+        let viewModel = FinanceViewModel(navigator: navigator)
         viewController.viewModel = viewModel
         return viewController
     }()
@@ -95,10 +119,18 @@ class HomeChartViewController: ViewController {
         tab2VCButton.rx.tap.bind { [weak self] () in
             self?.showTab2()
         }.disposed(by: disposeBag)
+        tab3VCButton.rx.tap.bind { [weak self] () in
+            self?.showTab3()
+        }.disposed(by: disposeBag)
+        tab4VCButton.rx.tap.bind { [weak self] () in
+            self?.showTab4()
+        }.disposed(by: disposeBag)
         tab5VCButton.rx.tap.bind { [weak self] () in
             self?.showTab5()
         }.disposed(by: disposeBag)
-        
+        tab6VCButton.rx.tap.bind { [weak self] () in
+            self?.showTab6()
+        }.disposed(by: disposeBag)
     }
     
     override func bindViewModel() {
@@ -123,6 +155,12 @@ class HomeChartViewController: ViewController {
         tab2VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
         tab5VCButton.backgroundColor = UIColor.white
         tab5VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab3VCButton.backgroundColor = UIColor.white
+        tab3VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab4VCButton.backgroundColor = UIColor.white
+        tab4VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab6VCButton.backgroundColor = UIColor.white
+        tab6VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
     }
     
     private func showTab2() {
@@ -136,6 +174,50 @@ class HomeChartViewController: ViewController {
         tab2VCButton.setTitleColor(UIColor.App.tabUnselected, for: .normal)
         tab5VCButton.backgroundColor = UIColor.white
         tab5VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab3VCButton.backgroundColor = UIColor.white
+        tab3VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab4VCButton.backgroundColor = UIColor.white
+        tab4VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab6VCButton.backgroundColor = UIColor.white
+        tab6VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+    }
+    
+    private func showTab3() {
+        currentViewController?.removeViewAndControllerFromParentViewController()
+        addChildViewController(tab3VC, toContainerView: contentVC)
+        currentViewController = tab3VC
+        
+        tab3VCButton.backgroundColor = UIColor.App.tabSelected
+        tab3VCButton.setTitleColor(UIColor.App.tabUnselected, for: .normal)
+        tab5VCButton.backgroundColor = UIColor.white
+        tab5VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab1VCButton.backgroundColor = UIColor.white
+        tab1VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab2VCButton.backgroundColor = UIColor.white
+        tab2VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab4VCButton.backgroundColor = UIColor.white
+        tab4VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab6VCButton.backgroundColor = UIColor.white
+        tab6VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+    }
+    
+    private func showTab4() {
+        currentViewController?.removeViewAndControllerFromParentViewController()
+        addChildViewController(tab4VC, toContainerView: contentVC)
+        currentViewController = tab4VC
+        
+        tab4VCButton.backgroundColor = UIColor.App.tabSelected
+        tab4VCButton.setTitleColor(UIColor.App.tabUnselected, for: .normal)
+        tab5VCButton.backgroundColor = UIColor.white
+        tab5VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab1VCButton.backgroundColor = UIColor.white
+        tab1VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab2VCButton.backgroundColor = UIColor.white
+        tab2VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab3VCButton.backgroundColor = UIColor.white
+        tab3VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab6VCButton.backgroundColor = UIColor.white
+        tab6VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
     }
     
     private func showTab5() {
@@ -149,6 +231,31 @@ class HomeChartViewController: ViewController {
         tab1VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
         tab2VCButton.backgroundColor = UIColor.white
         tab2VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab3VCButton.backgroundColor = UIColor.white
+        tab3VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab4VCButton.backgroundColor = UIColor.white
+        tab4VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab6VCButton.backgroundColor = UIColor.white
+        tab6VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+    }
+    
+    private func showTab6() {
+        currentViewController?.removeViewAndControllerFromParentViewController()
+        addChildViewController(tab6VC, toContainerView: contentVC)
+        currentViewController = tab6VC
+        
+        tab6VCButton.backgroundColor = UIColor.App.tabSelected
+        tab6VCButton.setTitleColor(UIColor.App.tabUnselected, for: .normal)
+        tab1VCButton.backgroundColor = UIColor.white
+        tab1VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab2VCButton.backgroundColor = UIColor.white
+        tab2VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab3VCButton.backgroundColor = UIColor.white
+        tab3VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab4VCButton.backgroundColor = UIColor.white
+        tab4VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
+        tab5VCButton.backgroundColor = UIColor.white
+        tab5VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
     }
     
     // quanth: round and shadow uiview

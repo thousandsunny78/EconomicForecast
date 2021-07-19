@@ -93,6 +93,22 @@ public extension UIColor {
         public static let ramsey = UIColor(red: 247, green: 137, blue: 58)!
         public static let laca = UIColor(red: 24, green: 115, blue: 185)!
         public static let auba = UIColor(red: 33, green: 33, blue: 33)!
+        
+        public static let thu_ngan_sach = UIColor(red: 191, green: 78, blue: 48)!
+        public static let thu_khac = UIColor(red: 39, green: 71, blue: 122)!
+        public static let thu_noi_dia = UIColor(red: 199, green: 199, blue: 32)!
+        public static let thu_hai_quan = UIColor(red: 39, green: 90, blue: 74)!
+        
+        public static let chi_bo_sung_ns = UIColor(red: 207, green: 164, blue: 104)!
+        public static let chi_khac = UIColor(red: 21, green: 39, blue: 77)!
+        public static let chi_dau_tu = UIColor(red: 55, green: 121, blue: 77)!
+        public static let chi_thuong_xuyen = UIColor(red: 127, green: 95, blue: 43)!
+        
+        public static let unemployment_male = UIColor(red: 88, green: 123, blue: 177)!
+        public static let unemployment_female = UIColor(red: 173, green: 84, blue: 79)!
+        
+        public static let unemployment_male2 = UIColor(red: 220, green: 129, blue: 66)!
+        public static let unemployment_female2 = UIColor(red: 161, green: 161, blue: 161)!
     }
     
 }

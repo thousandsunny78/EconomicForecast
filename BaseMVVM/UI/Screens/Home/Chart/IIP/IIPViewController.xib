@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IIPViewController" customModule="BaseMVVM" customModuleProvider="target">
             <connections>
+                <outlet property="compareContent" destination="KMo-r0-b88" id="xzK-RX-PtH"/>
+                <outlet property="compareView" destination="jqS-vt-l9v" id="4D5-Pd-9DI"/>
                 <outlet property="forecastContent" destination="HPY-fr-UF4" id="WUk-pk-RUC"/>
                 <outlet property="forecastView" destination="SUf-qO-D4M" id="Mmw-Q9-jQW"/>
                 <outlet property="statisticalContent" destination="jBx-KS-SX8" id="Cag-Tx-VuM"/>
@@ -26,7 +28,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eII-fD-u95">
-                            <rect key="frame" x="20" y="10" width="374" height="820"/>
+                            <rect key="frame" x="20" y="10" width="374" height="1240"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPY-fr-UF4" userLabel="ForecastContent">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="400"/>
@@ -60,6 +62,23 @@
                                         <constraint firstItem="nBc-4A-FZ9" firstAttribute="top" secondItem="jBx-KS-SX8" secondAttribute="top" id="h1c-rz-RTa"/>
                                         <constraint firstAttribute="trailing" secondItem="nBc-4A-FZ9" secondAttribute="trailing" id="mrM-oN-pOL"/>
                                         <constraint firstAttribute="bottom" secondItem="nBc-4A-FZ9" secondAttribute="bottom" id="sA5-Nb-HVO"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMo-r0-b88" userLabel="CompareContent">
+                                    <rect key="frame" x="0.0" y="840" width="374" height="400"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqS-vt-l9v" userLabel="CompareArea">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="400"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="jqS-vt-l9v" secondAttribute="trailing" id="6fZ-ce-QHd"/>
+                                        <constraint firstAttribute="bottom" secondItem="jqS-vt-l9v" secondAttribute="bottom" id="7or-7x-v3x"/>
+                                        <constraint firstItem="jqS-vt-l9v" firstAttribute="leading" secondItem="KMo-r0-b88" secondAttribute="leading" id="S6j-8m-0dc"/>
+                                        <constraint firstAttribute="height" constant="400" id="SMJ-W2-Rai"/>
+                                        <constraint firstItem="jqS-vt-l9v" firstAttribute="top" secondItem="KMo-r0-b88" secondAttribute="top" id="cO2-bt-NgT"/>
                                     </constraints>
                                 </view>
                             </subviews>

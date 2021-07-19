@@ -1,8 +1,8 @@
 //
-//  UETRatioViewController.swift
+//  XNKRatioViewController.swift
 //  BaseMVVM
 //
-//  Created by Quan on 18/07/2021.
+//  Created by Quan on 19/07/2021.
 //  Copyright (c) 2021 thoson.it. All rights reserved.
 //
 //  Template by: Quan
@@ -13,10 +13,10 @@ import RxSwift
 import RxCocoa
 import Charts
 
-class UETRatioViewController: ViewController {
+class XNKRatioViewController: ViewController {
     
     @IBOutlet weak var barChartView: BarChartView!
-    var cpiDatas: [CPIDataEntity] = []
+    var xnkDatas: [CPIDataEntity] = []
     var timelines = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"]
     let months = ["2016", "2017", "2018", "2019", "2020", "2021"]
     let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 15.0]
@@ -73,9 +73,9 @@ class UETRatioViewController: ViewController {
     
     override func bindViewModel() {
         super.bindViewModel()
-        guard let viewModel = self.viewModel as? UETRatioViewModel else { return }
+        guard let viewModel = self.viewModel as? XNKRatioViewModel else { return }
         
-        let input = UETRatioViewModel.Input()
+        let input = XNKRatioViewModel.Input()
         let output = viewModel.transform(input: input)
     }
     
@@ -96,10 +96,10 @@ class UETRatioViewController: ViewController {
             //let dataEntry = BarChartDataEntry(x: Double(i), yValues:  [self.unitsSold[i],self.unitsBought[i]], label: "groupChart")
         }
         
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Nam")
-        chartDataSet.colors = [UIColor.App.unemployment_male]
-        let chartDataSet1 = BarChartDataSet(entries: dataEntries1, label: "Nữ")
-        chartDataSet1.colors = [UIColor.App.unemployment_female]
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Xuất khẩu")
+        chartDataSet.colors = [UIColor.App.unemployment_male2]
+        let chartDataSet1 = BarChartDataSet(entries: dataEntries1, label: "Nhập khẩu")
+        chartDataSet1.colors = [UIColor.App.unemployment_female2]
         
         let dataSets: [BarChartDataSet] = [chartDataSet,chartDataSet1]
         //chartDataSet.colors = ChartColorTemplates.colorful()
@@ -133,7 +133,6 @@ class UETRatioViewController: ViewController {
         
         //chart animation
         barChartView.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .linear)
-        
-        
+
     }
 }

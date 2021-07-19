@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UETPercent2ViewController" customModule="BaseMVVM" customModuleProvider="target">
+            <connections>
+                <outlet property="pieChartView" destination="rje-Mu-heO" id="Pja-nc-yWy"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="533" height="666"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="syA-ZC-scX">
+                    <rect key="frame" x="0.0" y="0.0" width="533" height="666"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9OB-v0-pg0" userLabel="BarChartContent">
+                            <rect key="frame" x="0.0" y="0.0" width="533" height="666"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rje-Mu-heO" customClass="PieChartView" customModule="Charts">
+                                    <rect key="frame" x="10" y="0.0" width="513" height="666"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="rje-Mu-heO" firstAttribute="leading" secondItem="9OB-v0-pg0" secondAttribute="leading" constant="10" id="55N-jv-MJa"/>
+                                <constraint firstItem="rje-Mu-heO" firstAttribute="top" secondItem="9OB-v0-pg0" secondAttribute="top" id="Ctm-60-JE9"/>
+                                <constraint firstAttribute="trailing" secondItem="rje-Mu-heO" secondAttribute="trailing" constant="10" id="pHJ-Ht-FjW"/>
+                                <constraint firstAttribute="bottom" secondItem="rje-Mu-heO" secondAttribute="bottom" id="rd7-as-lqn"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="syA-ZC-scX" secondAttribute="bottom" id="JQp-Nv-YU5"/>
+                <constraint firstAttribute="trailing" secondItem="syA-ZC-scX" secondAttribute="trailing" id="Kr7-Q8-Huw"/>
+                <constraint firstItem="syA-ZC-scX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tzh-SB-Zlr"/>
+                <constraint firstItem="syA-ZC-scX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vjJ-aE-ffq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="205.07246376811597" y="73.660714285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

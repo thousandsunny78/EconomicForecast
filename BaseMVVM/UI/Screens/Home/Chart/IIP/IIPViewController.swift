@@ -20,6 +20,8 @@ class IIPViewController: ViewController {
     @IBOutlet weak var forecastView: UIView!
     @IBOutlet weak var statisticalContent: UIView!
     @IBOutlet weak var statisticalView: UIView!
+    @IBOutlet weak var compareContent: UIView!
+    @IBOutlet weak var compareView: UIView!
     
     private var iipDatas: [CPIDataEntity] = []
     private var timelines: [String] = []
@@ -44,6 +46,16 @@ class IIPViewController: ViewController {
         return viewController
     }()
     
+    private lazy var compareVC: ViewController = {
+        let viewController = IIPCompareViewController(nibName: IIPCompareViewController.className, bundle: nil)
+        let navigator = IIPCompareNavigator(with: viewController)
+        let viewModel = IIPCompareViewModel(navigator: navigator)
+        viewController.viewModel = viewModel
+        viewController.iipDatas = iipDatas
+        viewController.timelines = timelines
+        return viewController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,6 +71,7 @@ class IIPViewController: ViewController {
         
         addForecastShadow(cornerRadius: 12.0, shadowRadius: 5.0)
         addStatisticalShadow(cornerRadius: 12.0, shadowRadius: 5.0)
+        addCompareViewShadow(cornerRadius: 12.0, shadowRadius: 5.0)
     }
     
     override func bindViewModel() {
@@ -76,6 +89,7 @@ class IIPViewController: ViewController {
                 self.timelines = data?.timeline ?? []
                 self.embedForecastView()
                 self.embedStatisticalView()
+                self.embedCompareView()
             }
             
         }).disposed(by: disposeBag)
@@ -123,6 +137,25 @@ class IIPViewController: ViewController {
         ]
     }
     
+    // quanth: round and shadow uiview
+    private func addCompareViewShadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
+        compareView.layer.cornerRadius = cornerRadius
+        compareView.layer.masksToBounds = true
+
+        compareContent.layer.cornerRadius = cornerRadius
+        compareContent.layer.masksToBounds = false
+
+        compareContent.layer.shadowColor = UIColor.black.cgColor
+        compareContent.layer.shadowOffset = CGSize(width: 1, height: 1)
+        compareContent.layer.shadowOpacity = 0.2
+        compareContent.layer.shadowRadius = shadowRadius
+
+        compareView.frame = compareView.bounds
+        compareView.autoresizingMask = [
+            .flexibleWidth, .flexibleHeight
+        ]
+    }
+    
     // Show forecast view
     private func embedForecastView() {
         addChildViewController(forecaseVC, toContainerView: forecastView)
@@ -133,6 +166,13 @@ class IIPViewController: ViewController {
         addChildViewController(statisticalVC, toContainerView: statisticalView)
         // quanth: vẽ biểu đồ hơn lâu nên chờ vẽ xong mới tắt
         MBProgressHUD.hide(for: self.view, animated: true)
+    }
+    
+    // Show ratio view
+    private func embedCompareView() {
+        addChildViewController(compareVC, toContainerView: compareView)
+        // quanth: vẽ biểu đồ hơn lâu nên chờ vẽ xong mới tắt
+        //MBProgressHUD.hide(for: self.view, animated: true)
     }
     
     private var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]

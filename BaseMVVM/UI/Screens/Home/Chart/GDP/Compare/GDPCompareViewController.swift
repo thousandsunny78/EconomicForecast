@@ -1,5 +1,5 @@
 //
-//  CPICompareViewController.swift
+//  GDPCompareViewController.swift
 //  BaseMVVM
 //
 //  Created by Quan on 19/07/2021.
@@ -14,7 +14,7 @@ import RxCocoa
 import Charts
 import FittedSheets
 
-class CPICompareViewController: ViewController, ChartViewDelegate {
+class GDPCompareViewController: ViewController, ChartViewDelegate {
     
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var chartContentView: UIView!
@@ -25,7 +25,7 @@ class CPICompareViewController: ViewController, ChartViewDelegate {
         static let ITEM_PER_SCREEN: Int = 6
     }
     
-    var cpiDatas: [CPIDataEntity] = []
+    var iipDatas: [CPIDataEntity] = []
     var timelines = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"]
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"]
     private var controlList = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
@@ -49,9 +49,9 @@ class CPICompareViewController: ViewController, ChartViewDelegate {
     
     override func bindViewModel() {
         super.bindViewModel()
-        guard let viewModel = self.viewModel as? CPICompareViewModel else { return }
+        guard let viewModel = self.viewModel as? GDPCompareViewModel else { return }
         
-        let input = CPICompareViewModel.Input()
+        let input = GDPCompareViewModel.Input()
         let output = viewModel.transform(input: input)
     }
     
@@ -178,24 +178,24 @@ class CPICompareViewController: ViewController, ChartViewDelegate {
     
     private func createListLineDataSet(i: Int, j: Int, dataSets: inout [LineChartDataSet], dataEntries: inout [ChartDataEntry], color: UIColor ){
         // Chỉ số giá tiêu dùng chung
-        let dataEntry = ChartDataEntry(x: Double(i), y: cpiDatas[j].value[i], data: months[i] as AnyObject)
+        let dataEntry = ChartDataEntry(x: Double(i), y: iipDatas[j].value[i], data: months[i] as AnyObject)
         dataEntries.append(dataEntry)
         
-        let chartDataSet = LineChartDataSet(entries: dataEntries, label: cpiDatas[j].name)
+        let chartDataSet = LineChartDataSet(entries: dataEntries, label: iipDatas[j].name)
         chartDataSet.circleRadius = 5
         chartDataSet.circleHoleRadius = 2
         chartDataSet.drawValuesEnabled = false
         chartDataSet.highlightEnabled = true
         // set colors and enable value drawing
-        chartDataSet.colors = [UIColor.App.unemployment_male]
-        chartDataSet.circleColors = [UIColor.App.unemployment_male]
+        chartDataSet.colors = [UIColor.App.unemployment_female2]
+        chartDataSet.circleColors = [UIColor.App.unemployment_female2]
         
         dataSets.append(chartDataSet)
     }
     
     private func createListCompareLineDataSet(i: Int, j: Int, dataSets: inout [LineChartDataSet], dataEntries: inout [ChartDataEntry], color: UIColor ){
         // Chỉ số giá tiêu dùng chung
-        let dataEntry = ChartDataEntry(x: Double(i), y: (cpiDatas[j].value[i] + Double(i+1)), data: months[i] as AnyObject)
+        let dataEntry = ChartDataEntry(x: Double(i), y: (iipDatas[j].value[i] + Double(i+2)), data: months[i] as AnyObject)
         dataEntries.append(dataEntry)
         
         let chartDataSet = LineChartDataSet(entries: dataEntries, label: "Cả nước")
@@ -204,8 +204,8 @@ class CPICompareViewController: ViewController, ChartViewDelegate {
         chartDataSet.drawValuesEnabled = false
         chartDataSet.highlightEnabled = true
         // set colors and enable value drawing
-        chartDataSet.colors = [UIColor.App.unemployment_female]
-        chartDataSet.circleColors = [UIColor.App.unemployment_female]
+        chartDataSet.colors = [UIColor.App.unemployment_male2]
+        chartDataSet.circleColors = [UIColor.App.unemployment_male2]
         
         /// quanth: nếu muốn có đường nét đứt thì dùng cái này
         chartDataSet.lineWidth = 3
@@ -243,7 +243,7 @@ class CPICompareViewController: ViewController, ChartViewDelegate {
             let controller = CPIBottomSheetViewController()
             controller.type = Constants.CPI_FORECAST
             controller.cpiVC = self
-            controller.cpiDatas = self?.cpiDatas ?? []
+            controller.cpiDatas = self?.iipDatas ?? []
             controller.controlList = self?.controlList ?? []
             let sheetController = SheetViewController(controller: controller)
             sheetController.topCornersRadius = 12

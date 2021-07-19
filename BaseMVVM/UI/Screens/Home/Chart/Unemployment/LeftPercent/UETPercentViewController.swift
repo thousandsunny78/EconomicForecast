@@ -16,8 +16,6 @@ import Charts
 class UETPercentViewController: ViewController {
     
     // MARK: View lifecycle
-    
-    // MARK: View lifecycle
     @IBOutlet weak var pieChartView: PieChartView!
     
     var chartTitle: String? = ""
@@ -62,19 +60,12 @@ class UETPercentViewController: ViewController {
         let formatter = DefaultValueFormatter(formatter: format)
         pieChartData.setValueFormatter(formatter)
         
-        pieChartDataSet.colors = [UIColor.blue, UIColor.red]
+        pieChartDataSet.colors = [UIColor.App.unemployment_male2, UIColor.App.unemployment_female2]
         pieChartView.holeColor = UIColor.white
         //  pieChartView.holeRadiusPercent = 0.95
         pieChartView.centerText = self.chartTitle
         pieChartView.usePercentValuesEnabled = true
         pieChartView.animate(yAxisDuration: 2.0, easingOption: .easeInOutBack)
         pieChartView.data = pieChartData
-    }
-    
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

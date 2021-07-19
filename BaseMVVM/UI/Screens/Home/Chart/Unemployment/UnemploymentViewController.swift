@@ -46,9 +46,9 @@ class UnemploymentViewController: ViewController {
     }()
     
     private lazy var rightPercentVC: ViewController = {
-        let viewController = UETPercentViewController(nibName: UETPercentViewController.className, bundle: nil)
-        let navigator = UETPercentNavigator(with: viewController)
-        let viewModel = UETPercentViewModel(navigator: navigator)
+        let viewController = UETPercent2ViewController(nibName: UETPercent2ViewController.className, bundle: nil)
+        let navigator = UETPercent2Navigator(with: viewController)
+        let viewModel = UETPercent2ViewModel(navigator: navigator)
         viewController.viewModel = viewModel
         viewController.chartTitle = "Ngoại ô"
 //        viewController.cpiDatas = cpiDatas
