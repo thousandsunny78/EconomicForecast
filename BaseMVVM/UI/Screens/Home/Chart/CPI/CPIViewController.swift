@@ -21,10 +21,8 @@ class CPIViewController: ViewController {
     @IBOutlet weak var forecastView: UIView!
     @IBOutlet weak var statisticalContent: UIView!
     @IBOutlet weak var statisticalView: UIView!
-    @IBOutlet weak var ratioContent: UIView!
-    @IBOutlet weak var ratioView: UIView!
-    @IBOutlet weak var percentLeftView: UIView!
-    @IBOutlet weak var percentRightView: UIView!
+    @IBOutlet weak var compareContent: UIView!
+    @IBOutlet weak var compareView: UIView!
     
     private var cpiDatas: [CPIDataEntity] = []
     private var timelines: [String] = []
@@ -49,35 +47,13 @@ class CPIViewController: ViewController {
         return viewController
     }()
     
-    private lazy var ratioVC: ViewController = {
-        let viewController = CPIRatioViewController(nibName: CPIRatioViewController.className, bundle: nil)
-        let navigator = CPIRatioNavigator(with: viewController)
-        let viewModel = CPIRatioViewModel(navigator: navigator)
+    private lazy var compareVC: ViewController = {
+        let viewController = CPICompareViewController(nibName: CPICompareViewController.className, bundle: nil)
+        let navigator = CPICompareNavigator(with: viewController)
+        let viewModel = CPICompareViewModel(navigator: navigator)
         viewController.viewModel = viewModel
         viewController.cpiDatas = cpiDatas
         viewController.timelines = timelines
-        return viewController
-    }()
-    
-    private lazy var leftPercentVC: ViewController = {
-        let viewController = CPIPercentViewController(nibName: CPIPercentViewController.className, bundle: nil)
-        let navigator = CPIPercentNavigator(with: viewController)
-        let viewModel = CPIPercentViewModel(navigator: navigator)
-        viewController.viewModel = viewModel
-        viewController.chartTitle = "Thành phố"
-//        viewController.cpiDatas = cpiDatas
-//        viewController.timelines = timelines
-        return viewController
-    }()
-    
-    private lazy var rightPercentVC: ViewController = {
-        let viewController = CPIPercentViewController(nibName: CPIPercentViewController.className, bundle: nil)
-        let navigator = CPIPercentNavigator(with: viewController)
-        let viewModel = CPIPercentViewModel(navigator: navigator)
-        viewController.viewModel = viewModel
-        viewController.chartTitle = "Ngoại ô"
-//        viewController.cpiDatas = cpiDatas
-//        viewController.timelines = timelines
         return viewController
     }()
     
@@ -97,7 +73,7 @@ class CPIViewController: ViewController {
         
         addForecastShadow(cornerRadius: 12.0, shadowRadius: 5.0)
         addStatisticalShadow(cornerRadius: 12.0, shadowRadius: 5.0)
-        addRatioShadow(cornerRadius: 12.0, shadowRadius: 5.0)
+        addCompareViewShadow(cornerRadius: 12.0, shadowRadius: 5.0)
     }
     
     override func bindViewModel() {
@@ -115,9 +91,7 @@ class CPIViewController: ViewController {
                 self.timelines = data?.timeline ?? []
                 self.embedForecastView()
                 self.embedStatisticalView()
-                self.embedRatioView()
-                self.embedLeftPercentView()
-                self.embedRightPercentView()
+                self.embedCompareView()
             }
             
         }).disposed(by: disposeBag)
@@ -164,20 +138,20 @@ class CPIViewController: ViewController {
     }
     
     // quanth: round and shadow uiview
-    private func addRatioShadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
-        ratioView.layer.cornerRadius = cornerRadius
-        ratioView.layer.masksToBounds = true
+    private func addCompareViewShadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
+        compareView.layer.cornerRadius = cornerRadius
+        compareView.layer.masksToBounds = true
 
-        ratioContent.layer.cornerRadius = cornerRadius
-        ratioContent.layer.masksToBounds = false
+        compareContent.layer.cornerRadius = cornerRadius
+        compareContent.layer.masksToBounds = false
 
-        ratioContent.layer.shadowColor = UIColor.black.cgColor
-        ratioContent.layer.shadowOffset = CGSize(width: 1, height: 1)
-        ratioContent.layer.shadowOpacity = 0.2
-        ratioContent.layer.shadowRadius = shadowRadius
+        compareContent.layer.shadowColor = UIColor.black.cgColor
+        compareContent.layer.shadowOffset = CGSize(width: 1, height: 1)
+        compareContent.layer.shadowOpacity = 0.2
+        compareContent.layer.shadowRadius = shadowRadius
 
-        ratioView.frame = ratioView.bounds
-        ratioView.autoresizingMask = [
+        compareView.frame = compareView.bounds
+        compareView.autoresizingMask = [
             .flexibleWidth, .flexibleHeight
         ]
     }
@@ -195,22 +169,8 @@ class CPIViewController: ViewController {
     }
     
     // Show ratio view
-    private func embedRatioView() {
-        addChildViewController(ratioVC, toContainerView: ratioView)
-        // quanth: vẽ biểu đồ hơn lâu nên chờ vẽ xong mới tắt
-        //MBProgressHUD.hide(for: self.view, animated: true)
-    }
-
-    // Show ratio view
-    private func embedLeftPercentView() {
-        addChildViewController(leftPercentVC, toContainerView: percentLeftView)
-        // quanth: vẽ biểu đồ hơn lâu nên chờ vẽ xong mới tắt
-        //MBProgressHUD.hide(for: self.view, animated: true)
-    }
-    
-    // Show ratio view
-    private func embedRightPercentView() {
-        addChildViewController(rightPercentVC, toContainerView: percentRightView)
+    private func embedCompareView() {
+        addChildViewController(compareVC, toContainerView: compareView)
         // quanth: vẽ biểu đồ hơn lâu nên chờ vẽ xong mới tắt
         //MBProgressHUD.hide(for: self.view, animated: true)
     }

@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CPIForecastViewController" customModule="BaseMVVM" customModuleProvider="target">
             <connections>
                 <outlet property="chartContentView" destination="2Ri-fE-mcg" id="zH3-2t-Gt7"/>
+                <outlet property="detailText" destination="7Iq-CP-vot" id="Rlf-xt-W6d"/>
                 <outlet property="forecastVC" destination="M21-dm-ZGM" id="Y2y-Jp-PiV"/>
                 <outlet property="lineChartView" destination="uZN-dv-9Es" id="rcD-tF-D0n"/>
                 <outlet property="month1Button" destination="WDq-6u-pSs" id="btP-FZ-orR"/>
@@ -93,8 +94,14 @@
                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chỉ số giá tiêu dùng CPI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Iq-CP-vot" userLabel="Ngày tháng">
+                                    <rect key="frame" x="10" y="31" width="487" height="14.5"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZN-dv-9Es" customClass="LineChartView" customModule="Charts">
-                                    <rect key="frame" x="10" y="31" width="487" height="477.5"/>
+                                    <rect key="frame" x="10" y="55.5" width="487" height="453"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chỉ số CPI của Tỉnh Đồng Nai  năm 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmM-nh-Yqa">
@@ -254,17 +261,20 @@
                                 <constraint firstItem="znT-28-rEY" firstAttribute="top" secondItem="2Ri-fE-mcg" secondAttribute="top" constant="10" id="1Bv-TD-C6l"/>
                                 <constraint firstItem="GGo-Do-Ro5" firstAttribute="top" secondItem="uZN-dv-9Es" secondAttribute="bottom" constant="10" id="1Wl-4Q-9w7"/>
                                 <constraint firstItem="GGo-Do-Ro5" firstAttribute="leading" secondItem="2Ri-fE-mcg" secondAttribute="leading" id="3s5-Gp-l1R"/>
+                                <constraint firstItem="7Iq-CP-vot" firstAttribute="top" secondItem="znT-28-rEY" secondAttribute="bottom" constant="10" id="4zc-zT-Uym"/>
                                 <constraint firstAttribute="trailing" secondItem="bmM-nh-Yqa" secondAttribute="trailing" id="5gH-pl-NPr"/>
+                                <constraint firstItem="7Iq-CP-vot" firstAttribute="leading" secondItem="2Ri-fE-mcg" secondAttribute="leading" constant="10" id="6gM-mp-pV3"/>
+                                <constraint firstItem="uZN-dv-9Es" firstAttribute="top" secondItem="7Iq-CP-vot" secondAttribute="bottom" constant="10" id="6mT-9F-Dfd"/>
                                 <constraint firstItem="bmM-nh-Yqa" firstAttribute="leading" secondItem="2Ri-fE-mcg" secondAttribute="leading" id="7Hr-SX-aRY"/>
                                 <constraint firstAttribute="trailing" secondItem="M21-dm-ZGM" secondAttribute="trailing" id="9cI-wa-7Bk"/>
                                 <constraint firstItem="bmM-nh-Yqa" firstAttribute="top" secondItem="GGo-Do-Ro5" secondAttribute="bottom" constant="10" id="AUU-I2-TGO"/>
+                                <constraint firstAttribute="trailing" secondItem="7Iq-CP-vot" secondAttribute="trailing" constant="10" id="BAf-VX-w0L"/>
                                 <constraint firstAttribute="trailing" secondItem="M21-dm-ZGM" secondAttribute="trailing" id="BUe-qP-vuw"/>
                                 <constraint firstItem="M21-dm-ZGM" firstAttribute="top" secondItem="2Ri-fE-mcg" secondAttribute="top" id="OFB-S7-w7G"/>
                                 <constraint firstAttribute="trailing" secondItem="uZN-dv-9Es" secondAttribute="trailing" constant="10" id="VyT-BP-cdZ"/>
                                 <constraint firstItem="uZN-dv-9Es" firstAttribute="leading" secondItem="2Ri-fE-mcg" secondAttribute="leading" constant="10" id="YRY-xA-Y2U"/>
                                 <constraint firstAttribute="bottom" secondItem="bmM-nh-Yqa" secondAttribute="bottom" constant="10" id="a4K-5v-z1b"/>
                                 <constraint firstItem="M21-dm-ZGM" firstAttribute="width" secondItem="2Ri-fE-mcg" secondAttribute="width" multiplier="3:10" id="bvJ-38-f5I"/>
-                                <constraint firstItem="uZN-dv-9Es" firstAttribute="top" secondItem="znT-28-rEY" secondAttribute="bottom" constant="10" id="etU-rc-Sr7"/>
                                 <constraint firstAttribute="bottom" secondItem="M21-dm-ZGM" secondAttribute="bottom" constant="94.5" id="qMk-Ay-vyt"/>
                                 <constraint firstAttribute="trailing" secondItem="GGo-Do-Ro5" secondAttribute="trailing" id="rEx-U8-5e8"/>
                                 <constraint firstAttribute="trailing" secondItem="znT-28-rEY" secondAttribute="trailing" constant="10" id="ru9-Uc-mdb"/>

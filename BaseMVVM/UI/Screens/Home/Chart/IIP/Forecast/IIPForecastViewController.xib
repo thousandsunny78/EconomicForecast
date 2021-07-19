@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IIPForecastViewController" customModule="BaseMVVM" customModuleProvider="target">
             <connections>
                 <outlet property="chartContentView" destination="u19-1X-Xk1" id="Dbb-kl-er3"/>
+                <outlet property="detailText" destination="SCb-1W-QnP" id="fpP-rO-tbT"/>
                 <outlet property="forecastVC" destination="4bM-1O-SMs" id="p76-yY-8h7"/>
                 <outlet property="lineChartView" destination="lnK-Ll-lzt" id="3WG-DK-2EE"/>
                 <outlet property="month1Button" destination="XGR-9Z-Ppd" id="zqH-wZ-HEr"/>
@@ -70,6 +71,12 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u19-1X-Xk1" userLabel="LineChartContent">
                             <rect key="frame" x="0.0" y="55" width="418" height="491"/>
                             <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chỉ số sản xuất công nghiệp IIP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCb-1W-QnP">
+                                    <rect key="frame" x="10" y="31" width="398" height="14.5"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4bM-1O-SMs" userLabel="Forecast">
                                     <rect key="frame" x="292.5" y="0.0" width="125.5" height="396.5"/>
                                     <subviews>
@@ -94,7 +101,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lnK-Ll-lzt" customClass="LineChartView" customModule="Charts">
-                                    <rect key="frame" x="10" y="31" width="398" height="365.5"/>
+                                    <rect key="frame" x="10" y="55.5" width="398" height="341"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chỉ số IIP của Tỉnh Đồng Nai  năm 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPv-ae-pLp">
@@ -256,18 +263,21 @@
                                 <constraint firstAttribute="trailing" secondItem="Ma7-KX-Loe" secondAttribute="trailing" constant="10" id="35e-pJ-jvQ"/>
                                 <constraint firstAttribute="bottom" secondItem="4bM-1O-SMs" secondAttribute="bottom" constant="94.5" id="3Zu-eh-zo1"/>
                                 <constraint firstItem="4bM-1O-SMs" firstAttribute="top" secondItem="u19-1X-Xk1" secondAttribute="top" id="7J1-An-go5"/>
+                                <constraint firstItem="SCb-1W-QnP" firstAttribute="top" secondItem="Ma7-KX-Loe" secondAttribute="bottom" constant="10" id="9fV-Xf-0vC"/>
+                                <constraint firstAttribute="trailing" secondItem="SCb-1W-QnP" secondAttribute="trailing" constant="10" id="A0i-Y0-lEW"/>
                                 <constraint firstAttribute="trailing" secondItem="1Bb-mc-IAQ" secondAttribute="trailing" id="E6U-OS-GWb"/>
                                 <constraint firstItem="Ma7-KX-Loe" firstAttribute="leading" secondItem="u19-1X-Xk1" secondAttribute="leading" constant="10" id="JfC-i8-KfF"/>
                                 <constraint firstAttribute="trailing" secondItem="4bM-1O-SMs" secondAttribute="trailing" id="M1Z-MN-ZMf"/>
                                 <constraint firstAttribute="trailing" secondItem="4bM-1O-SMs" secondAttribute="trailing" id="MW2-g4-he8"/>
+                                <constraint firstItem="lnK-Ll-lzt" firstAttribute="top" secondItem="SCb-1W-QnP" secondAttribute="bottom" constant="10" id="PkL-No-AhC"/>
                                 <constraint firstItem="Ma7-KX-Loe" firstAttribute="top" secondItem="u19-1X-Xk1" secondAttribute="top" constant="10" id="QS7-KX-OkK"/>
                                 <constraint firstItem="4bM-1O-SMs" firstAttribute="width" secondItem="u19-1X-Xk1" secondAttribute="width" multiplier="3:10" id="aYS-gu-PkV"/>
+                                <constraint firstItem="SCb-1W-QnP" firstAttribute="leading" secondItem="u19-1X-Xk1" secondAttribute="leading" constant="10" id="cHS-y9-XJU"/>
                                 <constraint firstAttribute="bottom" secondItem="uPv-ae-pLp" secondAttribute="bottom" constant="10" id="eWP-oY-KhW"/>
                                 <constraint firstAttribute="trailing" secondItem="lnK-Ll-lzt" secondAttribute="trailing" constant="10" id="ez6-67-I41"/>
                                 <constraint firstItem="1Bb-mc-IAQ" firstAttribute="leading" secondItem="u19-1X-Xk1" secondAttribute="leading" id="fAW-dQ-Eg8"/>
                                 <constraint firstItem="1Bb-mc-IAQ" firstAttribute="top" secondItem="lnK-Ll-lzt" secondAttribute="bottom" constant="10" id="jDq-aF-iWV"/>
                                 <constraint firstItem="lnK-Ll-lzt" firstAttribute="leading" secondItem="u19-1X-Xk1" secondAttribute="leading" constant="10" id="p99-IZ-6x6"/>
-                                <constraint firstItem="lnK-Ll-lzt" firstAttribute="top" secondItem="Ma7-KX-Loe" secondAttribute="bottom" constant="10" id="uch-0I-Z51"/>
                                 <constraint firstItem="uPv-ae-pLp" firstAttribute="top" secondItem="1Bb-mc-IAQ" secondAttribute="bottom" constant="10" id="zDU-cJ-0Nr"/>
                             </constraints>
                         </view>

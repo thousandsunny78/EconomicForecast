@@ -1,8 +1,8 @@
 //
-//  CPIForecastViewController.swift
+//  CPICompareViewController.swift
 //  BaseMVVM
 //
-//  Created by Quan on 16/07/2021.
+//  Created by Quan on 19/07/2021.
 //  Copyright (c) 2021 thoson.it. All rights reserved.
 //
 //  Template by: Quan
@@ -14,60 +14,44 @@ import RxCocoa
 import Charts
 import FittedSheets
 
-class CPIForecastViewController: ViewController, ChartViewDelegate {
+class CPICompareViewController: ViewController, ChartViewDelegate {
     
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var chartContentView: UIView!
-    @IBOutlet weak var month1Button: UIButton!
-    @IBOutlet weak var month3Button: UIButton!
-    @IBOutlet weak var month6Button: UIButton!
-    @IBOutlet weak var year1Button: UIButton!
-    @IBOutlet weak var offButton: UIButton!
-    @IBOutlet weak var month1VC: UIView!
-    @IBOutlet weak var month3VC: UIView!
-    @IBOutlet weak var month6VC: UIView!
-    @IBOutlet weak var year1VC: UIView!
-    @IBOutlet weak var offVC: UIView!
-    @IBOutlet weak var forecastVC: UIView!
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var detailText: UILabel!
     
-    struct ForecastConstants {
+    struct CompareConstants {
         static let ITEM_PER_SCREEN: Int = 6
-        static let FORECAST_1_ITEM: Int = 1
-        static let FORECAST_2_ITEM: Int = 2
-        static let FORECAST_3_ITEM: Int = 3
     }
     
     var cpiDatas: [CPIDataEntity] = []
     var timelines = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"]
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"]
     private var controlList = [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
-    private var options = [false, false, false, false, true]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func makeUI() {
         super.makeUI()
-        forecastVC.isHidden = true
         /// quanth gọi trước khi vẽ biểu đồ
-        drawTimeLine(size: ForecastConstants.ITEM_PER_SCREEN)
+        drawTimeLine(size: CompareConstants.ITEM_PER_SCREEN)
         detailText.isHidden = true
         if(!months.isEmpty){
             lineChartView.delegate = self
             drawChart()
         }
-        createMenu()
-        createSettingButton()
+        
     }
     
     override func bindViewModel() {
         super.bindViewModel()
-        guard let viewModel = self.viewModel as? CPIForecastViewModel else { return }
+        guard let viewModel = self.viewModel as? CPICompareViewModel else { return }
         
-        let input = CPIForecastViewModel.Input()
+        let input = CPICompareViewModel.Input()
         let output = viewModel.transform(input: input)
     }
     
@@ -167,7 +151,7 @@ class CPIForecastViewController: ViewController, ChartViewDelegate {
         lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: months)
         lineChartView.xAxis.labelPosition = .bottom
         lineChartView.xAxis.drawGridLinesEnabled = false
-        lineChartView.xAxis.avoidFirstLastClippingEnabled = false
+        lineChartView.xAxis.avoidFirstLastClippingEnabled = true
 
         lineChartView.rightAxis.drawAxisLineEnabled = false
         lineChartView.rightAxis.drawLabelsEnabled = false
@@ -183,6 +167,7 @@ class CPIForecastViewController: ViewController, ChartViewDelegate {
         
         // quanth: bấm vào point sẽ hiện thông tin
         let marker = BalloonMarker()
+        //let marker = PillMarker(color: UIColor.red, font: UIFont.boldSystemFont(ofSize: 14), textColor: UIColor.red)
         /// quanth: cho value sẽ hiện lên trên top của chart
         var height = self.lineChartView.frame.size.height
         marker.parentHeight = height
@@ -191,12 +176,29 @@ class CPIForecastViewController: ViewController, ChartViewDelegate {
         
     }
     
-    private func createListLineDataSet(i: Int, j: Int, isForecast: Bool,  dataSets: inout [LineChartDataSet], dataEntries: inout [ChartDataEntry], color: UIColor ){
+    private func createListLineDataSet(i: Int, j: Int, dataSets: inout [LineChartDataSet], dataEntries: inout [ChartDataEntry], color: UIColor ){
         // Chỉ số giá tiêu dùng chung
         let dataEntry = ChartDataEntry(x: Double(i), y: cpiDatas[j].value[i], data: months[i] as AnyObject)
         dataEntries.append(dataEntry)
         
-        let chartDataSet = LineChartDataSet(entries: dataEntries, label: nil)
+        let chartDataSet = LineChartDataSet(entries: dataEntries, label: cpiDatas[j].name)
+        chartDataSet.circleRadius = 5
+        chartDataSet.circleHoleRadius = 2
+        chartDataSet.drawValuesEnabled = false
+        chartDataSet.highlightEnabled = true
+        // set colors and enable value drawing
+        chartDataSet.colors = [color]
+        chartDataSet.circleColors = [color]
+        
+        dataSets.append(chartDataSet)
+    }
+    
+    private func createListCompareLineDataSet(i: Int, j: Int, dataSets: inout [LineChartDataSet], dataEntries: inout [ChartDataEntry], color: UIColor ){
+        // Chỉ số giá tiêu dùng chung
+        let dataEntry = ChartDataEntry(x: Double(i), y: (cpiDatas[j].value[i] + Double(i)), data: months[i] as AnyObject)
+        dataEntries.append(dataEntry)
+        
+        let chartDataSet = LineChartDataSet(entries: dataEntries, label: "Cả nước")
         chartDataSet.circleRadius = 5
         chartDataSet.circleHoleRadius = 2
         chartDataSet.drawValuesEnabled = false
@@ -206,10 +208,8 @@ class CPIForecastViewController: ViewController, ChartViewDelegate {
         chartDataSet.circleColors = [color]
         
         /// quanth: nếu muốn có đường nét đứt thì dùng cái này
-        if isForecast {
-            chartDataSet.lineWidth = 3
-            chartDataSet.lineDashLengths = [5]
-        }
+        chartDataSet.lineWidth = 3
+        chartDataSet.lineDashLengths = [5]
         
         dataSets.append(chartDataSet)
     }
@@ -223,14 +223,10 @@ class CPIForecastViewController: ViewController, ChartViewDelegate {
         color: UIColor ){
         
         if(controlList[j]){
-            // Hàng ăn và dịch vụ ăn uống
-            if i < ForecastConstants.ITEM_PER_SCREEN {
-                createListLineDataSet(i: i, j: j, isForecast: false, dataSets: &dataSets, dataEntries: &dataEntries, color: color)
-            }
-            if i > ForecastConstants.ITEM_PER_SCREEN - 2 {
-                // Chỉ số giá tiêu dùng chung
-                createListLineDataSet(i: i, j: j, isForecast: true, dataSets: &dataSets, dataEntries: &dataEntriesForecast, color: color)
-            }
+            // Hiện tại
+            createListLineDataSet(i: i, j: j, dataSets: &dataSets, dataEntries: &dataEntries, color: color)
+            // Cả nước
+            createListCompareLineDataSet(i: i, j: j, dataSets: &dataSets, dataEntries: &dataEntriesForecast, color: color)
         }
     }
     
@@ -240,122 +236,6 @@ class CPIForecastViewController: ViewController, ChartViewDelegate {
             drawChart()
         }
         
-    }
-    
-    private func selectItem(index: Int){
-        switch index {
-        case 0:
-            month1VC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            month1Button.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            month1Button.backgroundColor = UIColor.App.tabSelected.withAlphaComponent(0.25)
-            month1Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
-            options[0] = true
-        case 1:
-            month3VC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            month3Button.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            month3Button.backgroundColor = UIColor.App.tabSelected.withAlphaComponent(0.25)
-            month3Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
-            options[1] = true
-        case 2:
-            month6VC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            month6Button.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            month6Button.backgroundColor = UIColor.App.tabSelected.withAlphaComponent(0.25)
-            month6Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
-            options[2] = true
-        case 3:
-            year1VC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            year1Button.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            year1Button.backgroundColor = UIColor.App.tabSelected.withAlphaComponent(0.25)
-            year1Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
-            options[3] = true
-        case 4:
-            offVC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            offButton.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            offButton.backgroundColor = UIColor.App.tabSelected.withAlphaComponent(0.25)
-            offButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-            options[4] = true
-        default:
-            print("do nothing")
-        }
-    }
-    
-    private func unSelectItem(index: Int){
-        switch index {
-        case 0:
-            month1VC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            month1Button.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            month1Button.backgroundColor = UIColor.white
-            month1Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
-            options[0] = false
-        case 1:
-            month3VC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            month3Button.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            month3Button.backgroundColor = UIColor.white
-            month3Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
-            options[1] = false
-        case 2:
-            month6VC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            month6Button.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            month6Button.backgroundColor = UIColor.white
-            month6Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
-            options[2] = false
-        case 3:
-            year1VC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            year1Button.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            year1Button.backgroundColor = UIColor.white
-            year1Button.setTitleColor(UIColor.App.tabSelected, for: .normal)
-            options[3] = false
-        case 4:
-            offVC.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            offButton.roundView(borderWidth: 2.0, color: UIColor.App.tabSelected)
-            offButton.backgroundColor = UIColor.white
-            offButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-            options[4] = false
-        default:
-            print("do nothing")
-        }
-    }
-    
-    private func setupMenuTapEvent(contentVC: UIView, button: UIButton, index: Int){
-        //Setup tabs
-        button.rx.tap.bind { [weak self] () in
-            if(self?.options[index] == false && self?.months.isEmpty == false){
-                for i in 0...self!.options.count{
-                    if(i != index){
-                        self?.unSelectItem(index: i)
-                        self?.options[index] = false
-                    }
-                }
-                self?.selectItem(index: index)
-                self?.options[index] = true
-                
-                if (index == 1) {
-                    self!.forecastVC.isHidden = false
-                    /// quanth gọi trước khi vẽ biểu đồ
-                    self!.drawTimeLine(size: ForecastConstants.ITEM_PER_SCREEN + ForecastConstants.FORECAST_3_ITEM)
-                    self!.drawChart()
-                } else {
-                    self!.forecastVC.isHidden = true
-                    /// quanth gọi trước khi vẽ biểu đồ
-                    self!.drawTimeLine(size: ForecastConstants.ITEM_PER_SCREEN)
-                    self!.drawChart()
-                }
-            }
-        }.disposed(by: disposeBag)
-    }
-    
-    private func createMenu(){
-        unSelectItem(index: 0)
-        unSelectItem(index: 1)
-        unSelectItem(index: 2)
-        unSelectItem(index: 3)
-        selectItem(index: 4)
-
-        setupMenuTapEvent(contentVC: month1VC, button: month1Button, index: 0)
-        setupMenuTapEvent(contentVC: month3VC, button: month3Button, index: 1)
-        setupMenuTapEvent(contentVC: month6VC, button: month6Button, index: 2)
-        setupMenuTapEvent(contentVC: year1VC, button: year1Button, index: 3)
-        setupMenuTapEvent(contentVC: offVC, button: offButton, index: 4)
     }
     
     private func createSettingButton(){

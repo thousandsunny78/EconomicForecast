@@ -14,7 +14,7 @@ import RxCocoa
 import Charts
 import FittedSheets
 
-class IIPForecastViewController: ViewController {
+class IIPForecastViewController: ViewController, ChartViewDelegate {
     
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var chartContentView: UIView!
@@ -30,6 +30,7 @@ class IIPForecastViewController: ViewController {
     @IBOutlet weak var offVC: UIView!
     @IBOutlet weak var forecastVC: UIView!
     @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var detailText: UILabel!
     
     struct ForecastConstants {
         static let ITEM_PER_SCREEN: Int = 6
@@ -54,7 +55,9 @@ class IIPForecastViewController: ViewController {
         forecastVC.isHidden = true
         /// quanth gọi trước khi vẽ biểu đồ
         drawTimeLine(size: ForecastConstants.ITEM_PER_SCREEN)
+        detailText.isHidden = true
         if(!months.isEmpty){
+            lineChartView.delegate = self
             drawChart()
         }
         createMenu()
@@ -175,6 +178,10 @@ class IIPForecastViewController: ViewController {
         lineChartView.pinchZoomEnabled = false
         lineChartView.doubleTapToZoomEnabled = false
         lineChartView.legend.enabled = false
+        
+        /// quanth: cho margin left 1 đoạn
+        lineChartView.xAxis.spaceMin = 0.03
+        lineChartView.xAxis.spaceMax = 0.25
         
         // quanth: bấm vào point sẽ hiện thông tin
         let marker = BalloonMarker()
@@ -371,8 +378,28 @@ class IIPForecastViewController: ViewController {
         months = []
         for i in 0..<timelines.count{
             if(i < size){
-                months.append(timelines[i])
+                if(i % 2 == 1) {
+                    months.append("")
+                } else {
+                    months.append(timelines[i])
+                }
             }
         }
+    }
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        detailText.isHidden = false
+        let fullText = timelines[Int(highlight.x)]
+        let fullNameArr = String(fullText).components(separatedBy: "-")
+        let monthVal = fullNameArr[1]
+        let yearVal = fullNameArr[0]
+        let text = "Tháng \(monthVal) năm \(yearVal)"
+        detailText.text = text
+        print("chartValueSelected : x = \(highlight.x)")
+    }
+    
+    func chartValueNothingSelected(_ chartView: ChartViewBase) {
+        detailText.isHidden = true
+        print("chartValueNothingSelected")
     }
 }

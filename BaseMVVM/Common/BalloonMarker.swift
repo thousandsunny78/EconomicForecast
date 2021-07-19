@@ -14,11 +14,12 @@ import Charts
 
 class BalloonMarker: MarkerView {
     private var text = String()
+    var parentHeight: CGFloat? = 0
 
     private let drawAttributes: [NSAttributedString.Key: Any] = [
-        .font: UIFont.boldSystemFont(ofSize: 15),
+        .font: UIFont.boldSystemFont(ofSize: 12),
         .foregroundColor: UIColor.App.tabSelected,
-        .backgroundColor: UIColor(white: 1, alpha: 0)
+        .backgroundColor: UIColor(white: 1, alpha: 50)
     ]
 
     override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
@@ -30,7 +31,10 @@ class BalloonMarker: MarkerView {
 
         let sizeForDrawing = text.size(withAttributes: drawAttributes)
         bounds.size = sizeForDrawing
+        /// quanth: thích hiện chữ trên dot thì làm như này
         offset = CGPoint(x: -sizeForDrawing.width / 2, y: -sizeForDrawing.height - 4)
+        /// quanth:  hiện chữ trên biểu đồ
+//        offset = CGPoint(x: -sizeForDrawing.width / 2, y: -(self.parentHeight ?? 0))
 
         let offset = offsetForDrawing(atPoint: point)
         let originPoint = CGPoint(x: point.x + offset.x, y: point.y + offset.y)
