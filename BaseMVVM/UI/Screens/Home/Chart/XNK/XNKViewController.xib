@@ -23,13 +23,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="532" height="690"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Yu-Bn-DbI">
-                            <rect key="frame" x="20" y="10" width="492" height="400"/>
+                            <rect key="frame" x="20" y="10" width="492" height="500"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2I-RP-8uc" userLabel="CompareContent">
-                                    <rect key="frame" x="0.0" y="0.0" width="492" height="400"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="492" height="500"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EgK-Cf-ObA" userLabel="CompareArea">
-                                            <rect key="frame" x="0.0" y="0.0" width="492" height="400"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="492" height="500"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                     </subviews>
@@ -37,7 +37,7 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="EgK-Cf-ObA" secondAttribute="trailing" id="CvS-ae-o0f"/>
                                         <constraint firstItem="EgK-Cf-ObA" firstAttribute="top" secondItem="a2I-RP-8uc" secondAttribute="top" id="Zpl-Be-xbV"/>
-                                        <constraint firstAttribute="height" constant="400" id="asZ-0Q-9OY"/>
+                                        <constraint firstAttribute="height" constant="500" id="asZ-0Q-9OY"/>
                                         <constraint firstItem="EgK-Cf-ObA" firstAttribute="leading" secondItem="a2I-RP-8uc" secondAttribute="leading" id="okZ-sW-erh"/>
                                         <constraint firstAttribute="bottom" secondItem="EgK-Cf-ObA" secondAttribute="bottom" id="yNB-2L-Ufd"/>
                                     </constraints>

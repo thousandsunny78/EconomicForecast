@@ -12,10 +12,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class GDPViewController: ViewController {
+class GDPViewController: ViewController{
     
     @IBOutlet weak var compareContent: UIView!
     @IBOutlet weak var compareView: UIView!
+    @IBOutlet weak var combinedContent: UIView!
+    @IBOutlet weak var combinedView: UIView!
     
     private var gdpDatas: [CPIDataEntity] = []
     private var timelines: [String] = []
@@ -32,6 +34,16 @@ class GDPViewController: ViewController {
         return viewController
     }()
     
+    private lazy var combinedVC: ViewController = {
+        let viewController = CombinedViewController(nibName: CombinedViewController.className, bundle: nil)
+        let navigator = CombinedNavigator(with: viewController)
+        let viewModel = CombinedViewModel(navigator: navigator)
+        viewController.viewModel = viewModel
+//        viewController.iipDatas = gdpDatas
+//        viewController.timelines = timelines
+        return viewController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,8 +51,8 @@ class GDPViewController: ViewController {
     
     override func makeUI() {
         super.makeUI()
-        
         addCompareViewShadow(cornerRadius: 12.0, shadowRadius: 5.0)
+        addCombinedViewShadow(cornerRadius: 12.0, shadowRadius: 5.0)
     }
     
     override func bindViewModel() {
@@ -57,6 +69,7 @@ class GDPViewController: ViewController {
                 self.gdpDatas = data?.cpi ?? []
                 self.timelines = data?.timeline ?? []
                 self.embedCompareView()
+                self.embedCombinedView()
             }
             
         }).disposed(by: disposeBag)
@@ -83,10 +96,37 @@ class GDPViewController: ViewController {
         ]
     }
     
+    // quanth: round and shadow uiview
+    private func addCombinedViewShadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
+        combinedView.layer.cornerRadius = cornerRadius
+        combinedView.layer.masksToBounds = true
+
+        combinedContent.layer.cornerRadius = cornerRadius
+        combinedContent.layer.masksToBounds = false
+
+        combinedContent.layer.shadowColor = UIColor.black.cgColor
+        combinedContent.layer.shadowOffset = CGSize(width: 1, height: 1)
+        combinedContent.layer.shadowOpacity = 0.2
+        combinedContent.layer.shadowRadius = shadowRadius
+
+        combinedView.frame = combinedView.bounds
+        combinedView.autoresizingMask = [
+            .flexibleWidth, .flexibleHeight
+        ]
+    }
+    
     // Show ratio view
     private func embedCompareView() {
         addChildViewController(compareVC, toContainerView: compareView)
         // quanth: vẽ biểu đồ hơn lâu nên chờ vẽ xong mới tắt
         //MBProgressHUD.hide(for: self.view, animated: true)
     }
+    
+    // Show ratio view
+    private func embedCombinedView() {
+        addChildViewController(combinedVC, toContainerView: combinedView)
+        // quanth: vẽ biểu đồ hơn lâu nên chờ vẽ xong mới tắt
+        //MBProgressHUD.hide(for: self.view, animated: true)
+    }
+    
 }

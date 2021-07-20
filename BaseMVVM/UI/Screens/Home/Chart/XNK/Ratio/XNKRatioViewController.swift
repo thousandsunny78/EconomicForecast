@@ -60,6 +60,8 @@ class XNKRatioViewController: ViewController {
         
         barChartView.rightAxis.enabled = false
         barChartView.doubleTapToZoomEnabled = false
+        /// quanth: ẩn phần description của biểu đồ đi
+        barChartView.legend.enabled = false
         //axisFormatDelegate = self
         
         setChart()

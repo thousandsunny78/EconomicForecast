@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GDPViewController" customModule="BaseMVVM" customModuleProvider="target">
             <connections>
+                <outlet property="combinedContent" destination="5Ho-sG-Ldx" id="qGj-OK-YMp"/>
+                <outlet property="combinedView" destination="csC-hM-tAF" id="BIE-F0-pNW"/>
                 <outlet property="compareContent" destination="KeJ-ie-AKg" id="zWA-T8-NED"/>
                 <outlet property="compareView" destination="lxB-bV-DCq" id="zvb-fj-NfY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -23,10 +25,27 @@
                     <rect key="frame" x="0.0" y="0.0" width="509" height="634"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3nQ-ZN-Wkc">
-                            <rect key="frame" x="20" y="10" width="469" height="400"/>
+                            <rect key="frame" x="20" y="10" width="469" height="920"/>
                             <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ho-sG-Ldx" userLabel="CombinedContent">
+                                    <rect key="frame" x="0.0" y="0.0" width="469" height="500"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csC-hM-tAF" userLabel="CombinedArea">
+                                            <rect key="frame" x="0.0" y="0.0" width="469" height="500"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="500" id="Mwq-DG-406"/>
+                                        <constraint firstAttribute="bottom" secondItem="csC-hM-tAF" secondAttribute="bottom" id="cfZ-kk-3cW"/>
+                                        <constraint firstItem="csC-hM-tAF" firstAttribute="leading" secondItem="5Ho-sG-Ldx" secondAttribute="leading" id="eCA-ZW-27o"/>
+                                        <constraint firstAttribute="trailing" secondItem="csC-hM-tAF" secondAttribute="trailing" id="kao-NX-7ih"/>
+                                        <constraint firstItem="csC-hM-tAF" firstAttribute="top" secondItem="5Ho-sG-Ldx" secondAttribute="top" id="wY9-N5-Z77"/>
+                                    </constraints>
+                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KeJ-ie-AKg" userLabel="CompareContent">
-                                    <rect key="frame" x="0.0" y="0.0" width="469" height="400"/>
+                                    <rect key="frame" x="0.0" y="520" width="469" height="400"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lxB-bV-DCq" userLabel="CompareArea">
                                             <rect key="frame" x="0.0" y="0.0" width="469" height="400"/>
