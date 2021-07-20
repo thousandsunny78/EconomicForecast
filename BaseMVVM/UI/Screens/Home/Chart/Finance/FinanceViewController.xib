@@ -26,10 +26,19 @@
                     <rect key="frame" x="0.0" y="0.0" width="394" height="768"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teN-Io-uvU">
-                            <rect key="frame" x="20" y="10" width="354" height="820"/>
+                            <rect key="frame" x="20" y="10" width="354" height="865.5"/>
                             <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số liệu thu chi ngân sách" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ahm-4I-UO8">
+                                    <rect key="frame" x="0.0" y="0.0" width="354" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="zvb-Q2-f8G"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    <color key="textColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbe-gL-3BX" userLabel="ExpenseContent">
-                                    <rect key="frame" x="0.0" y="0.0" width="354" height="400"/>
+                                    <rect key="frame" x="0.0" y="45.5" width="354" height="400"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MSQ-mD-dEV" userLabel="ExpenseArea">
                                             <rect key="frame" x="0.0" y="0.0" width="354" height="400"/>
@@ -46,7 +55,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59M-Nj-sxU" userLabel="RevenueContent">
-                                    <rect key="frame" x="0.0" y="420" width="354" height="400"/>
+                                    <rect key="frame" x="0.0" y="465.5" width="354" height="400"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-wQ-LI5" userLabel="RevenueArea">
                                             <rect key="frame" x="0.0" y="0.0" width="354" height="400"/>

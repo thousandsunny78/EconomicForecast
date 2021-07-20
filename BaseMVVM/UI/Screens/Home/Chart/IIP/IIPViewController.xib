@@ -28,10 +28,19 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eII-fD-u95">
-                            <rect key="frame" x="20" y="10" width="374" height="1240"/>
+                            <rect key="frame" x="20" y="10" width="374" height="1285.5"/>
                             <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chỉ số sản xuất công nghiệp IIP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="551-vo-jKr">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="rXQ-U6-mCQ"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    <color key="textColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPY-fr-UF4" userLabel="ForecastContent">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="400"/>
+                                    <rect key="frame" x="0.0" y="45.5" width="374" height="400"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUf-qO-D4M" userLabel="ForecastArea">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="400"/>
@@ -48,7 +57,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBx-KS-SX8" userLabel="StatisticalContent">
-                                    <rect key="frame" x="0.0" y="420" width="374" height="400"/>
+                                    <rect key="frame" x="0.0" y="465.5" width="374" height="400"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nBc-4A-FZ9" userLabel="StatisticalArea">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="400"/>
@@ -65,7 +74,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMo-r0-b88" userLabel="CompareContent">
-                                    <rect key="frame" x="0.0" y="840" width="374" height="400"/>
+                                    <rect key="frame" x="0.0" y="885.5" width="374" height="400"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqS-vt-l9v" userLabel="CompareArea">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="400"/>

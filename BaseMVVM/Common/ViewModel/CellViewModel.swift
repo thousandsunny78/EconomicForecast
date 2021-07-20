@@ -16,4 +16,6 @@ class CellViewModel {
     let title = BehaviorRelay<String?>(value: nil)
     let detail = BehaviorRelay<String?>(value: nil)
     let imageUrl = BehaviorRelay<String?>(value: nil)
+    let image = BehaviorRelay<UIImage?>(value: nil)
+
 }

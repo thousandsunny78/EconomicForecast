@@ -36,6 +36,8 @@ def shared_pods
   pod 'Charts', '~> 3.6.0'
   # Bottom Sheet
   pod 'FittedSheets'
+  # SideMenu
+  pod 'SideMenu', '~> 6.5.0'
 end
 
 target 'BaseMVVM' do

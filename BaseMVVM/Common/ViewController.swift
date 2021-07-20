@@ -135,7 +135,7 @@ extension ViewController {
     func showLeftButton(image: UIImage? = nil) {
         var image = image
         if image == nil {
-            image = UIImage(named: "ic_back_white")
+            image = UIImage(named: "ic_menu")
         }
         navigationController?.navigationBar.tintColor = .white
         let barButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(self.leftButtonTapped(sender:)))
@@ -149,7 +149,7 @@ extension ViewController {
     func showRightButton(image: UIImage? = nil) {
         var image = image
         if image == nil {
-            image = UIImage(named: "ic_menu")
+            image = UIImage(named: "ic_back_white")
             image = image?.withRenderingMode(.alwaysOriginal)
         }
         let barButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(self.rightButtonTapped(sender:)))

@@ -35,6 +35,7 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.2)
+  - SideMenu (6.5.0)
   - SnapKit (5.0.1)
   - SwiftyBeaver (1.9.5)
 
@@ -51,6 +52,7 @@ DEPENDENCIES:
   - PromiseKit (~> 6.0)
   - RealmSwift
   - RxCocoa
+  - SideMenu (~> 6.5.0)
   - SnapKit
   - SwiftyBeaver
 
@@ -71,6 +73,7 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SideMenu
     - SnapKit
     - SwiftyBeaver
 
@@ -100,9 +103,10 @@ SPEC CHECKSUMS:
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
 
-PODFILE CHECKSUM: 1fdb93403034f7302913f7dba3ea02a0fa3211f3
+PODFILE CHECKSUM: 84429654cf4bf7e68c4fc0d302b19314620de3ec
 
 COCOAPODS: 1.10.1

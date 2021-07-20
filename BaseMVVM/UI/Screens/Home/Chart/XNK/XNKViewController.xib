@@ -23,10 +23,19 @@
                     <rect key="frame" x="0.0" y="0.0" width="532" height="690"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Yu-Bn-DbI">
-                            <rect key="frame" x="20" y="10" width="492" height="500"/>
+                            <rect key="frame" x="20" y="10" width="492" height="545.5"/>
                             <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xuất nhập khẩu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFp-XG-hGk">
+                                    <rect key="frame" x="0.0" y="0.0" width="492" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="udT-lG-Zb2"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    <color key="textColor" red="0.0" green="0.2666666667" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2I-RP-8uc" userLabel="CompareContent">
-                                    <rect key="frame" x="0.0" y="0.0" width="492" height="500"/>
+                                    <rect key="frame" x="0.0" y="45.5" width="492" height="500"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EgK-Cf-ObA" userLabel="CompareArea">
                                             <rect key="frame" x="0.0" y="0.0" width="492" height="500"/>
