@@ -22,7 +22,6 @@ class IIPItemViewController: ViewController {
     
     var entity: ChartControlEntity = ChartControlEntity(color: UIColor.red, content: "no title", isOn: false, index: -1)!
     var iipVC: IIPBottomSheetViewController? = nil
-    var isOn: Bool = false
     var clickSubject = PublishSubject<(Int, Bool)>()
     var type: Int? = -1
     
@@ -48,7 +47,7 @@ class IIPItemViewController: ViewController {
                 } else {
                     self.selectItem()
                 }
-                self.isOn = isOn
+                self.entity.isOn = isOn
             }
         }).disposed(by: disposeBag)
 
@@ -81,24 +80,24 @@ class IIPItemViewController: ViewController {
     
     private func bindTapEvent(){
         label.rx.tap.bind { [weak self] () in
-            if self?.isOn == true {
+            if self?.entity.isOn == true {
                 self?.iipVC?.updateSwitch(index: self?.entity.index ?? -1, value: false)
                 self?.unSelectItem()
-                self?.isOn = false
+                self?.entity.isOn = false
             } else {
                 self?.iipVC?.updateSwitch(index: self?.entity.index ?? -1, value: true)
                 self?.selectItem()
-                self?.isOn = true
+                self?.entity.isOn = true
             }
         }.disposed(by: disposeBag)
     }
     
     private func bindSingleTapEvent(){
         label.rx.tap.bind { [weak self] () in
-            if self?.isOn == false {
+            if self?.entity.isOn == false {
                 self?.iipVC?.updateSwitch(index: self?.entity.index ?? -1, value: true)
                 self?.selectItem()
-                self?.isOn = true
+                self?.entity.isOn = true
             }
         }.disposed(by: disposeBag)
     }

@@ -10,6 +10,7 @@ import UIKit
 
 class SplashViewController: ViewController {
     
+    @IBOutlet var content: UIView!
     override func viewDidLoad() {
         let navigator = SplashNavigator(with: self)
         viewModel = SplashViewModel(navigator: navigator)
@@ -30,6 +31,7 @@ class SplashViewController: ViewController {
     
     override func makeUI() {
         super.makeUI()
+        self.content.backgroundColor = UIColor(patternImage: UIImage(named: "ic_background_app")!)
         clearNavigationBackground()
         self.navigationItem.leftBarButtonItem = nil;
         self.navigationController?.navigationItem.hidesBackButton = true

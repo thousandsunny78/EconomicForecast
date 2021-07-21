@@ -18,6 +18,7 @@ class HomeChartViewController: ViewController {
     
     @IBOutlet weak var areaVC: UIView!
     @IBOutlet weak var contentVC: UIView!
+    @IBOutlet weak var header: UIView!
     
     private var currentViewController: ViewController?
     private var currentDailyBoardViewController: ViewController?
@@ -106,6 +107,7 @@ class HomeChartViewController: ViewController {
     
     override func makeUI() {
         super.makeUI()
+        self.header.backgroundColor = UIColor(patternImage: UIImage(named: "ic_background_app")!)
         setTitle("Dự báo kinh tế", subTitle: "")
         showLeftButton(image: UIImage(named: "ic_menu"))
     }

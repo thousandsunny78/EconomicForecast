@@ -18,10 +18,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zd0-Z2-YfE">
-                        <rect key="frame" x="20" y="24" width="48" height="48"/>
+                        <rect key="frame" x="20" y="28" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="48" id="R78-nl-hSO"/>
-                            <constraint firstAttribute="width" constant="48" id="VFB-WS-SWp"/>
+                            <constraint firstAttribute="height" constant="40" id="R78-nl-hSO"/>
+                            <constraint firstAttribute="width" constant="40" id="VFB-WS-SWp"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -30,7 +30,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCz-q9-bH9">
-                        <rect key="frame" x="78" y="38" width="282" height="20.5"/>
+                        <rect key="frame" x="70" y="38" width="290" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>

@@ -13,11 +13,12 @@ class SignInViewController: ViewController {
     @IBOutlet weak private var signUpButton: UIButton!
     @IBOutlet weak private var usernameTextField: UITextField!
     @IBOutlet weak private var passwordTextField: UITextField!
+    @IBOutlet var backgroundView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: false)
-        
+        self.backgroundView.backgroundColor = UIColor(patternImage: UIImage(named: "ic_background_app")!)
     }
     
     override func makeUI() {

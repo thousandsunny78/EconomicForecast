@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="areaVC" destination="omD-RK-f03" id="jzQ-HO-LTw"/>
                 <outlet property="contentVC" destination="zhg-nJ-BfF" id="zRu-qN-NMD"/>
+                <outlet property="header" destination="hgg-pS-lOp" id="jZT-Aa-a65"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
