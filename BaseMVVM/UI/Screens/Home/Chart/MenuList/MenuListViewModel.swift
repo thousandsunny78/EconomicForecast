@@ -37,19 +37,19 @@ class MenuListViewModel: ViewModel, ViewModelType {
             return text.map { text -> MenuListCellViewModel in
                 var menuItem: MenuItem? = nil
                 if(text == "cpi"){
-                    menuItem = MenuItem(image: UIImage(named:"ic_splash_logo")!, name: "Chỉ số CPI")
+                    menuItem = MenuItem(image: UIImage(named:"ic_cpi_menu")!, name: "Chỉ số CPI")
                 } else if(text == "iip"){
-                    menuItem = MenuItem(image: UIImage(named:"ic_info_dark")!, name: "Chỉ số IIP")
+                    menuItem = MenuItem(image: UIImage(named:"ic_iip_menu")!, name: "Chỉ số IIP")
                 } else if(text == "gdp"){
-                    menuItem = MenuItem(image: UIImage(named:"ic_checkbox_on")!, name: "Chỉ số GDP")
+                    menuItem = MenuItem(image: UIImage(named:"ic_gdp_menu")!, name: "Chỉ số GDP")
                 } else if(text == "xnk"){
-                    menuItem = MenuItem(image: UIImage(named:"ic_checkbox_off")!, name: "Xuất nhập khẩu")
+                    menuItem = MenuItem(image: UIImage(named:"ic_xnk_menu")!, name: "Xuất nhập khẩu")
                 } else if(text == "that_nghiep"){
-                    menuItem = MenuItem(image: UIImage(named:"ic_decrease_arrow")!, name: "Tỷ lệ thất nghiệp")
+                    menuItem = MenuItem(image: UIImage(named:"ic_thatnghiep_menu")!, name: "Tỷ lệ thất nghiệp")
                 } else if(text == "thu_chi"){
-                    menuItem = MenuItem(image: UIImage(named:"ic_increase_arrow")!, name: "Thu chi ngân sách")
+                    menuItem = MenuItem(image: UIImage(named:"ic_thuchi_menu")!, name: "Thu chi ngân sách")
                 } else {
-                    menuItem = MenuItem(image: UIImage(named:"ic_increase_arrow")!, name: "Đăng xuất")
+                    menuItem = MenuItem(image: UIImage(named:"ic_logout_menu")!, name: "Đăng xuất")
                 }
                 return MenuListCellViewModel(item: menuItem!)
             }

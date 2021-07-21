@@ -33,7 +33,6 @@ class MenuListTableViewCell: TableViewCell {
         guard let viewModel = viewModel as? MenuListCellViewModel else {
             return
         }
-//        let item: viewModel
         viewModel.title.bind(to: label.rx.text).disposed(by: disposeBag)
         viewModel.image.bind(to: iconView.rx.image).disposed(by: disposeBag)
     }

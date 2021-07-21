@@ -15,7 +15,6 @@ import RxCocoa
 class HomeChartViewModel: ViewModel, ViewModelType {
     struct Input {
         let menuAction: Driver<Void>
-        let logoutAction: Driver<Void>
     }
     
     struct Output {
@@ -33,16 +32,12 @@ class HomeChartViewModel: ViewModel, ViewModelType {
         input.menuAction.drive(onNext: { [weak self] _ in
             self?.navigator.presentSideMenu()
         }).disposed(by: disposeBag)
-        input.logoutAction.drive(onNext: { [weak self] _ in
-            guard let self = self else { return }
-            self.logout()
-            Application.shared.presentInitialScreen(in: appDelegate.window)
-        }).disposed(by: disposeBag)
         return Output()
     }
     
-    private func logout() {
+    func logout() {
         AuthManager.shared.token = nil
         UserManager.shared.removeUser()
+        Application.shared.presentInitialScreen(in: appDelegate.window)
     }
 }

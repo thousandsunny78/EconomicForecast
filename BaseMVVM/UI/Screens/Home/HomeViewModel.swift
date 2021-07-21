@@ -38,7 +38,7 @@ class HomeViewModel: ViewModel, ViewModelType {
         return Output()
     }
     
-    private func logout() {
+    func logout() {
         AuthManager.shared.token = nil
         UserManager.shared.removeUser()
     }

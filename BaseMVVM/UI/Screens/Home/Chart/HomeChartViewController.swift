@@ -16,24 +16,8 @@ import SideMenu
 
 class HomeChartViewController: ViewController {
     
-    @IBOutlet weak var tab1VCContentView: UIView!
-    @IBOutlet weak var tab1VCButton: UIButton!
-    @IBOutlet weak var tab2VCContentView: UIView!
-    @IBOutlet weak var tab2VCButton: UIButton!
-    @IBOutlet weak var tab3VCContentView: UIView!
-    @IBOutlet weak var tab3VCButton: UIButton!
-    @IBOutlet weak var tab4VCContentView: UIView!
-    @IBOutlet weak var tab4VCButton: UIButton!
-    @IBOutlet weak var tab5VCContentView: UIView!
-    @IBOutlet weak var tab5VCButton: UIButton!
-    @IBOutlet weak var tab6VCContentView: UIView!
-    @IBOutlet weak var tab6VCButton: UIButton!
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var stackContentView: UIView!
     @IBOutlet weak var areaVC: UIView!
     @IBOutlet weak var contentVC: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    
     
     private var currentViewController: ViewController?
     private var currentDailyBoardViewController: ViewController?
@@ -118,55 +102,19 @@ class HomeChartViewController: ViewController {
         configMenu()
         showTab1()
         
-        addtab1Shadow(cornerRadius: 12.0, shadowRadius: 5.0)
-        addtab2Shadow(cornerRadius: 12.0, shadowRadius: 5.0)
-        addtab3Shadow(cornerRadius: 12.0, shadowRadius: 5.0)
-        addtab4Shadow(cornerRadius: 12.0, shadowRadius: 5.0)
-        addtab5Shadow(cornerRadius: 12.0, shadowRadius: 5.0)
-        addtab6Shadow(cornerRadius: 12.0, shadowRadius: 5.0)
-        
     }
     
     override func makeUI() {
         super.makeUI()
         setTitle("Dự báo kinh tế", subTitle: "")
         showLeftButton(image: UIImage(named: "ic_menu"))
-        // quanth: tắt phần background trắng lúc overscroll
-        scrollView.backgroundColor = UIColor.App.tabUnselected
-        // quanth: hide scrollbar của scrollview
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.showsVerticalScrollIndicator = false
-        //Setup right button
-        let barButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(self.rightButtonTapped(sender:)))
-        navigationItem.rightBarButtonItem = barButtonItem
-        //Setup tabs
-        tab1VCButton.rx.tap.bind { [weak self] () in
-            self?.showTab1()
-        }.disposed(by: disposeBag)
-        tab2VCButton.rx.tap.bind { [weak self] () in
-            self?.showTab2()
-        }.disposed(by: disposeBag)
-        tab3VCButton.rx.tap.bind { [weak self] () in
-            self?.showTab3()
-        }.disposed(by: disposeBag)
-        tab4VCButton.rx.tap.bind { [weak self] () in
-            self?.showTab4()
-        }.disposed(by: disposeBag)
-        tab5VCButton.rx.tap.bind { [weak self] () in
-            self?.showTab5()
-        }.disposed(by: disposeBag)
-        tab6VCButton.rx.tap.bind { [weak self] () in
-            self?.showTab6()
-        }.disposed(by: disposeBag)
     }
     
     override func bindViewModel() {
         super.bindViewModel()
         guard let viewModel = self.viewModel as? HomeChartViewModel else { return }
         let menuAction = navigationItem.leftBarButtonItem!.rx.tap.asDriver()
-        let logoutAction = navigationItem.rightBarButtonItem!.rx.tap.asDriver()
-        let input = HomeChartViewModel.Input(menuAction: menuAction,
-                                        logoutAction: logoutAction)
+        let input = HomeChartViewModel.Input(menuAction: menuAction)
         let output = viewModel.transform(input: input)
     }
     
@@ -175,76 +123,24 @@ class HomeChartViewController: ViewController {
         currentViewController?.removeViewAndControllerFromParentViewController()
         addChildViewController(tab1VC, toContainerView: areaVC)
         currentViewController = tab1VC
-        
-        tab1VCButton.backgroundColor = UIColor.App.tabSelected
-        tab1VCButton.setTitleColor(UIColor.App.tabUnselected, for: .normal)
-        tab2VCButton.backgroundColor = UIColor.white
-        tab2VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab5VCButton.backgroundColor = UIColor.white
-        tab5VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab3VCButton.backgroundColor = UIColor.white
-        tab3VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab4VCButton.backgroundColor = UIColor.white
-        tab4VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab6VCButton.backgroundColor = UIColor.white
-        tab6VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
     }
     
     func showTab2() {
         currentViewController?.removeViewAndControllerFromParentViewController()
         addChildViewController(tab2VC, toContainerView: contentVC)
         currentViewController = tab2VC
-        
-        tab1VCButton.backgroundColor = UIColor.white
-        tab1VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab2VCButton.backgroundColor = UIColor.App.tabSelected
-        tab2VCButton.setTitleColor(UIColor.App.tabUnselected, for: .normal)
-        tab5VCButton.backgroundColor = UIColor.white
-        tab5VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab3VCButton.backgroundColor = UIColor.white
-        tab3VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab4VCButton.backgroundColor = UIColor.white
-        tab4VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab6VCButton.backgroundColor = UIColor.white
-        tab6VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
     }
     
     func showTab3() {
         currentViewController?.removeViewAndControllerFromParentViewController()
         addChildViewController(tab3VC, toContainerView: contentVC)
         currentViewController = tab3VC
-        
-        tab3VCButton.backgroundColor = UIColor.App.tabSelected
-        tab3VCButton.setTitleColor(UIColor.App.tabUnselected, for: .normal)
-        tab5VCButton.backgroundColor = UIColor.white
-        tab5VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab1VCButton.backgroundColor = UIColor.white
-        tab1VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab2VCButton.backgroundColor = UIColor.white
-        tab2VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab4VCButton.backgroundColor = UIColor.white
-        tab4VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab6VCButton.backgroundColor = UIColor.white
-        tab6VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
     }
     
     func showTab4() {
         currentViewController?.removeViewAndControllerFromParentViewController()
         addChildViewController(tab4VC, toContainerView: contentVC)
         currentViewController = tab4VC
-        
-        tab4VCButton.backgroundColor = UIColor.App.tabSelected
-        tab4VCButton.setTitleColor(UIColor.App.tabUnselected, for: .normal)
-        tab5VCButton.backgroundColor = UIColor.white
-        tab5VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab1VCButton.backgroundColor = UIColor.white
-        tab1VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab2VCButton.backgroundColor = UIColor.white
-        tab2VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab3VCButton.backgroundColor = UIColor.white
-        tab3VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab6VCButton.backgroundColor = UIColor.white
-        tab6VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
     }
     
     func showTab5() {
@@ -252,57 +148,12 @@ class HomeChartViewController: ViewController {
         addChildViewController(tab5VC, toContainerView: contentVC)
         currentViewController = tab5VC
         
-        tab5VCButton.backgroundColor = UIColor.App.tabSelected
-        tab5VCButton.setTitleColor(UIColor.App.tabUnselected, for: .normal)
-        tab1VCButton.backgroundColor = UIColor.white
-        tab1VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab2VCButton.backgroundColor = UIColor.white
-        tab2VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab3VCButton.backgroundColor = UIColor.white
-        tab3VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab4VCButton.backgroundColor = UIColor.white
-        tab4VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab6VCButton.backgroundColor = UIColor.white
-        tab6VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
     }
     
     func showTab6() {
         currentViewController?.removeViewAndControllerFromParentViewController()
         addChildViewController(tab6VC, toContainerView: contentVC)
         currentViewController = tab6VC
-        
-        tab6VCButton.backgroundColor = UIColor.App.tabSelected
-        tab6VCButton.setTitleColor(UIColor.App.tabUnselected, for: .normal)
-        tab1VCButton.backgroundColor = UIColor.white
-        tab1VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab2VCButton.backgroundColor = UIColor.white
-        tab2VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab3VCButton.backgroundColor = UIColor.white
-        tab3VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab4VCButton.backgroundColor = UIColor.white
-        tab4VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-        tab5VCButton.backgroundColor = UIColor.white
-        tab5VCButton.setTitleColor(UIColor.App.tabSelected, for: .normal)
-    }
-    
-    // quanth: round and shadow uiview
-    private func addTabbarShadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
-        stackView.layer.cornerRadius = cornerRadius
-        stackView.layer.masksToBounds = true
-
-        stackContentView.layer.cornerRadius = cornerRadius
-        stackContentView.layer.masksToBounds = false
-
-        stackContentView.layer.shadowColor = UIColor.black.cgColor
-        stackContentView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        stackContentView.layer.shadowOpacity = 0.2
-        stackContentView.layer.shadowRadius = shadowRadius
-
-        stackView.frame = stackContentView.bounds
-        stackView.autoresizingMask = [
-            .flexibleWidth, .flexibleHeight
-        ]
-        
     }
     
     // quanth: round and shadow uiview
@@ -325,126 +176,6 @@ class HomeChartViewController: ViewController {
         
     }
     
-    // quanth: round and shadow uiview
-    private func addtab1Shadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
-        tab1VCButton.layer.cornerRadius = cornerRadius
-        tab1VCButton.layer.masksToBounds = true
-
-        tab1VCContentView.layer.cornerRadius = cornerRadius
-        tab1VCContentView.layer.masksToBounds = false
-
-        tab1VCContentView.layer.shadowColor = UIColor.black.cgColor
-        tab1VCContentView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        tab1VCContentView.layer.shadowOpacity = 0.2
-        tab1VCContentView.layer.shadowRadius = shadowRadius
-
-        tab1VCButton.frame = tab1VCContentView.bounds
-        tab1VCButton.autoresizingMask = [
-            .flexibleWidth, .flexibleHeight
-        ]
-        
-    }
-    
-    // quanth: round and shadow uiview
-    private func addtab2Shadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
-        tab2VCButton.layer.cornerRadius = cornerRadius
-        tab2VCButton.layer.masksToBounds = true
-
-        tab2VCContentView.layer.cornerRadius = cornerRadius
-        tab2VCContentView.layer.masksToBounds = false
-
-        tab2VCContentView.layer.shadowColor = UIColor.black.cgColor
-        tab2VCContentView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        tab2VCContentView.layer.shadowOpacity = 0.2
-        tab2VCContentView.layer.shadowRadius = shadowRadius
-
-        tab2VCButton.frame = tab2VCContentView.bounds
-        tab2VCButton.autoresizingMask = [
-            .flexibleWidth, .flexibleHeight
-        ]
-        
-    }
-    
-    // quanth: round and shadow uiview
-    private func addtab3Shadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
-        tab3VCButton.layer.cornerRadius = cornerRadius
-        tab3VCButton.layer.masksToBounds = true
-
-        tab3VCContentView.layer.cornerRadius = cornerRadius
-        tab3VCContentView.layer.masksToBounds = false
-
-        tab3VCContentView.layer.shadowColor = UIColor.black.cgColor
-        tab3VCContentView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        tab3VCContentView.layer.shadowOpacity = 0.2
-        tab3VCContentView.layer.shadowRadius = shadowRadius
-
-        tab3VCButton.frame = tab3VCContentView.bounds
-        tab3VCButton.autoresizingMask = [
-            .flexibleWidth, .flexibleHeight
-        ]
-        
-    }
-    
-    // quanth: round and shadow uiview
-    private func addtab4Shadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
-        tab4VCButton.layer.cornerRadius = cornerRadius
-        tab4VCButton.layer.masksToBounds = true
-
-        tab4VCContentView.layer.cornerRadius = cornerRadius
-        tab4VCContentView.layer.masksToBounds = false
-
-        tab4VCContentView.layer.shadowColor = UIColor.black.cgColor
-        tab4VCContentView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        tab4VCContentView.layer.shadowOpacity = 0.2
-        tab4VCContentView.layer.shadowRadius = shadowRadius
-
-        tab4VCButton.frame = tab4VCContentView.bounds
-        tab4VCButton.autoresizingMask = [
-            .flexibleWidth, .flexibleHeight
-        ]
-        
-    }
-    
-    // quanth: round and shadow uiview
-    private func addtab5Shadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
-        tab5VCButton.layer.cornerRadius = cornerRadius
-        tab5VCButton.layer.masksToBounds = true
-
-        tab5VCContentView.layer.cornerRadius = cornerRadius
-        tab5VCContentView.layer.masksToBounds = false
-
-        tab5VCContentView.layer.shadowColor = UIColor.black.cgColor
-        tab5VCContentView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        tab5VCContentView.layer.shadowOpacity = 0.2
-        tab5VCContentView.layer.shadowRadius = shadowRadius
-
-        tab5VCButton.frame = tab5VCContentView.bounds
-        tab5VCButton.autoresizingMask = [
-            .flexibleWidth, .flexibleHeight
-        ]
-        
-    }
-    
-    // quanth: round and shadow uiview
-    private func addtab6Shadow(cornerRadius: CGFloat, shadowRadius: CGFloat){
-        tab6VCButton.layer.cornerRadius = cornerRadius
-        tab6VCButton.layer.masksToBounds = true
-
-        tab6VCContentView.layer.cornerRadius = cornerRadius
-        tab6VCContentView.layer.masksToBounds = false
-
-        tab6VCContentView.layer.shadowColor = UIColor.black.cgColor
-        tab6VCContentView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        tab6VCContentView.layer.shadowOpacity = 0.2
-        tab6VCContentView.layer.shadowRadius = shadowRadius
-
-        tab6VCButton.frame = tab6VCContentView.bounds
-        tab6VCButton.autoresizingMask = [
-            .flexibleWidth, .flexibleHeight
-        ]
-        
-    }
-    
     /// config menu
     private func configMenu(){
         menu.leftSide = true
@@ -459,6 +190,10 @@ class HomeChartViewController: ViewController {
     
     override func leftButtonTapped(sender: UIBarButtonItem) {
         present(menu, animated: true, completion: nil)
+    }
+    
+    func logout() {
+        (self.viewModel as? HomeChartViewModel)?.logout()
     }
 }
 

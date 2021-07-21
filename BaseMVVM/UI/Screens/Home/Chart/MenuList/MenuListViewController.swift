@@ -26,6 +26,7 @@ class MenuListViewController: ViewController {
     override func makeUI() {
         super.makeUI()
         tableView.register(nibWithCellClass: MenuListTableViewCell.self)
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     override func bindViewModel() {
@@ -37,6 +38,8 @@ class MenuListViewController: ViewController {
         output.items.asDriver(onErrorJustReturn: [])
             .drive(self.tableView.rx.items(cellIdentifier: MenuListTableViewCell.className, cellType: MenuListTableViewCell.self)) { tableView, viewModel, cell in
                 cell.bind(viewModel: viewModel)
+                /// quanth: bỏ line giữa các item
+                cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: UIScreen.main.bounds.width)
         }.disposed(by: self.disposeBag)
         
         tableView.rx.itemSelected
@@ -61,6 +64,11 @@ class MenuListViewController: ViewController {
             case 5:
                 self?.home?.showTab6()
                 self?.home?.hideSideMenu()
+            case 5:
+                self?.home?.showTab6()
+                self?.home?.hideSideMenu()
+            case 6:
+                self?.home?.logout()
             default:
                 print("quanth do nothing")
             }
