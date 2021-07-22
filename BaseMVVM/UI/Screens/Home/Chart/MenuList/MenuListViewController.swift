@@ -15,6 +15,7 @@ import RxCocoa
 class MenuListViewController: ViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var banner: UIView!
     var home: HomeChartViewController? = nil
     var items = ["First", "Second", "Third", "First", "Second", "Third"]
     
@@ -25,6 +26,7 @@ class MenuListViewController: ViewController {
     
     override func makeUI() {
         super.makeUI()
+        self.banner.backgroundColor = UIColor(patternImage: UIImage(named: "ic_background_app")!)
         tableView.register(nibWithCellClass: MenuListTableViewCell.self)
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
