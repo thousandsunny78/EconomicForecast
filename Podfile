@@ -38,6 +38,8 @@ def shared_pods
   pod 'FittedSheets'
   # SideMenu
   pod 'SideMenu', '~> 6.5.0'
+  # RxDatasource
+  pod 'RxDataSources', '~> 4.0'
 end
 
 target 'BaseMVVM' do

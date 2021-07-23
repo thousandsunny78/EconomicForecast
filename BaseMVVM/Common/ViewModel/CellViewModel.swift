@@ -13,7 +13,7 @@ import RxCocoa
 class CellViewModel {
     var disposeBag = DisposeBag()
     
-    let title = BehaviorRelay<String?>(value: nil)
+    let title = BehaviorRelay<String?>(value: "")
     let detail = BehaviorRelay<String?>(value: nil)
     let imageUrl = BehaviorRelay<String?>(value: nil)
     let image = BehaviorRelay<UIImage?>(value: nil)

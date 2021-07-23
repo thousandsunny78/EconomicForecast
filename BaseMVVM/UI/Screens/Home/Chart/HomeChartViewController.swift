@@ -32,9 +32,9 @@ class HomeChartViewController: ViewController {
     }()
     
 //    private lazy var tab1VC: ViewController = {
-//        let viewController = MenuListViewController(nibName: MenuListViewController.className, bundle: nil)
-//        let navigator = MenuListNavigator(with: viewController)
-//        let viewModel = MenuListViewModel(navigator: navigator)
+//        let viewController = CPICollectionBSViewController(nibName: CPICollectionBSViewController.className, bundle: nil)
+//        let navigator = CPICollectionBSNavigator(with: viewController)
+//        let viewModel = CPICollectionBSViewModel(navigator: navigator)
 //        viewController.viewModel = viewModel
 //        return viewController
 //    }()

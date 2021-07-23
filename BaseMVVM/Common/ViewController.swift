@@ -232,3 +232,26 @@ class BarChartFormatter: NSObject,IAxisValueFormatter,IValueFormatter {
         return values[Int(entry.x)]
     }
 }
+
+extension UICollectionView {
+    func set(delegateAndDataSource: UICollectionViewDataSource & UICollectionViewDelegate) {
+        delegate = delegateAndDataSource
+        dataSource = delegateAndDataSource
+    }
+    
+    func registerNibCellFor<T: UICollectionViewCell>(type: T.Type) {
+        let nibName = type.className
+        register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: type.className)
+    }
+    
+    func registerClassCellFor<T: UICollectionViewCell>(type: T.Type) {
+        let nibName = type.className
+        register(type, forCellWithReuseIdentifier: nibName)
+    }
+    
+    // MARK: - Get component functions
+    func reusableCell<T: UICollectionViewCell>(type: T.Type, indexPath: IndexPath) -> T? {
+        let nibName = type.className
+        return self.dequeueReusableCell(withReuseIdentifier: nibName, for: indexPath) as? T
+    }
+}

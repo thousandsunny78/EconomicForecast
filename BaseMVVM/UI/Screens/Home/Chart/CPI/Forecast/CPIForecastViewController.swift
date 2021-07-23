@@ -61,6 +61,7 @@ class CPIForecastViewController: ViewController, ChartViewDelegate {
         }
         createMenu()
         createSettingButton()
+//        createCustomSettingButton()
     }
     
     override func bindViewModel() {
@@ -366,6 +367,23 @@ class CPIForecastViewController: ViewController, ChartViewDelegate {
             controller.cpiDatas = self?.cpiDatas ?? []
             controller.controlList = self?.controlList ?? []
             let sheetController = SheetViewController(controller: controller)
+            sheetController.topCornersRadius = 12
+            sheetController.setSizes([.fixed(420), .fullScreen])
+            self?.present(sheetController, animated: true, completion: nil)
+        }.disposed(by: disposeBag)
+    }
+    
+    private func createCustomSettingButton(){
+        settingButton.rx.tap.bind { [weak self] () in
+            let customSettingVC = CPICollectionBSViewController()
+            let navigator = CPICollectionBSNavigator(with: customSettingVC)
+            let viewModel = CPICollectionBSViewModel(navigator: navigator)
+            customSettingVC.viewModel = viewModel
+//            controller.type = Constants.CPI_FORECAST
+//            controller.cpiVC = self
+//            controller.cpiDatas = self?.cpiDatas ?? []
+//            controller.controlList = self?.controlList ?? []
+            let sheetController = SheetViewController(controller: customSettingVC)
             sheetController.topCornersRadius = 12
             sheetController.setSizes([.fixed(420), .fullScreen])
             self?.present(sheetController, animated: true, completion: nil)
